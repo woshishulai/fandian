@@ -1,13 +1,31 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+const query = localStorage.getItem('query') || ''
 const routes = [
     {
-        path: '/',
-        component: () => import('@/pages/home/index.vue')
+        path: '/:id?',
+        component: () => import('@/pages/home/index.vue')//首页
     },
     {
-        path: '/:id?/login',
-        component: () => import('@/pages/login/index.vue')
-    }
+        path: `/${query}/rooms`,
+        component: () => import('@/pages/rooms/rooms.vue'),
+        name: 'Rooms'
+    },
+    {
+        // path: '/',
+        path: '/:id?/roomslist',
+        component: () => import('@/pages/rooms/roomslist.vue'), // 房型列表
+        name: 'RoomsList'
+    },
+    {
+        path: '/:id?/roomsdetail',
+        component: () => import('@/pages/rooms/roomsdetail.vue'), // 房型详情
+        name: 'RoomsDetail'
+    },
+    // {
+    //     path: '/:id?/order',
+    //     component: Order, // 订单支付
+    //     name: 'Order'
+    // },
 ]
 const router = createRouter({
     history: createWebHistory(),
