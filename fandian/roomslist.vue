@@ -52,8 +52,8 @@
 </template>
 
 <script>
-    import Header from "../owned/header.vue";
-    import Footer from "../owned/footer.vue";
+    import Header from "@/components/layout/header.vue";
+    import Footer from "@/components/layout/footer.vue";
     import Queryhotel from "../rooms/queryhotel.vue";
     import Swiper from "swiper";
     export default {
@@ -274,116 +274,116 @@
     };
 </script>
 <style scoped>
-    .Queryhotel {
-        /* background-color:pink; */
-    }
+.Queryhotel {
+    /* background-color:pink; */
+}
 
-    .roomslist {
-        background-color: #efefed;
-    }
+.roomslist {
+    background-color: #efefed;
+}
 
-    /* efefed */
-    .roomslist_lunbo {
-        position: relative;
-        /* bottom: ; */
-        padding-bottom: 85px;
-    }
+/* efefed */
+.roomslist_lunbo {
+    position: relative;
+    /* bottom: ; */
+    padding-bottom: 85px;
+}
 
-    .prevroom,
-    .nextroom {
-        background-image: url(../../assets/img/xiangyou.png);
-        background-size: 100%;
-        background-repeat: no-repeat;
-        width: 33px;
-        height: 20px;
-        top: 100%;
-        margin-top: -50px;
-    }
+.prevroom,
+.nextroom {
+    background-image: url(../../assets/img/xiangyou.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 33px;
+    height: 20px;
+    top: 100%;
+    margin-top: -50px;
+}
 
-    .prevroom {
-        transform: rotate(180deg);
-    }
+.prevroom {
+    transform: rotate(180deg);
+}
 
-    .prevroom::after,
-    .nextroom::after {
-        display: none;
-    }
+.prevroom::after,
+.nextroom::after {
+    display: none;
+}
 
-    .roomswi_list {
-        margin-top: 48px;
-        background-color: #fff;
-        display: flex;
-        cursor: pointer;
-    }
+.roomswi_list {
+    margin-top: 48px;
+    background-color: #fff;
+    display: flex;
+    cursor: pointer;
+}
 
-    .roomswi_list .roomlist_img {
-        width: 576px;
-        height: 363px;
-        overflow: hidden;
-    }
+.roomswi_list .roomlist_img {
+    width: 576px;
+    height: 363px;
+    overflow: hidden;
+}
 
-    .roomswi_list .roomlist_img img {
-        width: 100%;
-        display: block;
-        transition: all 0.5s;
-    }
+.roomswi_list .roomlist_img img {
+    width: 100%;
+    display: block;
+    transition: all 0.5s;
+}
 
-    .roomlist_version {
-        width: 820px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* padding: 75px 80px 0; */
-        box-sizing: border-box;
-    }
+.roomlist_version {
+    width: 820px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 75px 80px 0; */
+    box-sizing: border-box;
+}
 
-    .roomlist_version .version_eara {
-        width: 675px;
-    }
+.roomlist_version .version_eara {
+    width: 675px;
+}
 
-    .roomlist_version .version_eara span {
-        display: block;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-size: 24px;
-        color: #000000;
-    }
+.roomlist_version .version_eara span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 24px;
+    color: #000000;
+}
 
-    .roomlist_version .version_eara p {
-        margin-top: 35px;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        font-size: 18px;
-        color: #666666;
-        line-height: 32px;
-        height: 65px;
-    }
+.roomlist_version .version_eara p {
+    margin-top: 35px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 18px;
+    color: #666666;
+    line-height: 32px;
+    height: 65px;
+}
 
-    .roomlist_version .version_eara .room_detail {
-        margin-top: 55px;
-        float: right;
-        width: 125px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 18px;
-        color: #a8916f;
-        text-align: center;
-    }
+.roomlist_version .version_eara .room_detail {
+    margin-top: 55px;
+    float: right;
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    color: #a8916f;
+    text-align: center;
+}
 
-    .roomswi_list:hover {
-        box-shadow: 0 0 6px 1px #d6d5d5;
-    }
+.roomswi_list:hover {
+    box-shadow: 0 0 6px 1px #d6d5d5;
+}
 
-    .roomswi_list:hover .roomlist_img img {
-        transform: scale(1.2);
-    }
+.roomswi_list:hover .roomlist_img img {
+    transform: scale(1.2);
+}
 
-    .roomswi_list:hover .room_detail {
-        color: #fff;
-        background-color: #d5b08b;
-    }
+.roomswi_list:hover .room_detail {
+    color: #fff;
+    background-color: #d5b08b;
+}
 </style>

@@ -273,12 +273,16 @@ export default {
                         that.getdatalist()
                         return
                     } else {
-                        sessionStorage.setItem('hotel_id', res.data.data.hotel[0].id)
-                        sessionStorage.setItem('hotel_name', res.data.data.hotel[0].hotel_name)
-                        sessionStorage.setItem('city', res.data.data.hotel[0].city)
-                        console.log('舒来测试酒店id', sessionStorage.getItem('hotel_id'));
-                        console.log('舒来测试酒店name', sessionStorage.getItem('hotel_name'));
-                        console.log('舒来测试酒店id', sessionStorage.getItem('city'));
+                        sessionStorage.setItem('hotel_id', res.data.data.hotel.id)
+                        sessionStorage.setItem('hotelcode', res.data.data.hotel.hotel_code)
+                        sessionStorage.setItem('codesh', res.data.data.hotel.code)
+                        sessionStorage.setItem('hotel_name', res.data.data.hotel.hotel_name)
+                        sessionStorage.setItem('dituxinxi', res.data.data.hotel.coord)
+                        sessionStorage.setItem('city', res.data.data.hotel.city)
+                        localStorage.setItem('mudiIndex', res.data.data.hotel.city)
+                        localStorage.setItem('mudiIndexnum1', res.data.data.hotel.city)
+                        localStorage.setItem('mudiIndexnum2', res.data.data.hotel.key)
+                        console.log('舒来测试酒店', sessionStorage.getItem('hotel_id'), sessionStorage.getItem('hotelcode'), sessionStorage.getItem('codesh'), sessionStorage.getItem('hotel_name'), sessionStorage.getItem('dituxinxi'), sessionStorage.getItem('city'), localStorage.getItem('mudiIndex'), localStorage.getItem('mudiIndexnum2'),);
                         that.infolist = res.data.data.defaul_module_list
                         that.onelist = res.data.data.defaul_module_list[0]
                         that.twolist = res.data.data.defaul_module_list[1]

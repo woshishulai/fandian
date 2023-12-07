@@ -24,6 +24,7 @@
                 <!-- city -->
                 <!-- @click.stop="getmudi(list)"
                   :class="mudiIndex == list ? 'cur' : ''" -->
+                <!-- 这个方法 第一个展示城市列表，第二个展示切换城市 第三个对应城市酒店列表 -->
                 <li v-for="(list, index) in city" :key="index" @mouseover="getcitylist(index)"
                   :class="index == mudiIndexnum1 ? 'cur' : ''">
                   {{ index }}
@@ -217,7 +218,6 @@
                 <p>搜索</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -226,8 +226,8 @@
 </template>
 
 <script>
-// import Header from "../owned/header.vue"
-// import Footer from "../owned/footer.vue"
+// import Header from "@/components/layout/header.vue"
+// import Footer from "@/components/layout/footer.vue"
 export default {
   // components: {
   //     Header,
@@ -299,11 +299,11 @@ export default {
       // daxiao:"",//大人小孩
       nowday: "", //今天的时间
       nextday: "", //明天的时间
-      city: [],
-      city_centry: [],
+      city: [],//城市
+      city_centry: [],//所选城市里面的所有酒店
       cityshow: false,
-      mudiIndexnum1: '0',
-      mudiIndexnum2: '0',
+      mudiIndexnum1: '0',//城市
+      mudiIndexnum2: '0',//城市里面的第几个
       mudisaaa: '0',
       hotelist: [],
       showName: 'bjeg'
@@ -312,6 +312,7 @@ export default {
 
   created() {
     this.token = sessionStorage.getItem("token");
+    console.log('我是token', this.token);
     if (this.$route.query.prono) {
       this.compid = this.$route.query.prono
     }
@@ -503,10 +504,11 @@ export default {
             that.mudiIndexnum1 = localStorage.getItem("mudiIndexnum1");//对应的城市
             that.mudiIndexnum2 = localStorage.getItem("mudiIndexnum2");//对应的城市酒店索引的第几个
             that.city_centry = that.city[that.mudiIndexnum1];
-            sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);
-            sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);
-            sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);
-            sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);
+            console.log(that.city_centry);
+            sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);//酒店id
+            sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);//酒店code获取token用的
+            sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);//
+            sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);//酒店名字
             sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
           } else {
             that.city_centry = that.city["北京"];
@@ -523,6 +525,7 @@ export default {
             sessionStorage.setItem("hotelname", that.city["北京"][0].hotel_name);
             sessionStorage.setItem("dituxinxi", JSON.stringify(that.city["北京"][0]))
           }
+          console.log(sessionStorage.getItem('dituxinxi'));
           console.log(that.city_centry);
           console.log(sessionStorage.getItem('hotel_id'));
           console.log(sessionStorage.getItem('hotelcode'));
@@ -530,39 +533,40 @@ export default {
         .catch((err) => console.log(err));
     },
     changejiu(listMsg, indexMsg) {
-      console.log(listMsg)
+      console.log(listMsg, indexMsg)//listMsg酒店信息,indexMsg酒店里面的第几个
       this.showName = listMsg.hotel_img
-      console.log(this.showName);
+      console.log(this.showName);//酒店二级域名
       console.log(indexMsg)
       if (listMsg.path && listMsg.path != "") {
         window.open(listMsg.path)
       } else {
         this.mudishow = false;
         this.cityshow = false;
-        this.mudiIndex = listMsg.hotel_name;
-        this.mudiIndexnum1 = this.mudisaaa
-        this.mudiIndexnum2 = indexMsg
-        console.log(this.mudisaaa)
+        this.mudiIndex = listMsg.hotel_name;//改酒店名字
+        this.mudiIndexnum1 = this.mudisaaa//改酒店城市
+        this.mudiIndexnum2 = indexMsg//改酒店里面的第几个
+        console.log('酒店城市', this.mudisaaa)
         localStorage.setItem("mudiIndex", this.mudiIndex);
         localStorage.setItem("mudiIndexnum1", this.mudisaaa);
         localStorage.setItem("mudiIndexnum2", indexMsg);
         // console.log( this.mudiIndexnum1)
         // console.log( this.mudiIndexnum2)
         var that = this
+        //存第几个的id
         sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);
         console.log("酒店hotel_id:", sessionStorage.getItem("hotel_id"))
-
+        //存酒店的code
         sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);
         console.log("酒店hotelcode:", sessionStorage.getItem("hotelcode"))
-
+        //存酒店房型
         sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);
         console.log("酒店codesh:", sessionStorage.getItem("codesh"))
-
+        //酒店名字
         sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);
         console.log("酒店hotelname:", sessionStorage.getItem("hotelname"))
         sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
       }
-
+      console.log(sessionStorage.getItem('dituxinxi'));
     },
 
     //获取酒店id

@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
-const query = localStorage.getItem('query') || ''
 const routes = [
+    // {
+
+    // },
+    // {
+
+    // },
     {
         path: '/:id?',
-        component: () => import('@/pages/home/index.vue')//首页
+        name: 'Hotel',
+        component: () => import('@/pages/home/index.vue')
     },
     {
-        path: `/${query}/rooms`,
-        component: () => import('@/pages/rooms/rooms.vue'),
+        path: '/:id?/rooms',
+        component: () => import('@/pages/rooms/rooms.vue'), //住宿
         name: 'Rooms'
     },
     {
@@ -17,15 +23,87 @@ const routes = [
         name: 'RoomsList'
     },
     {
-        path: '/:id?/roomsdetail',
+        path: '/roomsdetail',
         component: () => import('@/pages/rooms/roomsdetail.vue'), // 房型详情
         name: 'RoomsDetail'
     },
-    // {
-    //     path: '/:id?/order',
-    //     component: Order, // 订单支付
-    //     name: 'Order'
-    // },
+    {
+        path: '/order',
+        component: () => import('@/pages/rooms/order.vue'), // 订单支付
+        name: 'Order'
+    },
+    {
+        path: '/meal',
+        component: () => import('@/pages/meal/meal.vue'), // 餐饮
+        name: 'Meal'
+    },
+    {
+        path: '/mealdetail',
+        component: () => import('@/pages/meal/mealdetail.vue'), // 餐饮详情
+        name: 'MealDetail'
+    },
+    {
+        path: '/banquet',
+        component: () => import('@/pages/banquet/banquet.vue'), // 宴会
+        name: 'Banquet'
+    },
+    {
+        path: '/newslist',
+        component: () => import('@/pages/news/newslist.vue'), // 新闻列表
+        name: 'NewsList'
+    },
+    {
+        path: '/newsdetail',
+        component: () => import('@/pages/news/newsdetail.vue'), // 新闻详情
+        name: 'NewsDetail'
+    },
+    {
+        path: '/tuku',
+        component: () => import('@/pages/news/tuku.vue'), // 图库展示
+        name: 'Tuku'
+    },
+    {
+        path: '/century',
+        component: () => import('@/pages/century/century.vue'), // 体验
+        name: 'Century'
+    },
+    {
+        path: '/ambitus',
+        component: () => import('@/pages/ambitus/ambitus.vue'), // 世纪会
+        name: 'Ambitus'
+    },
+    {
+        path: '/law',
+        component: () => import('@/pages/ambitus/law.vue'), // 法律声明
+        name: 'Law'
+    },
+    {
+        path: '/media',
+        component: () => import('@/pages/ambitus/media.vue'), // 媒体中心
+        name: 'Media'
+    },
+    {
+        path: '/contact',
+        component: () => import('@/pages/ambitus/contact.vue'), // 联系我们
+        name: 'Contact'
+    },
+    {
+        //datails
+        path: '/details',
+        component: () => import('@/pages/ambitus/details.vue'), // 各种优惠信息详情页
+        name: 'Details'
+    },
+    // /import QueryHotel from '../components/rooms/queryhotel.vue'// 日历
+    {
+        path: '/queryhotel',
+        component: () => import('@/pages/rooms/queryhotel.vue'), // 日历
+        name: 'QueryHotel'
+    },
+    {
+        path: '/orderlist',
+        component: () => import('@/pages/rooms/orderlist.vue'), // 订单列表
+        name: 'orderlist'
+    },
 ]
 const router = createRouter({
     history: createWebHistory(),
@@ -55,7 +133,4 @@ const router = createRouter({
 //         next(); // 继续正常跳转
 //     }
 // });
-
-
-// export { userRoutes }
 export default router;
