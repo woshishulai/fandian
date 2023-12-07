@@ -1,24 +1,89 @@
-<script setup>
-import { ref, computed, reactive, onMounted, inject } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import Header from '@/components/layout/header.vue';
-import Footer from '@/components/layout/footer.vue';
-import Queryhotel from '../rooms/queryhotel.vue';
-const router = useRouter();
-const route = useRoute();
-const props = defineProps({})
-onMounted(() => { });
-const token = ref('')
-const hotel_id = ref('')
-const modularid = ref('')
-const infolist = ref([])
-const topimg = ref('')
-const topname = ref('')
-localStorage.setItem("istrue", 6);
-token.value = sessionStorage.getItem("token");
-hotel_id.value = sessionStorage.getItem("hotel_id");
-const reload = inject('reload');
+<script>
+import Header from "@/components/layout/header.vue";
+import Footer from "@/components/layout/footer.vue";
+import Queryhotel from "../rooms/queryhotel.vue";
+export default {
+    components: {
+        Header,
+        Footer,
+        Queryhotel
+    },
+    data() {
+        return {
+            token: '',//token
+            hotel_id: '',//酒店id
+            modularid: '',//模块id
+            infolist: [],
+            topimg: '',
+            topname: ''
+        };
+    },
+    created() {
+        // 储存第几个头部状态
+        localStorage.setItem("istrue", 6);
+        this.token = sessionStorage.getItem("token");
+        // console.log(this.token);
+        this.hotel_id = sessionStorage.getItem("hotel_id");
+        // if(sessionStorage.getItem("fieldData")){
+        //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
+        //    this.modularid = fieldData[5].id
+        // }
+        this.getinfolist()
+        // this.getdatalist()
+    },
+    inject: ['reload'],
+    methods: {
+        getinfolist() {
+            var that = this;
+            that.$axios
+                .post(
+                    `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
+                )
+                .then(function (res) {
+                    console.log(res);
+                    const fieldData = res.data.data.top_module_list;
+                    that.modularid = fieldData[5].id
+                    sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
+                    that.getdatalist()
+                })
+                .catch((err) => console.log(err));
+        },
+        getdatalist() {
+            //?web_token=${that.token}&hotel_id=1
+            var that = this
+            that.$axios
+                // &module_id=3
+                .get(`${this.Baseurl}home_data?web_token=${that.token}&hotel_id=${that.hotel_id}&module_id=${that.modularid}`)
+                .then(function (res) {
+                    console.log(res)
+                    that.topimg = res.data.data.top_module_list[5].pc_image
+                    that.topname = res.data.data.top_module_list[5].name
+                    that.infolist = res.data.data.defaul_module_list
 
+                    console.log(that.infolist)
+                    //infolist
+                    //defaul_module_list 
+
+                    // that.$nextTick(function(){
+                    //     that.lunboone()
+                    // })
+                }).catch(err => console.log(err));
+        },
+        denglv() {
+            localStorage.setItem("loginfou", 1);
+            // console.log(localStorage.getItem("loginfou"))
+            this.reload();
+        },
+        zhuce() {
+            localStorage.setItem("loginfou", 2);
+            this.reload();
+        }
+    },
+    mounted() {
+
+    },
+
+};
 </script>
 
 <template>
@@ -32,7 +97,7 @@ const reload = inject('reload');
                 <img :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
-                <p>您的位置：首页 > {{ topname }}</p>
+                <p>您的位置：首页 > {{ topname ? 'topname' : '' }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="ambitus">
@@ -48,7 +113,7 @@ const reload = inject('reload');
                         </div>
                     </div>
                     <div class="huiyuan">
-                        <div class="huiyuan_text" v-html="infolist[0]?.news[0].pc_content">
+                        <div class="huiyuan_text" v-html="infolist[0]?.news[0]?.pc_content">
                         </div>
                     </div>
                 </div>

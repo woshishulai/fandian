@@ -13,7 +13,7 @@
     "qrcode": "^1.5.0",
     "swiper": "^5.4.5",
     "vue": "^3.3.8",
-    "vue-baidu-map": "^0.21.22",
+    "vue-baidu-map-3x": "^1.0.35",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

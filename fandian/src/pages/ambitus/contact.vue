@@ -16,15 +16,15 @@
           <div class="lianxi">
             <div class="lianxileft">
               <div class="jieshao" v-html="infolist[1].pc_content">
-
               </div>
               <div class="ditu">
                 <!--百度地图容器-->
                 <baidu-map class="bm-view" :center="center" :zoom="zoom" :scroll-wheel-zoom="true">
-                  <bm-label :content="contents" :position="center" :labelStyle="{color: '#808080', fontSize : '20px',padding:'5px 20px',
-                                    border:'1px solid #bababa',borderRadius: '10px',
-                                    marginLeft:'-120px',textAlign:'center',marginTop: '-40px'
-                                    }" title="Hover me" />
+                  <bm-label :content="contents" :position="center" :labelStyle="{
+                    color: '#808080', fontSize: '20px', padding: '5px 20px',
+                    border: '1px solid #bababa', borderRadius: '10px',
+                    marginLeft: '-120px', textAlign: 'center', marginTop: '-40px'
+                  }" title="Hover me" />
                 </baidu-map>
               </div>
             </div>
@@ -113,14 +113,14 @@ export default {
       infolist: [],
       tipshow: false,
       tipstext: "",
-      
+
 
 
       // 地图
-      center:{lng:0,lat:0},
-      zoom:20,
+      center: { lng: 0, lat: 0 },
+      zoom: 20,
       contents: '北京世纪金源大饭店1',
-      dituxinxi:[],
+      dituxinxi: [],
     };
   },
   created() {
@@ -133,41 +133,41 @@ export default {
     this.hotelname = sessionStorage.getItem("hotelname");
     console.log(this.infolist);
     console.log(JSON.parse(sessionStorage.getItem("dituxinxi")))
-    this.dituxinxi=JSON.parse(sessionStorage.getItem("dituxinxi"))
+    this.dituxinxi = JSON.parse(sessionStorage.getItem("dituxinxi"))
     //dituxinxi
     var zuobiao = this.dituxinxi.coord.split(',')
     console.log(zuobiao)
     // this.center.lng = 116.286812
     // this.center.lat = 39.959567
     var array = {
-      lng:zuobiao[0],lat:zuobiao[1]
+      lng: zuobiao[0], lat: zuobiao[1]
     }
     // this.center.lng = zuobiao[0]
     // this.center.lat = zuobiao[1]
-    this.center =array
+    this.center = array
     this.zoom = 20
-    this.contents=this.dituxinxi.hotel_name
+    this.contents = this.dituxinxi.hotel_name
   },
   inject: ["reload"],
   methods: {
-    handler({BMap, map}) {
-      setTimeout(()=>{
+    handler({ BMap, map }) {
+      setTimeout(() => {
         console.log(BMap, map)
-      var zuobiao = this.dituxinxi.coord.split(',')
-      console.log(zuobiao)
-      // this.center.lng = 116.286812
-      // this.center.lat = 39.959567
-      var array = {
-        lng:zuobiao[0],lat:zuobiao[1]
-      }
-      // this.center.lng = zuobiao[0]
-      // this.center.lat = zuobiao[1]
-      this.center =array
-      this.zoom = 20
-      this.contents=this.dituxinxi.hotel_name
-      },500)
+        var zuobiao = this.dituxinxi.coord.split(',')
+        console.log(zuobiao)
+        // this.center.lng = 116.286812
+        // this.center.lat = 39.959567
+        var array = {
+          lng: zuobiao[0], lat: zuobiao[1]
+        }
+        // this.center.lng = zuobiao[0]
+        // this.center.lat = zuobiao[1]
+        this.center = array
+        this.zoom = 20
+        this.contents = this.dituxinxi.hotel_name
+      }, 500)
     },
-    
+
     //提示
     tishi(text) {
       this.tipshow = true;
@@ -187,28 +187,28 @@ export default {
       console.log(this.email);
       console.log(this.wenben);
       // contact_us
-      if(this.name == "") {
+      if (this.name == "") {
         this.nameshow = true;
         setTimeout(() => {
           this.nameshow = false;
         }, 1500);
         return
       }
-       if(this.phone == "") {
+      if (this.phone == "") {
         this.phoneshow = true;
         setTimeout(() => {
           this.phoneshow = false;
         }, 1500);
         return
       }
-      if(this.email == "") {
+      if (this.email == "") {
         this.emailshow = true;
         setTimeout(() => {
           this.emailshow = false;
         }, 1500);
         return
       }
-      if(this.wenben == "") {
+      if (this.wenben == "") {
         this.wenbenshow = true;
         setTimeout(() => {
           this.wenbenshow = false;
@@ -226,11 +226,11 @@ export default {
         .then(function (res) {
           console.log(res);
           // console.log(res.data.msg);
-          
+
           that.tishi(res.data.msg);
-          setTimeout(()=>{
+          setTimeout(() => {
             that.reload();
-          },1000)
+          }, 1000)
         })
         .catch((err) => console.log(err));
     },
@@ -262,7 +262,7 @@ export default {
     },
 
   },
-  mounted(){}
+  mounted() { }
 };
 </script>
 
@@ -505,4 +505,5 @@ textarea::-webkit-scrollbar {
 .conts_top p {
   height: 350px;
   line-height: 350px;
-}</style>
+}
+</style>

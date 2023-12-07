@@ -23,10 +23,6 @@
                 </div> -->
               </div>
               <div class="newszuo_text" ref="ziti" v-html="meallist.pc_content">
-                <!-- <p>
-                  4月18日，网商银行发布“网商银行Ⅱ类账户相关业务调整及福利金升级公告”。公告称，4月21日起网商银行将逐步暂停支付宝提现。
-                </p>
-                <img src="../../assets/img/xin.jpg" alt="" /> -->
               </div>
             </div>
             <div class="newsyou">
@@ -99,21 +95,21 @@ export default {
   inject: ["reload"],
   methods: {
     getinfolistALL() {
-        var that = this;
-        that.$axios
-            .post(
-            `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
-            )
-            .then(function (res) {
-            console.log("113",res);
-            // that.menulist = res.data.data.top_module_list;
-            // console.log(that.menulist)
-            const fieldData = res.data.data.top_module_list;
-            that.modularid = fieldData[4].id
-            sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
-            that.getdatalist();
-            })
-            .catch((err) => console.log(err));
+      var that = this;
+      that.$axios
+        .post(
+          `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
+        )
+        .then(function (res) {
+          console.log("113", res);
+          // that.menulist = res.data.data.top_module_list;
+          // console.log(that.menulist)
+          const fieldData = res.data.data.top_module_list;
+          that.modularid = fieldData[4].id
+          sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
+          that.getdatalist();
+        })
+        .catch((err) => console.log(err));
     },
     // getinfolist2() {
     //   //?web_token=${that.token}&hotel_id=1
@@ -162,7 +158,7 @@ export default {
           `${this.Baseurl}news_list?web_token=${that.token}&hotel_id=${that.hotel_id}&id=${that.id}`
         )
         .then(function (res) {
-          console.log("news_list---",res);
+          console.log("news_list---", res);
           // that.name = res.data.data.news.name
           that.infolist = res.data.data;
           console.log(that.infolist)
@@ -214,13 +210,13 @@ export default {
           `${this.Baseurl}new_details?web_token=${that.token}&hotel_id=${that.hotel_id}&new_id=${that.newsId}`
         )
         .then(function (res) {
-          console.log("--------------",res);
+          console.log("--------------", res);
           that.meallist = res.data.data.new_details
         })
         .catch((err) => console.log(err));
     },
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
 <style scoped>
@@ -396,4 +392,5 @@ export default {
                   <span class="newsyou_list">下一篇</span>
                   <span class="time">2022.0.10</span>
                   <p>荣耀时刻 | 北京华侨大厦睿世酒店喜获甄选期待新开业酒店奖</p>
-              </div> */</style>
+              </div> */
+</style>

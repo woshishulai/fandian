@@ -6,28 +6,28 @@
         <div class="conts">
             <div class="meal_top">
                 <!-- <img src="../../assets/img/tiyan.jpg" alt=""> -->
-                <img :src="Baseurl+topimg" alt="">
+                <img :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
-                <p>您的位置：首页 > {{topname}}</p>
+                <p>您的位置：首页 > {{ topname }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="tiyanone">
                 <div class="main">
-                    <div class="zhoubian" v-if="infolist[0].news!=''">
-                        <div class="zhoubian_tit">{{infolist[0].name}}</div>
+                    <div class="zhoubian" v-if="infolist[0]?.news != ''">
+                        <div class="zhoubian_tit">{{ infolist[0]?.name }}</div>
                         <div class="zhoubian_lunbo">
                             <div class="swiper-container lunzhou">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" v-for="(item,index) in infolist[0].news" :key="index"
+                                    <div class="swiper-slide" v-for="(item, index) in infolist[0]?.news" :key="index"
                                         @click="topath(item)">
                                         <div class="list">
                                             <div class="list_nei">
-                                                <span>{{item.title}}</span>
-                                                <p>{{item.description}}</p>
+                                                <span>{{ item.title }}</span>
+                                                <p>{{ item.description }}</p>
                                                 <div class="tupian">
                                                     <!-- <img src="../../assets/img/tiyan1.jpg" alt=""> -->
-                                                    <img :src="Baseurl+item.pc_image" alt="">
+                                                    <img :src="Baseurl + item.pc_image" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -40,21 +40,22 @@
                     </div>
                 </div>
             </div>
-            <div class="tiyantwo" v-if="infolist[1]!=''">
+            <div class="tiyantwo" v-if="infolist[1] != ''">
                 <div class="main">
                     <!--百度地图容器-->
                     <div class="ditu">
                         <!-- @ready="handler" -->
                         <baidu-map class="bm-view" :center="center" :zoom="zoom" :scroll-wheel-zoom="true">
-                            <bm-label :content="contents" :position="center" :labelStyle="{color: '#808080', fontSize : '20px',padding:'5px 20px',
-                                                        border:'1px solid #bababa',borderRadius: '10px',
-                                                        marginLeft:'-120px',textAlign:'center',marginTop: '-40px'
-                                                        }" title="Hover me" />
+                            <bm-label :content="contents" :position="center" :labelStyle="{
+                                color: '#808080', fontSize: '20px', padding: '5px 20px',
+                                border: '1px solid #bababa', borderRadius: '10px',
+                                marginLeft: '-120px', textAlign: 'center', marginTop: '-40px'
+                            }" title="Hover me" />
                         </baidu-map>
                         <div class="infomercial">
                             <span>联系我们</span>
                             <!-- <div v-html="infolist[1].news[0].description"></div> -->
-                            <div v-html="infolist[1].news[0].pc_content"></div>
+                            <div v-html="infolist[1]?.news[0]?.pc_content"></div>
                             <!-- //pc_content -->
                         </div>
                     </div>
@@ -108,149 +109,149 @@
 </template>
 
 <script>
-    import Header from "@/components/layout/header.vue";
-    import Footer from "@/components/layout/footer.vue";
-    import Swiper from "swiper";
-    import Queryhotel from "../rooms/queryhotel.vue";
-    export default {
-        components: {
-            Header,
-            Footer,
-            Queryhotel
-        },
-        data() {
-            return {
-                token:'',//token
-                hotel_id:'',//酒店id
-                modularid:'',//模块id
-                infolist:'',
-                topimg:'',
-                arrayImg:[],
-                topname:'',
+import Header from "@/components/layout/header.vue";
+import Footer from "@/components/layout/footer.vue";
+import Swiper from "swiper";
+import Queryhotel from "../rooms/queryhotel.vue";
+export default {
+    components: {
+        Header,
+        Footer,
+        Queryhotel
+    },
+    data() {
+        return {
+            token: '',//token
+            hotel_id: '',//酒店id
+            modularid: '',//模块id
+            infolist: '',
+            topimg: '',
+            arrayImg: [],
+            topname: '',
 
-                //地图
-                center:{lng:0,lat:0},
-                zoom:20,
-                contents: '北京世纪金源大饭店1',
-                dituxinxi:[],
-            };
-        },
-        created() {
-            // 储存第几个头部状态
-            localStorage.setItem("istrue", 5);
-            this.token = sessionStorage.getItem("token");
-            // console.log(this.token);
-            this.hotel_id = sessionStorage.getItem("hotel_id");
-            // if(sessionStorage.getItem("fieldData")){
-            //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
-            //    this.modularid = fieldData[4].id
-            // }
-            // this.getdatalist()
-            this.getinfolist()
-            this.dituxinxi=JSON.parse(sessionStorage.getItem("dituxinxi"))
-            console.log(this.dituxinxi)
-            var zuobiao = this.dituxinxi.coord.split(',')
-            console.log(zuobiao)
-            // this.center.lng = 116.286812
-            // this.center.lat = 39.959567
-            var array = {
-            lng:zuobiao[0],lat:zuobiao[1]
-            }
-            // this.center.lng = zuobiao[0]
-            // this.center.lat = zuobiao[1]
-            this.center =array
-            this.zoom = 20
-            this.contents=this.dituxinxi.hotel_name
-        },
-        methods: {
-            getinfolist() {
-                var that = this;
-                that.$axios
-                    .post(
+            //地图
+            center: { lng: 0, lat: 0 },
+            zoom: 20,
+            contents: '北京世纪金源大饭店1',
+            dituxinxi: [],
+        };
+    },
+    created() {
+        // 储存第几个头部状态
+        localStorage.setItem("istrue", 5);
+        this.token = sessionStorage.getItem("token");
+        // console.log(this.token);
+        this.hotel_id = sessionStorage.getItem("hotel_id");
+        // if(sessionStorage.getItem("fieldData")){
+        //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
+        //    this.modularid = fieldData[4].id
+        // }
+        // this.getdatalist()
+        this.getinfolist()
+        this.dituxinxi = JSON.parse(sessionStorage.getItem("dituxinxi"))
+        console.log(this.dituxinxi)
+        var zuobiao = this.dituxinxi.coord.split(',')
+        console.log(zuobiao)
+        // this.center.lng = 116.286812
+        // this.center.lat = 39.959567
+        var array = {
+            lng: zuobiao[0], lat: zuobiao[1]
+        }
+        // this.center.lng = zuobiao[0]
+        // this.center.lat = zuobiao[1]
+        this.center = array
+        this.zoom = 20
+        this.contents = this.dituxinxi.hotel_name
+    },
+    methods: {
+        getinfolist() {
+            var that = this;
+            that.$axios
+                .post(
                     `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
-                    )
-                    .then(function (res) {
+                )
+                .then(function (res) {
                     console.log(res);
                     const fieldData = res.data.data.top_module_list;
                     that.modularid = fieldData[4].id
                     sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
                     that.getdatalist()
-                    })
-                    .catch((err) => console.log(err));
-            },
-            handler({BMap, map}) {
-                console.log(BMap, map)
-                var zuobiao = this.dituxinxi.coord.split(',')
-                // this.center.lng = 116.286812
-                // this.center.lat = 39.959567
-                this.center.lng = zuobiao[0]
-                this.center.lat = zuobiao[1]
-                this.zoom = 20
-                this.contents=this.dituxinxi.hotel_name
-            },
-            getdatalist(){
-                //?web_token=${that.token}&hotel_id=1
-                var that =this
-                that.$axios
+                })
+                .catch((err) => console.log(err));
+        },
+        handler({ BMap, map }) {
+            console.log(BMap, map)
+            var zuobiao = this.dituxinxi.coord.split(',')
+            // this.center.lng = 116.286812
+            // this.center.lat = 39.959567
+            this.center.lng = zuobiao[0]
+            this.center.lat = zuobiao[1]
+            this.zoom = 20
+            this.contents = this.dituxinxi.hotel_name
+        },
+        getdatalist() {
+            //?web_token=${that.token}&hotel_id=1
+            var that = this
+            that.$axios
                 // &module_id=3
-                .get(`${this.Baseurl}home_data?web_token=${that.token}&hotel_id=${that.hotel_id}&module_id=${that.modularid}`) 
-                .then(function(res) {
+                .get(`${this.Baseurl}home_data?web_token=${that.token}&hotel_id=${that.hotel_id}&module_id=${that.modularid}`)
+                .then(function (res) {
                     console.log(res)
-                    that.topimg =res.data.data.top_module_list[4].pc_image
+                    that.topimg = res.data.data.top_module_list[4].pc_image
                     that.topname = res.data.data.top_module_list[4].name
-                    that.infolist =  res.data.data.defaul_module_list
-                    console.log(that.infolist)	
+                    that.infolist = res.data.data.defaul_module_list
+                    console.log(that.infolist)
                     var array = that.infolist[1].news[0].images
                     var result = []
                     for (let i = 0; i < array.length; i++) {
-                       if(array[i].type ==1){
+                        if (array[i].type == 1) {
                             result.push(array[i])
-                       }
+                        }
                     }
                     that.arrayImg = result
                     //infolist
                     //defaul_module_list 
-                    that.$nextTick(function(){
+                    that.$nextTick(function () {
                         that.lunboone()
                     })
                 }).catch(err => console.log(err));
-            },
-
-            topath(item){
-                console.log(item)
-                if(item.pc_link&&item.pc_link!=''){
-                    window.open(item.pc_link)
-                }
-            },
-            // pc_link
-            lunboone(){
-                var lunzhou = new Swiper(".lunzhou", {
-                    // loop: true, // 循环模式选项
-                    slidesPerView: 3,
-                    autoplay:true,
-                    // centeredSlides: true,//这个是让第一个居中显示的
-                    spaceBetween: 69,
-                    // 如果需要分页器
-                    pagination: {
-                        el: ".fenye",
-                        clickable: true,
-                    },
-                });
-                var lunthere = new Swiper(".lunthere", {
-                    loop: true, // 循环模式选项
-                    autoplay:true,
-                    centeredSlides: true,
-                    slidesPerView: 3,
-                    slidesPerView: "auto",
-                    freeMode:true,
-                    // autoplay:true,
-                    // centeredSlides: true,//这个是让第一个居中显示的
-                    // spaceBetween: 5,
-                });
-            },
-
         },
-    };
+
+        topath(item) {
+            console.log(item)
+            if (item.pc_link && item.pc_link != '') {
+                window.open(item.pc_link)
+            }
+        },
+        // pc_link
+        lunboone() {
+            var lunzhou = new Swiper(".lunzhou", {
+                // loop: true, // 循环模式选项
+                slidesPerView: 3,
+                autoplay: true,
+                // centeredSlides: true,//这个是让第一个居中显示的
+                spaceBetween: 69,
+                // 如果需要分页器
+                pagination: {
+                    el: ".fenye",
+                    clickable: true,
+                },
+            });
+            var lunthere = new Swiper(".lunthere", {
+                loop: true, // 循环模式选项
+                autoplay: true,
+                centeredSlides: true,
+                slidesPerView: 3,
+                slidesPerView: "auto",
+                freeMode: true,
+                // autoplay:true,
+                // centeredSlides: true,//这个是让第一个居中显示的
+                // spaceBetween: 5,
+            });
+        },
+
+    },
+};
 </script>
 <style scoped>
 .ditu {
@@ -548,4 +549,5 @@
 /*
 
 
-*/</style>
+*/
+</style>
