@@ -5,8 +5,8 @@
 
     <div class="conts">
       <div class="meal_top">
-        <!-- <img src="../../assets/img/cande1.jpg" alt="" /> -->
-        <img :src="Baseurl+topimg" alt="">
+        <!-- <img loading="lazy"src="../../assets/img/cande1.jpg" alt="" /> -->
+        <img loading="lazy" :src="Baseurl + topimg" alt="">
       </div>
       <div class="crumbs">
         <p>您的位置：首页 > 餐饮</p>
@@ -23,7 +23,7 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" v-for="(item, index) in meallist.images" :key="index">
                     <div class="can_list_img">
-                      <img :src="Baseurl + item.image" alt="" />
+                      <img loading="lazy" :src="Baseurl + item.image" alt="" />
                     </div>
                   </div>
                 </div>
@@ -35,23 +35,23 @@
                 <p v-html="meallist.description"></p>
                 <div class="cancont">
                   <div class="rig_list">
-                    <img src="../../assets/img/icon1.png" alt="" />
+                    <img loading="lazy" src="../../assets/img/icon1.png" alt="" />
                     <span>营业时间</span>
                     <!-- <p>午餐: 11:30 - 14:00 , 晚餐: 17:30 - 22:00</p> -->
                     <p>{{ meallist.add_time }}</p>
                   </div>
                   <div class="rig_list">
-                    <img src="../../assets/img/icon2.png" alt="" />
+                    <img loading="lazy" src="../../assets/img/icon2.png" alt="" />
                     <span>电话</span>
                     <p>{{ meallist.emails }}</p>
                   </div>
                   <div class="rig_list">
-                    <img src="../../assets/img/icon3.png" alt="" />
+                    <img loading="lazy" src="../../assets/img/icon3.png" alt="" />
                     <span>位置</span>
                     <p>{{ meallist.address }}</p>
                   </div>
                   <div class="rig_list">
-                    <img src="../../assets/img/icon4.png" alt="" />
+                    <img loading="lazy" src="../../assets/img/icon4.png" alt="" />
                     <span>菜式</span>
                     <p>{{ meallist.en_title }}</p>
                   </div>
@@ -60,20 +60,20 @@
               <div class="link">
                 <div class="links" @click="tolink(meallist.pc_link)">
                   <div class="img">
-                    <img src="../../assets/img/link1.png" alt="">
-                    <img src="../../assets/img/link1b.png" alt="">
+                    <img loading="lazy" src="../../assets/img/link1.png" alt="">
+                    <img loading="lazy" src="../../assets/img/link1b.png" alt="">
                   </div>
                   <p>查看详细</p>
                 </div>
                 <div class="links">
                   <div class="img">
-                    <img src="../../assets/img/link2.png" alt="">
-                    <img src="../../assets/img/link2b.png" alt="">
+                    <img loading="lazy" src="../../assets/img/link2.png" alt="">
+                    <img loading="lazy" src="../../assets/img/link2b.png" alt="">
                   </div>
                   <p>宴会预定</p>
                   <div class="fudong">
                     <p>扫描二维码预定宴会</p>
-                    <img :src="Baseurl+meallist.pinpai" alt="">
+                    <img loading="lazy" :src="Baseurl + meallist.pinpai" alt="">
                   </div>
                 </div>
               </div>
@@ -85,18 +85,18 @@
         <div class="main">
           <div class="youhui_title">其他餐饮推荐</div>
           <div class="vips">
-            <div class="vips_list" v-if="mealuplist" @click="topath(boxupIndex,mealuplist.id)">
+            <div class="vips_list" v-if="mealuplist" @click="topath(boxupIndex, mealuplist.id)">
               <div class="vips_list_img">
-                <!-- <img src="../../assets/img/can3.jpg" alt=""> -->
-                <img :src="Baseurl + mealuplist.pc_image" alt="" />
+                <!-- <img loading="lazy"src="../../assets/img/can3.jpg" alt=""> -->
+                <img loading="lazy" :src="Baseurl + mealuplist.pc_image" alt="" />
               </div>
               <div class="vips_list_text">
                 <span>{{ mealuplist.title }}</span>
               </div>
             </div>
-            <div class="vips_list" v-if="mealdownlist" @click="topath(boxdownIndex,mealdownlist.id)">
+            <div class="vips_list" v-if="mealdownlist" @click="topath(boxdownIndex, mealdownlist.id)">
               <div class="vips_list_img">
-                <img :src="Baseurl + mealdownlist.pc_image" alt="" />
+                <img loading="lazy" :src="Baseurl + mealdownlist.pc_image" alt="" />
               </div>
               <div class="vips_list_text">
                 <span>{{ mealdownlist.title }}</span>
@@ -136,7 +136,7 @@ export default {
       mealdownlist: [], //下一个列表
       mealId: "", //传来的id
       // erwei:false,
-      topimg:''
+      topimg: ''
     };
   },
 
@@ -175,8 +175,8 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    tolink(link){
-      if(link){
+    tolink(link) {
+      if (link) {
         window.open(link)
       }
     },
@@ -202,7 +202,7 @@ export default {
         .then(function (res) {
           console.log(res);
           // that.infolist =  res.data.data.defaul_module_list
-          that.topimg =res.data.data.top_module_list[2].pc_image
+          that.topimg = res.data.data.top_module_list[2].pc_image
           that.infolist = res.data.data.defaul_module_list[0].news;
           for (let i = 0; i < that.infolist.length; i++) {
             if (that.infolist[i].id == mealId) {
@@ -222,7 +222,7 @@ export default {
             that.boxdownIndex = parseInt(that.boxIndex) + 1;
           }
           // if(that.infolist.length!=0){
-            
+
           // }
           // else if(that.infolist.length==2){
           //   // that.boxupIndex = 0;
@@ -239,19 +239,19 @@ export default {
           //   that.boxupIndex = 0;
           //   that.boxdownIndex = 0;
           // }
-          
+
           that.meallist = that.infolist[that.boxIndex];
           console.log(that.meallist)
           that.mealuplist = that.infolist[that.boxupIndex];
           that.mealdownlist = that.infolist[that.boxdownIndex];
-        //   console.log("上" + that.boxupIndex);
-        //   console.log("当前" + that.boxIndex);
-        //   console.log("下" + that.boxdownIndex);
-        //   console.log(that.meallist);
+          //   console.log("上" + that.boxupIndex);
+          //   console.log("当前" + that.boxIndex);
+          //   console.log("下" + that.boxdownIndex);
+          //   console.log(that.meallist);
           // this.getinfolist()
 
-          that.$nextTick(function(){
-              that.lunbo()
+          that.$nextTick(function () {
+            that.lunbo()
           })
         })
         .catch((err) => console.log(err));
@@ -269,14 +269,14 @@ export default {
         },
       });
     },
-    topath(index,id) {
+    topath(index, id) {
       console.log(index)
       this.boxIndex = index
       this.getdatalist(id)
       // this.reload();
     },
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
 <style scoped>
@@ -558,4 +558,5 @@ export default {
   text-overflow: ellipsis;
   font-size: 24px;
   color: #000000;
-}</style>
+}
+</style>

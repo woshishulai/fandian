@@ -33,27 +33,27 @@
                           <p class="blotext">入住日期</p>
                           <div class="contbox checkin" @click="getrilis()">
                             <p>{{ wwks1 }}</p>
-                            <img class="rilimg" src="../../assets/img/rili.png" alt="" />
+                            <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
                           </div>
                           <div id="calender" v-show="rilishow">
                             <div class="calender_close" @click="guan()">
-                              <img src="../../assets/img/gunbi.png" alt="" />
+                              <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
                             </div>
                             <div class="daterangepicker">
                               <div class="drp_calendar left">
                                 <div class="drp_calendar_top">
                                   <div @click="prev" class="prev">
-                                    <img src="../../assets/img/jt.png" alt="" />
+                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <div @click="next" class="next">
-                                    <img src="../../assets/img/jt.png" alt="" />
+                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <span class="tishispan">选择入住时间 </span>
                                   <span style="">
                                     {{ year }}年{{ month }}月
                                   </span>
                                   <!-- <div @click="next" class="next"> 
-                        <img src="../../assets/img/jt.png" alt=""> 
+                        <img loading="lazy"src="../../assets/img/jt.png" alt=""> 
                       </div> -->
                                 </div>
                                 <div class="weekDay week">
@@ -77,27 +77,27 @@
                           </div>
                           <div id="calender" v-show="rilishow2">
                             <div class="calender_close" @click="guan2()">
-                              <img src="../../assets/img/gunbi.png" alt="" />
+                              <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
                             </div>
                             <div class="daterangepicker">
                               <div class="drp_calendar left">
                                 <div class="drp_calendar_top">
                                   <!-- ⬅️ ➡️️️️-->
                                   <!-- <div @click="prev" class="prev"> 
-                        <img src="../../assets/img/jt.png" alt=""> 
+                        <img loading="lazy"src="../../assets/img/jt.png" alt=""> 
                       </div> -->
                                   <span class="tishispan">选择退房时间 </span>
                                   <span style="">
                                     {{ year2 }}年{{ month2 }}月
                                   </span>
                                   <div @click="prev" class="prev">
-                                    <img src="../../assets/img/jt.png" alt="" />
+                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <div @click="next" class="next">
-                                    <img src="../../assets/img/jt.png" alt="" />
+                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <!-- <div @click="next" class="next">
-                      <img src="../../assets/img/jt.png" alt="" />
+                      <img loading="lazy"src="../../assets/img/jt.png" alt="" />
                     </div> -->
                                 </div>
                                 <div class="weekDay">
@@ -130,7 +130,7 @@
                           <p class="blotext">退房日期</p>
                           <div class="contbox checkin" @click="getrilis2()">
                             <p>{{ wwks2 }}</p>
-                            <img class="rilimg" src="../../assets/img/rili.png" alt="" />
+                            <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
                           </div>
                         </div>
                       </div>
@@ -185,7 +185,7 @@
                       <!-- <div class="phone_group">
                         <div class="region" @click.stop="phoneis()"> 
                           <span>{{bianhao}}</span>
-                          <img class="phone_group_jt" src="../../assets/img/jt.png" :class="phoneshow?'active':''" alt=""> 
+                          <img loading="lazy"class="phone_group_jt" src="../../assets/img/jt.png" :class="phoneshow?'active':''" alt=""> 
                         </div>                   
                         <ul class="dropul"  :class="phoneshow?'active':''"> 
                           <li class="dropul_li" v-for="(region,index) in regions" :key="index" @click="setregion(region.zone)" :class="bianhao==region.zone?'active':''">
@@ -264,17 +264,17 @@
                   <div class="zhifu">
                     <div class="zhifulist" v-if="roomslist.zffs != '1'">
                       <div class="zhifuicon" @click="payment(2)">
-                        <img v-if="zhifu == 2" src="../../assets/img/xz.png" alt="" />
-                        <img v-if="zhifu == 1" src="../../assets/img/wxz.png" alt="" />
+                        <img loading="lazy" v-if="zhifu == 2" src="../../assets/img/xz.png" alt="" />
+                        <img loading="lazy" v-if="zhifu == 1" src="../../assets/img/wxz.png" alt="" />
                       </div>
                       <p>微信支付</p>
                     </div>
                     <div class="zhifulist" v-if="roomslist.zffs != '2'">
                       <div class="zhifuicon" @click="payment(1)">
-                        <!-- <img :class="zhifu==1?'img2':'img1'" src="../../assets/img/xz.png" alt="" />
-                        <img :class="zhifu==1?'img1':'img2'" src="../../assets/img/wxz.png" alt="" /> -->
-                        <img v-if="zhifu == 1" src="../../assets/img/xz.png" alt="" />
-                        <img v-if="zhifu == 2" src="../../assets/img/wxz.png" alt="" />
+                        <!-- <img loading="lazy":class="zhifu==1?'img2':'img1'" src="../../assets/img/xz.png" alt="" />
+                        <img loading="lazy":class="zhifu==1?'img1':'img2'" src="../../assets/img/wxz.png" alt="" /> -->
+                        <img loading="lazy" v-if="zhifu == 1" src="../../assets/img/xz.png" alt="" />
+                        <img loading="lazy" v-if="zhifu == 2" src="../../assets/img/wxz.png" alt="" />
                       </div>
                       <p>酒店前台支付</p>
                     </div>
@@ -284,7 +284,7 @@
               <div class="blocks">
                 <div class="blocklist dinggou">
                   <div class="tiaokuan">
-                    <img src="../../assets/img/xz.png" alt="" />
+                    <img loading="lazy" src="../../assets/img/xz.png" alt="" />
                     <p>同意</p>
                     <span @click="getwin(2)">使用条款</span>
                   </div>
@@ -301,8 +301,8 @@
             <div class="order_right">
               <span class="spantie">订单详情</span>
               <div class="tupian">
-                <!-- <img src="../../assets/img/room1.jpg" alt="" /> -->
-                <img :src="Baseurl + roomslist.pc_image" alt="" />
+                <!-- <img loading="lazy"src="../../assets/img/room1.jpg" alt="" /> -->
+                <img loading="lazy" :src="Baseurl + roomslist.pc_image" alt="" />
               </div>
               <div class="jieshao">
                 <div class="blo1">
@@ -380,7 +380,7 @@
           <div id="qrcode" ref="qrcode"></div>
         </div>
         <div class="erweima_text" v-if="success == 1">
-          <img src="../../assets/img/pay_over.png" alt="" />
+          <img loading="lazy" src="../../assets/img/pay_over.png" alt="" />
           <div class="erweima_title">支付成功</div>
           <div>订单号：{{ hy_bill_no }}</div>
         </div>

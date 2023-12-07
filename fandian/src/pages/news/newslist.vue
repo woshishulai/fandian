@@ -5,30 +5,30 @@
 
         <div class="conts">
             <div class="meal_top">
-                <img :src="Baseurl+topimg" alt="">
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
                 <p>您的位置：首页 > 新闻</p>
             </div>
             <div class="newslist">
                 <div class="main">
-                    <div class="title">{{name}}</div>
+                    <div class="title">{{ name }}</div>
                     <div class="newslist_lunbo">
                         <div class="swiper-container lunroom">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item,index) in infolist" :key="index">
-                                    <div class="news_list" v-for="(itemMsg,indexMsg) in item" :key="indexMsg"
+                                <div class="swiper-slide" v-for="(item, index) in infolist" :key="index">
+                                    <div class="news_list" v-for="(itemMsg, indexMsg) in item" :key="indexMsg"
                                         @click="newsdeatil(itemMsg.id)">
                                         <div class="newslist_img">
-                                            <!-- <img src="../../assets/img/new1.jpg" alt=""> -->
-                                            <img :src="Baseurl+itemMsg.pc_image" alt="">
+                                            <!-- <img loading="lazy"src="../../assets/img/new1.jpg" alt=""> -->
+                                            <img loading="lazy" :src="Baseurl + itemMsg.pc_image" alt="">
                                         </div>
                                         <div class="newslist_version">
                                             <div class="version_eara">
-                                                <span class="time">{{itemMsg.updated_at.slice(0,10)}}</span>
-                                                <span class="vertit">{{itemMsg.title}}</span>
+                                                <span class="time">{{ itemMsg.updated_at.slice(0, 10) }}</span>
+                                                <span class="vertit">{{ itemMsg.title }}</span>
                                                 <p class="vertext">
-                                                    {{itemMsg.description}}
+                                                    {{ itemMsg.description }}
                                                 </p>
                                                 <div class="news_detail">查看详细</div>
                                             </div>
@@ -51,48 +51,48 @@
 </template>
 
 <script>
-    import Header from "@/components/layout/header.vue";
-    import Footer from "@/components/layout/footer.vue";
-    import Swiper from "swiper";
-    export default {
-        components: {
-            Header,
-            Footer
-        },
-        data() {
-            return {
-                token:'',//token
-                hotel_id:'',//酒店id
-                modularid:'',//模块id
-                infolist:'',
-                name:'',
-                topimg:'',
-                id:''
-            };
-        },
-        created() {
-            // 储存第几个头部状态
-            localStorage.setItem("istrue", 0);
-            this.token = sessionStorage.getItem("token");
-            // console.log(this.token);
-            this.hotel_id = sessionStorage.getItem("hotel_id");
-            // if(sessionStorage.getItem("fieldData")){
-            //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
-            //     this.modularid = fieldData[4].id
-            // }
-            this.id = this.$route.query.id
-            // this.getinfo()
-            this.topimg = this.$route.query.topimg
-            this.getinfolist()
-        },
-        methods: {
-            getinfolist() {
-                var that = this;
-                that.$axios
-                    .post(
+import Header from "@/components/layout/header.vue";
+import Footer from "@/components/layout/footer.vue";
+import Swiper from "swiper";
+export default {
+    components: {
+        Header,
+        Footer
+    },
+    data() {
+        return {
+            token: '',//token
+            hotel_id: '',//酒店id
+            modularid: '',//模块id
+            infolist: '',
+            name: '',
+            topimg: '',
+            id: ''
+        };
+    },
+    created() {
+        // 储存第几个头部状态
+        localStorage.setItem("istrue", 0);
+        this.token = sessionStorage.getItem("token");
+        // console.log(this.token);
+        this.hotel_id = sessionStorage.getItem("hotel_id");
+        // if(sessionStorage.getItem("fieldData")){
+        //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
+        //     this.modularid = fieldData[4].id
+        // }
+        this.id = this.$route.query.id
+        // this.getinfo()
+        this.topimg = this.$route.query.topimg
+        this.getinfolist()
+    },
+    methods: {
+        getinfolist() {
+            var that = this;
+            that.$axios
+                .post(
                     `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
-                    )
-                    .then(function (res) {
+                )
+                .then(function (res) {
                     console.log(res);
                     // that.menulist = res.data.data.top_module_list;
                     // console.log(that.menulist)
@@ -100,12 +100,12 @@
                     that.modularid = fieldData[4].id
                     sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
                     that.getdatalist()
-                    })
-                    .catch((err) => console.log(err));
-            },
-            getdatalist() {
-                var that = this
-                that.$axios
+                })
+                .catch((err) => console.log(err));
+        },
+        getdatalist() {
+            var that = this
+            that.$axios
                 // &module_id=3
                 .post(`${this.Baseurl}news_list?web_token=${that.token}&hotel_id=${that.hotel_id}&id=${that.id}`)
                 .then(function (res) {
@@ -114,31 +114,31 @@
                     // that.infolist =  res.data.data
                     // console.log(that.infolist)
                     var result = res.data.data
-                    var data=[]
-                    for(var i=0;i<result.length;i+=5){
-                        data.push(result.slice(i,i+5))
+                    var data = []
+                    for (var i = 0; i < result.length; i += 5) {
+                        data.push(result.slice(i, i + 5))
                     }
-                    that.infolist =data
-                    that.$nextTick(function(){
+                    that.infolist = data
+                    that.$nextTick(function () {
                         that.lunboone()
                     })
                 }).catch(err => console.log(err));
-            },
-            
-            //去新闻详情页
-            newsdeatil(id){
-                // this.$router.push('/newsdetail');
-                this.$router.push({
-                    name:'NewsDetail',
-                    query:{
-                        newsId:id,
-                        id:this.id
-                        // module_id:this.modularid
-                    }
-                })
-            },
-            lunboone(){
-                var lunroom = new Swiper(".lunroom", {
+        },
+
+        //去新闻详情页
+        newsdeatil(id) {
+            // this.$router.push('/newsdetail');
+            this.$router.push({
+                name: 'NewsDetail',
+                query: {
+                    newsId: id,
+                    id: this.id
+                    // module_id:this.modularid
+                }
+            })
+        },
+        lunboone() {
+            var lunroom = new Swiper(".lunroom", {
                 // loop: true, // 循环模式选项
                 // slidesPerView: 3,
                 // centeredSlides: true,//这个是让第一个居中显示的
@@ -150,13 +150,13 @@
                     prevEl: ".prevroom",
                 },
             });
-            }
-        },
-        mounted() {
-            
-        },
+        }
+    },
+    mounted() {
 
-    };
+    },
+
+};
 </script>
 <style scoped>
 .meal_top {
@@ -301,4 +301,5 @@
 .news_list:hover .news_detail {
     color: #fff;
     background-color: #d5b08b;
-}</style>
+}
+</style>

@@ -5,8 +5,8 @@
 
         <div class="conts">
             <div class="meal_top">
-                <!-- <img :src="Baseurl+infolist[0].pc_image" alt=""> -->
-                <img :src="Baseurl + topimg" alt="">
+                <!-- <img loading="lazy":src="Baseurl+infolist[0].pc_image" alt=""> -->
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
                 <p>您的位置：首页 > {{ topname }}</p>
@@ -16,7 +16,9 @@
                 <div class="main">
                     <div class="assoc">
                         <div class="shiji">
-                            <div class="shiji_logo"><img src="../../assets/img/shijilogo.png" alt=""></div>
+                            <div class="shiji_logo">
+                                <img loading="lazy" src="../../assets/img/shijilogo.png" alt="">
+                            </div>
                             <p class="jiaru">{{ infolist[0].news[0].description }}</p>
                         </div>
                         <div class="buttons">

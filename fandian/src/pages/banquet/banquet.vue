@@ -5,11 +5,11 @@
 
         <div class="conts">
             <div class="meal_top">
-                <!-- <img src="../../assets/img/cande1.jpg" alt=""> -->
-                <img :src="Baseurl+topimg" alt="">
+                <!-- <img loading="lazy"src="../../assets/img/cande1.jpg" alt=""> -->
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
-                <p>您的位置：首页 > {{topname}}</p>
+                <p>您的位置：首页 > {{ topname }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="canyin">
@@ -21,10 +21,10 @@
                                 <div class="swiper-button-prev prevcan"></div>
                                 <div class="swiper-button-next nextcan"></div>
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" v-for="(item,index) in swiperImg" :key="index">
+                                    <div class="swiper-slide" v-for="(item, index) in swiperImg" :key="index">
                                         <div class="can_list_img">
-                                            <img :src="Baseurl+item.image" alt="">
-                                            <!-- <img src="../../assets/img/yanhui1.jpg" alt=""> -->
+                                            <img loading="lazy" :src="Baseurl + item.image" alt="">
+                                            <!-- <img loading="lazy"src="../../assets/img/yanhui1.jpg" alt=""> -->
                                         </div>
                                     </div>
                                 </div>
@@ -32,8 +32,8 @@
                         </div>
                         <div class="canyin_right">
                             <div class="canyin_right_text clearfix">
-                                <span>{{infolist[0].name}}</span>
-                                <p>{{infolist[0].news[0].description}}</p>
+                                <span>{{ infolist[0].name }}</span>
+                                <p>{{ infolist[0].news[0].description }}</p>
                                 <div class="anniuyu" @click="yuyan()">预定宴会</div>
                             </div>
                         </div>
@@ -44,9 +44,9 @@
                 <div class="main">
                     <div class="vips" v-if="infolist[1]">
                         <div class="vips_list" @click="todetail(infolist[1].news[0].id)">
-                            <div class="youhui_title">{{infolist[1].name}}</div>
+                            <div class="youhui_title">{{ infolist[1].name }}</div>
                             <div class="vips_list_img">
-                                <img :src="Baseurl+infolist[1].news[0].pc_image" alt="">
+                                <img loading="lazy" :src="Baseurl + infolist[1].news[0].pc_image" alt="">
                             </div>
                             <div class="vips_list_text clearfix">
                                 <p v-html="infolist[1].news[0].en_title"></p>
@@ -54,9 +54,9 @@
                             </div>
                         </div>
                         <div class="vips_list" @click="todetail(infolist[2].news[0].id)">
-                            <div class="youhui_title">{{infolist[2].name}}</div>
+                            <div class="youhui_title">{{ infolist[2].name }}</div>
                             <div class="vips_list_img">
-                                <img :src="Baseurl+infolist[2].news[0].pc_image" alt="">
+                                <img loading="lazy" :src="Baseurl + infolist[2].news[0].pc_image" alt="">
                             </div>
                             <div class="vips_list_text clearfix">
                                 <p v-html="infolist[2].news[0].en_title"></p>
@@ -121,7 +121,8 @@
                             <div class="reslist_you">
                                 <select name="" id="" class="xingzhi" @change="Tablechange">
                                     <!-- <option value="大宴会厅">大宴会厅</option> -->
-                                    <option v-for="(item,index) in fieldList" :key="index" :value="item.name">{{item.name}}
+                                    <option v-for="(item, index) in fieldList" :key="index" :value="item.name">{{ item.name
+                                    }}
                                     </option>
                                 </select>
                             </div>
@@ -131,8 +132,9 @@
                             <div class="reslist_you">
                                 <select name="" id="" class="xingzhi" @change="Typechange">
                                     <!-- <option value="剧院式">剧院式</option> -->
-                                    <option v-for="(item,index) in typelist" :key="index" :value="item.title">{{item.title}}
-                                        ({{item.en_title}})</option>
+                                    <option v-for="(item, index) in typelist" :key="index" :value="item.title">{{ item.title
+                                    }}
+                                        ({{ item.en_title }})</option>
                                 </select>
                             </div>
                         </div>
@@ -164,7 +166,7 @@
         </div>
         <div class="Tips_elastic" v-if="tipshow">
             <div class="Tips">
-                <p>{{tipstext}}</p>
+                <p>{{ tipstext }}</p>
             </div>
         </div>
         <!-- bushi       haorenxuan -->
@@ -804,4 +806,5 @@ export default {
 
 .butn2 {
     background-color: #d5b08b;
-}</style>
+}
+</style>

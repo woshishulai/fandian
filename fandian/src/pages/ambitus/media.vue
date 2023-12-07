@@ -5,11 +5,11 @@
 
     <div class="conts">
       <div class="conts_top">
-        <img :src="Baseurl+infolist[0].pc_image" alt="">
-        <p>{{infolist[0].title}}</p>
+        <img loading="lazy" :src="Baseurl + infolist[0].pc_image" alt="">
+        <p>{{ infolist[0].title }}</p>
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > {{infolist[0].title}}</p>
+        <p>您的位置：首页 > {{ infolist[0].title }}</p>
       </div>
       <div class="ambitus">
         <div class="main">
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      infolist:[],
+      infolist: [],
     };
   },
   created() {
@@ -46,9 +46,9 @@ export default {
     console.log(this.infolist)
   },
   methods: {
-    
+
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
 <style scoped>

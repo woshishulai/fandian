@@ -5,8 +5,8 @@
 
         <div class="conts">
             <div class="meal_top">
-                <!-- <img src="../../assets/img/tiyan.jpg" alt=""> -->
-                <img :src="Baseurl + topimg" alt="">
+                <!-- <img loading="lazy"src="../../assets/img/tiyan.jpg" alt=""> -->
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
                 <p>您的位置：首页 > {{ topname }}</p>
@@ -26,8 +26,8 @@
                                                 <span>{{ item.title }}</span>
                                                 <p>{{ item.description }}</p>
                                                 <div class="tupian">
-                                                    <!-- <img src="../../assets/img/tiyan1.jpg" alt=""> -->
-                                                    <img :src="Baseurl + item.pc_image" alt="">
+                                                    <!-- <img loading="lazy"src="../../assets/img/tiyan1.jpg" alt=""> -->
+                                                    <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@
                     <!-- 服务 -->
                     <!-- <div class="fuwu">
                         <div class="fuwuleft">
-                            <img :src="Baseurl+infolist[1].news[0].pc_image" alt="">
+                            <img loading="lazy":src="Baseurl+infolist[1].news[0].pc_image" alt="">
                         </div>
                         <div class="fueurigth">
                             <div class="fueurigth_text">
@@ -74,10 +74,10 @@
                             //两小块不要
                             <div class="fueurigth_img">
                                 <div class="img">
-                                    <img :src="Baseurl+infolist[1].news[0].images[1].image" alt="">
+                                    <img loading="lazy":src="Baseurl+infolist[1].news[0].images[1].image" alt="">
                                 </div>
                                 <div class="img">
-                                    <img :src="Baseurl+infolist[1].news[0].images[2].image" alt="">
+                                    <img loading="lazy":src="Baseurl+infolist[1].news[0].images[2].image" alt="">
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" v-for="(item,index) in infolist[2].news" :key="index">
                                     <div class="there_tu">
-                                        <img :src="Baseurl+item.pc_image" alt="">
+                                        <img loading="lazy":src="Baseurl+item.pc_image" alt="">
                                     </div>
                                 </div>       
                                 

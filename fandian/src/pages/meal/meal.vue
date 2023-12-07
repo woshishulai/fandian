@@ -6,18 +6,18 @@
         <div class="conts">
 
             <div class="meal_top">
-                <!-- <img src="../../assets/img/can1.jpg" alt=""> -->
-                <img :src="Baseurl+topimg" alt="">
+                <!-- <img loading="lazy"src="../../assets/img/can1.jpg" alt=""> -->
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
             </div>
 
             <div class="crumbs">
-                <p>您的位置：首页 > {{topname}}</p>
+                <p>您的位置：首页 > {{ topname }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="canyin">
                 <div class="main" v-if="infolist[0]">
                     <div class="introdu">
-                        <span class="introdu_tie">{{infolist[0].name}}</span>
+                        <span class="introdu_tie">{{ infolist[0].name }}</span>
                         <p v-html="infolist[0].description"></p>
                     </div>
                     <div class="canyinlun">
@@ -30,15 +30,15 @@
                             <div class="swiper-wrapper">
                                 <!-- @click='topath(index,item.id)'
                                 :data-item="func_str(item)" -->
-                                <div class="swiper-slide" v-for="(item,index) in meallist" :key="index"
+                                <div class="swiper-slide" v-for="(item, index) in meallist" :key="index"
                                     @click='topath(item.id)'>
                                     <div class="can_list">
                                         <div class="can_list_img">
-                                            <img :src="Baseurl+item.pc_image" alt="">
+                                            <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                                         </div>
                                         <div class="can_list_text">
-                                            <p class="title">{{item.title}}</p>
-                                            <p class="can_list_cont">{{item.description}}</p>
+                                            <p class="title">{{ item.title }}</p>
+                                            <p class="can_list_cont">{{ item.description }}</p>
                                             <div class="button">
                                                 查看详情
                                             </div>
@@ -53,17 +53,17 @@
             </div>
             <div class="youhui">
                 <div class="main" v-if="infolist[1]">
-                    <div class="youhui_title">{{infolist[1].name}}</div>
+                    <div class="youhui_title">{{ infolist[1].name }}</div>
                     <div class="vips">
-                        <div class="vips_list" v-for="(item,index) in infolist[1].news" :key="index"
+                        <div class="vips_list" v-for="(item, index) in infolist[1].news" :key="index"
                             @click="todetail(item.id)">
                             <div class="vips_list_img">
-                                <!-- <img src="../../assets/img/can3.jpg" alt=""> -->
-                                <img :src="Baseurl+item.pc_image" alt="">
+                                <!-- <img loading="lazy"src="../../assets/img/can3.jpg" alt=""> -->
+                                <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                             </div>
                             <div class="vips_list_text">
-                                <span>{{item.title}}</span>
-                                <p>{{item.en_title}}</p>
+                                <span>{{ item.title }}</span>
+                                <p>{{ item.en_title }}</p>
                             </div>
                         </div>
 
@@ -78,53 +78,53 @@
 </template>
 
 <script>
-    import Header from "@/components/layout/header.vue"
-    import Footer from "@/components/layout/footer.vue"
-    import Swiper from "swiper";
-    import Queryhotel from "../rooms/queryhotel.vue";
-    let vm = null
-    export default {
-        components: {
-            Header,
-            Footer,
-            Queryhotel
-        },
-        data() {
-            return {
-                swiperOption:{
-                    autoplay:true,
-                },
-                token:'',//token
-                hotel_id:'',//酒店id
-                modularid:'',//模块id
-                infolist:'',
-                meallist:[],
-                topimg:'',
-                topname:''
-            };
-        },
+import Header from "@/components/layout/header.vue"
+import Footer from "@/components/layout/footer.vue"
+import Swiper from "swiper";
+import Queryhotel from "../rooms/queryhotel.vue";
+let vm = null
+export default {
+    components: {
+        Header,
+        Footer,
+        Queryhotel
+    },
+    data() {
+        return {
+            swiperOption: {
+                autoplay: true,
+            },
+            token: '',//token
+            hotel_id: '',//酒店id
+            modularid: '',//模块id
+            infolist: '',
+            meallist: [],
+            topimg: '',
+            topname: ''
+        };
+    },
 
-        created() {
-            // 储存第几个头部状态
-            localStorage.setItem("istrue", 3);
-            this.token = sessionStorage.getItem("token");
-            // console.log(this.token);
-            this.hotel_id = sessionStorage.getItem("hotel_id");
-            // if(sessionStorage.getItem("fieldData")){
-            //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
-            //     this.modularid = fieldData[2].id
-            // }
-            // this.getdatalist()
-            this.getinfolist()
-        },
-        methods: {
-            getinfolist() {
-                var that = this;
-                that.$axios
-                    .post(
+    created() {
+        // 储存第几个头部状态
+        localStorage.setItem("istrue", 3);
+        this.token = sessionStorage.getItem("token");
+        // console.log(this.token);
+        this.hotel_id = sessionStorage.getItem("hotel_id");
+        // if(sessionStorage.getItem("fieldData")){
+        //     var fieldData = JSON.parse(sessionStorage.getItem("fieldData"))
+        //     this.modularid = fieldData[2].id
+        // }
+        // this.getdatalist()
+        this.getinfolist()
+    },
+    methods: {
+        getinfolist() {
+            var that = this;
+            that.$axios
+                .post(
                     `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
-                    )
-                    .then(function (res) {
+                )
+                .then(function (res) {
                     console.log(res);
                     // that.menulist = res.data.data.top_module_list;
                     // console.log(that.menulist)
@@ -132,82 +132,84 @@
                     that.modularid = fieldData[2].id
                     sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
                     that.getdatalist()
-                    })
-                    .catch((err) => console.log(err));
-            },
-            getdatalist(){
-                //?web_token=${that.token}&hotel_id=1
-                var that =this
-                that.$axios
+                })
+                .catch((err) => console.log(err));
+        },
+        getdatalist() {
+            //?web_token=${that.token}&hotel_id=1
+            var that = this
+            that.$axios
                 // &module_id=3
-                .get(`${this.Baseurl}home_data?web_token=${that.token}&hotel_id=${that.hotel_id}&module_id=${that.modularid}`) 
-                .then(function(res) {
+                .get(`${this.Baseurl}home_data?web_token=${that.token}&hotel_id=${that.hotel_id}&module_id=${that.modularid}`)
+                .then(function (res) {
                     console.log(res)
-                    that.topimg =res.data.data.top_module_list[2].pc_image
+                    that.topimg = res.data.data.top_module_list[2].pc_image
                     that.topname = res.data.data.top_module_list[2].name
-                    that.infolist =  res.data.data.defaul_module_list
+                    that.infolist = res.data.data.defaul_module_list
                     that.meallist = res.data.data.defaul_module_list[0].news
                     console.log(that.meallist)
-                    console.log(that.infolist)	
-                    that.$nextTick(function(){
+                    console.log(that.infolist)
+                    that.$nextTick(function () {
                         that.lunbo()
                     })
                 }).catch(err => console.log(err));
-            },
-            lunbo(){
-                var luncanyin = new Swiper(".luncanyin", {
-                    // loop: true, // 循环模式选项
-                    slidesPerView: 3,
-                    autoplay:true,
-                    // centeredSlides: true,//这个是让第一个居中显示的
-                    spaceBetween: 47,
-                    observer: true, //修改swiper自己或子元素时，自动初始化swiper
-                    observeParents: true, //修改swiper的父元素时，自动初始化swiper
-                    navigation: {
-                        nextEl: ".nextcan",
-                        prevEl: ".prevcan",
-                    },
-                    // on: {
-                    //     click: function (swiper) {
-                    //         console.log(this)
-                    //         console.log(this.activeIndex)
-                    //     },
-                    // },
-                    });
-            },
-            
-            topath(id){
-                console.log('id:'+id)
-                this.$router.push({name:'MealDetail',
-                query:{
-                        mealId:id
-                    }
-                }) 
-            },
-            todetail(id){
-                console.log('id:'+id)
-                this.$router.push({name:'Details',
-                query:{
-                        detailsId:id,
-                        img:this.topimg
-                    }
-                }) 
-            }
-            // handleClickSlide(vm){
-            //     console.log(vm)
-            //     console.log(vm.clickedIndex)
-            //     console.log(vm.activeIndex)
-            //     console.log(vm.realIndex)
-            //     const index= vm.clickedIndex - vm.activeIndex +vm.clickedIndex -vm.activeIndex +vm.realIndex
-            //     console.log(index,vm,'vm')
-            // }
-
         },
-        mounted() {
-            
+        lunbo() {
+            var luncanyin = new Swiper(".luncanyin", {
+                // loop: true, // 循环模式选项
+                slidesPerView: 3,
+                autoplay: true,
+                // centeredSlides: true,//这个是让第一个居中显示的
+                spaceBetween: 47,
+                observer: true, //修改swiper自己或子元素时，自动初始化swiper
+                observeParents: true, //修改swiper的父元素时，自动初始化swiper
+                navigation: {
+                    nextEl: ".nextcan",
+                    prevEl: ".prevcan",
+                },
+                // on: {
+                //     click: function (swiper) {
+                //         console.log(this)
+                //         console.log(this.activeIndex)
+                //     },
+                // },
+            });
         },
 
-    };
+        topath(id) {
+            console.log('id:' + id)
+            this.$router.push({
+                name: 'MealDetail',
+                query: {
+                    mealId: id
+                }
+            })
+        },
+        todetail(id) {
+            console.log('id:' + id)
+            this.$router.push({
+                name: 'Details',
+                query: {
+                    detailsId: id,
+                    img: this.topimg
+                }
+            })
+        }
+        // handleClickSlide(vm){
+        //     console.log(vm)
+        //     console.log(vm.clickedIndex)
+        //     console.log(vm.activeIndex)
+        //     console.log(vm.realIndex)
+        //     const index= vm.clickedIndex - vm.activeIndex +vm.clickedIndex -vm.activeIndex +vm.realIndex
+        //     console.log(index,vm,'vm')
+        // }
+
+    },
+    mounted() {
+
+    },
+
+};
 </script>
 <style scoped>
 .meal_top {
@@ -428,4 +430,5 @@
     display: block;
     font-size: 18px;
     color: #000000;
-}</style>
+}
+</style>

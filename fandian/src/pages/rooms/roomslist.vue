@@ -10,8 +10,8 @@
         <div class="conts">
             <!-- 头部条 -->
             <div class="conts_top">
-                <!-- <img src="../../assets/img/zhan1.jpg" alt=""> -->
-                <img :src="Baseurl + topimg" alt="">
+                <!-- <img loading="lazy"src="../../assets/img/zhan1.jpg" alt=""> -->
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
                 <p>房型展示</p>
             </div>
             <div class="roomslist">
@@ -23,8 +23,8 @@
                                     <div class="roomswi_list" v-for="(itemMsg, indexMsg) in item" :key="indexMsg"
                                         @click="roomdeatil(itemMsg.id, itemMsg.looks)">
                                         <div class="roomlist_img">
-                                            <!-- <img src="../../assets/img/room1.jpg" alt=""> -->
-                                            <img :src="Baseurl + itemMsg.pc_image" alt="">
+                                            <!-- <img loading="lazy"src="../../assets/img/room1.jpg" alt=""> -->
+                                            <img loading="lazy" :src="Baseurl + itemMsg.pc_image" alt="">
                                         </div>
                                         <div class="roomlist_version">
                                             <div class="version_eara">

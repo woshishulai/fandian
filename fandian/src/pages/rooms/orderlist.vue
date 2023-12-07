@@ -8,33 +8,34 @@
                 <div class="roomslist_lunbo">
                     <div class="swiper-container lunroom">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="(item,index) in orderlist" :key="index">
-                                <div class="ordelist" v-for="(itemMsg,indexMsg) in item" :key="indexMsg">
+                            <div class="swiper-slide" v-for="(item, index) in orderlist" :key="index">
+                                <div class="ordelist" v-for="(itemMsg, indexMsg) in item" :key="indexMsg">
                                     <div class="ordelist_tit">
-                                        <img src="../../assets/img/dd.png" alt="">
-                                        <p v-if="itemMsg.hotel">{{itemMsg.hotel[0].hotel_name}}</p>
-                                        <div class="wan" v-if="itemMsg.status==1&&itemMsg.ok==1&&itemMsg.cancel_order==2">
+                                        <img loading="lazy" src="../../assets/img/dd.png" alt="">
+                                        <p v-if="itemMsg.hotel">{{ itemMsg.hotel[0].hotel_name }}</p>
+                                        <div class="wan"
+                                            v-if="itemMsg.status == 1 && itemMsg.ok == 1 && itemMsg.cancel_order == 2">
                                             交易完成</div>
-                                        <div class="wan" v-if="itemMsg.cancel_order==2&&itemMsg.status==2">订单已取消</div>
-                                        <div class="wan" v-if="itemMsg.status==3">订单超时</div>
+                                        <div class="wan" v-if="itemMsg.cancel_order == 2 && itemMsg.status == 2">订单已取消</div>
+                                        <div class="wan" v-if="itemMsg.status == 3">订单超时</div>
                                     </div>
                                     <div class="ordelist_text">
                                         <div class="order_left">
                                             <div class="orli">
                                                 <span class="tisw">房型：</span>
-                                                <span class="tes" v-if="itemMsg.room">{{itemMsg.room[0].title}}</span>
+                                                <span class="tes" v-if="itemMsg.room">{{ itemMsg.room[0].title }}</span>
                                             </div>
                                             <div class="orli">
                                                 <span class="tisw">房间数量：</span>
-                                                <span class="tes">{{itemMsg.room_num}}间</span>
+                                                <span class="tes">{{ itemMsg.room_num }}间</span>
                                             </div>
                                             <div class="orli">
                                                 <span class="tisw">价格：</span>
-                                                <span class="tes">{{itemMsg.money}}元</span>
+                                                <span class="tes">{{ itemMsg.money }}元</span>
                                             </div>
                                             <div class="orli">
                                                 <span class="tisw">开始结束日期：</span>
-                                                <span class="tes">{{itemMsg.start_time}} — {{itemMsg.end_time}}</span>
+                                                <span class="tes">{{ itemMsg.start_time }} — {{ itemMsg.end_time }}</span>
                                             </div>
                                         </div>
                                         <!-- pay_type 1酒店前台支付 2线上 
@@ -44,12 +45,13 @@
                                           -->
                                         <div class="order_right">
                                             <div class="oebtn oebtn1"
-                                                v-if="itemMsg.cancel_order==1&&itemMsg.pay_type==2&&itemMsg.status==0&&itemMsg.ok==2"
+                                                v-if="itemMsg.cancel_order == 1 && itemMsg.pay_type == 2 && itemMsg.status == 0 && itemMsg.ok == 2"
                                                 @click="zhifu(itemMsg)">待支付</div>
                                             <div class="oebtn oebtn1"
-                                                v-if="itemMsg.cancel_order==1&&itemMsg.pay_type==1&&itemMsg.status==0">
+                                                v-if="itemMsg.cancel_order == 1 && itemMsg.pay_type == 1 && itemMsg.status == 0">
                                                 酒店前台支付</div>
-                                            <div class="oebtn oebtn2" v-if="itemMsg.cancel_order==1&&itemMsg.status!=2"
+                                            <div class="oebtn oebtn2"
+                                                v-if="itemMsg.cancel_order == 1 && itemMsg.status != 2"
                                                 @click="cancel(itemMsg)">取消订单</div>
                                             <!-- <div v-if="itemMsg.status!=2">
                                                 <div class="oebtn oebtn3" v-if="itemMsg.status==2||itemMsg.ok==1"
@@ -59,11 +61,12 @@
                                             <!-- <div v-if="itemMsg.status==1&&itemMsg.ok==1&&itemMsg.cancel_order==2" @click="deletes(itemMsg)">删除订单</div> -->
 
                                             <div class="oebtn oebtn3"
-                                                v-if="itemMsg.status==1&&itemMsg.ok==1&&itemMsg.cancel_order==2"
+                                                v-if="itemMsg.status == 1 && itemMsg.ok == 1 && itemMsg.cancel_order == 2"
                                                 @click="deletes(itemMsg)">删除订单</div>
-                                            <div class="oebtn oebtn3" v-if="itemMsg.cancel_order==2&&itemMsg.status==2"
+                                            <div class="oebtn oebtn3"
+                                                v-if="itemMsg.cancel_order == 2 && itemMsg.status == 2"
                                                 @click="deletes(itemMsg)">删除订单</div>
-                                            <div class="oebtn oebtn3" v-if="itemMsg.status==3" @click="deletes(itemMsg)">
+                                            <div class="oebtn oebtn3" v-if="itemMsg.status == 3" @click="deletes(itemMsg)">
                                                 删除订单</div>
                                         </div>
                                     </div>
@@ -90,7 +93,7 @@
                     <div id="qrcode" ref="qrcode"></div>
                 </div>
                 <div class="erweima_text" v-if="success == 1">
-                    <img src="../../assets/img/pay_over.png" alt="" />
+                    <img loading="lazy" src="../../assets/img/pay_over.png" alt="" />
                     <div class="erweima_title">支付成功</div>
                     <div>订单号：{{ hy_bill_no }}</div>
                 </div>
@@ -111,207 +114,207 @@
 </template>
 
 <script>
-    import Header from "@/components/layout/header.vue";
-    import Footer from "@/components/layout/footer.vue";
-    import Queryhotel from "../rooms/queryhotel.vue";
-    import Swiper from "swiper";
-    import QRCode from "qrcodejs2";
-    export default {
-        components: {
-            Header,
-            Footer,
+import Header from "@/components/layout/header.vue";
+import Footer from "@/components/layout/footer.vue";
+import Queryhotel from "../rooms/queryhotel.vue";
+import Swiper from "swiper";
+import QRCode from "qrcodejs2";
+export default {
+    components: {
+        Header,
+        Footer,
+    },
+    data() {
+        return {
+            token: '',//token
+            hotel_id: '',//酒店id
+            modularid: '',//模块id
+            hotelcode: '',//酒店编码
+            infolist: [],
+            roomslist: [],
+            startDate: '',
+            endDate: '',
+            numDay: '1',//默认一天
+
+
+            city: [],
+            city_centry: [],
+            prono: "",//公司id（协议价格）
+
+            orderlist: [],
+            accountNumber: sessionStorage.getItem("accountNumber"), //登录账号
+            tipshow: false,
+            tipstext: "",//提示信息
+
+            success: 0,
+            zhifushow: false,
+            hy_bill_no: "",//订单号
+            xunhuan: "",//循环
+        };
+    },
+    inject: ["reload"],
+    created() {
+        console.log(this.accountNumber)
+        // 储存第几个头部状态
+        localStorage.setItem("istrue", 99);
+        this.token = sessionStorage.getItem("token");
+        this.hotel_id = sessionStorage.getItem("hotel_id");
+        this.hotelcode = sessionStorage.getItem("hotelcode");
+
+        this.getorderlist()
+        // this.getroomlist()
+        // this.getdatalist()
+    },
+    methods: {
+        retunrnindex() {
+            var that = this
+            that.zhifushow = false
+            // this.reload()
+            clearTimeout(that.xunhuan);
         },
-        data() {
-            return {
-                token: '',//token
-                hotel_id: '',//酒店id
-                modularid: '',//模块id
-                hotelcode: '',//酒店编码
-                infolist: [],
-                roomslist: [],
-                startDate: '',
-                endDate: '',
-                numDay: '1',//默认一天
-
-
-                city: [],
-                city_centry: [],
-                prono: "",//公司id（协议价格）
-
-                orderlist: [],
-                accountNumber: sessionStorage.getItem("accountNumber"), //登录账号
-                tipshow: false,
-                tipstext: "",//提示信息
-
-                success: 0,
-                zhifushow: false,
-                hy_bill_no: "",//订单号
-                xunhuan:"",//循环
-            };
+        zhifu(item) {
+            var that = this
+            that.zhifushow = true
+            that.$nextTick(() => {
+                that.showQrcode(decodeURIComponent(item.ewm_url));
+            });
+            that.xunhuan = setInterval(() => {
+                that.dingdan(item);
+                if (that.success == 1 || that.success == null) {
+                    clearTimeout(that.xunhuan);
+                }
+            }, 2000);
+            setTimeout(() => {
+                if (that.success == 0) {
+                    clearTimeout(that.xunhuan);
+                    that.success == 3;
+                }
+            }, 300000);
         },
-        inject: ["reload"],
-        created() {
-            console.log(this.accountNumber)
-            // 储存第几个头部状态
-            localStorage.setItem("istrue", 99);
-            this.token = sessionStorage.getItem("token");
-            this.hotel_id = sessionStorage.getItem("hotel_id");
-            this.hotelcode = sessionStorage.getItem("hotelcode");
-
-            this.getorderlist()
-            // this.getroomlist()
-            // this.getdatalist()
-        },
-        methods: {
-            retunrnindex() {
-                var that = this
-                that.zhifushow = false
-                // this.reload()
-                clearTimeout(that.xunhuan);
-            },
-            zhifu(item) {
-                var that = this
-                that.zhifushow = true
-                that.$nextTick(() => {
-                    that.showQrcode(decodeURIComponent(item.ewm_url));
-                });
-                that.xunhuan = setInterval(() => {
-                    that.dingdan(item);
-                    if (that.success == 1 || that.success == null) {
-                        clearTimeout(that.xunhuan);
-                    }
-                }, 2000);
-                setTimeout(() => {
-                    if (that.success == 0) {
-                        clearTimeout(that.xunhuan);
-                        that.success == 3;
-                    }
-                }, 300000);
-            },
-            dingdan(item) {
-                console.log(item)
-                // return false
-                var that = this;
-                var  id = item.hotel[0].id
-                that. hy_bill_no = item.order_num
-                that.$axios
-                    .post(
-                        `${this.Baseurl}order_request?web_token=${that.token}&hotel_id=${id}
+        dingdan(item) {
+            console.log(item)
+            // return false
+            var that = this;
+            var id = item.hotel[0].id
+            that.hy_bill_no = item.order_num
+            that.$axios
+                .post(
+                    `${this.Baseurl}order_request?web_token=${that.token}&hotel_id=${id}
                         &order_num=${item.order_num}&order_num_third=${item.order_num_third}`
-                    )
-                    .then(function (res) {
-                        // console.log(res);
-                        if (res.data.status == "000000") {
-                            that.success = res.data.type;
-                        } else {
-                            that.tishi("订单查询失败请重新下单");
-                            clearTimeout(that.xunhuan);
-                        }
+                )
+                .then(function (res) {
+                    // console.log(res);
+                    if (res.data.status == "000000") {
+                        that.success = res.data.type;
+                    } else {
+                        that.tishi("订单查询失败请重新下单");
+                        clearTimeout(that.xunhuan);
+                    }
+                })
+                .catch((err) => console.log(err));
+        },
+
+        showQrcode(text) {
+            document.getElementById("qrcode").innerHTML = "";
+            var qrcode = new QRCode("qrcode", {
+                // 第一个参数是组件的id值
+                text: text, // 生成二维码的文本
+                width: 300,
+                height: 300,
+                colorDark: "#000000", // 二维码色
+                colorLight: "#ffffff", // 二维码背景色
+                correctLevel: QRCode.CorrectLevel.H, // 容错等级
+            });
+        },
+        //提示
+        tishi(text) {
+            this.tipshow = true;
+            this.tipstext = text;
+            setTimeout(() => {
+                this.tipshow = false;
+                this.tipstext = "";
+            }, 3000);
+        },
+        //取消订单
+        cancel(item) {
+            var that = this
+            that.$axios
+                .post(`${this.Baseurl}cancel_order?web_token=${that.token}&id=${item.id}`)
+                .then(function (res) {
+                    console.log(res)
+                    that.tishi(res.data.msg)
+                    setTimeout(() => {
+                        that.reload()
+                    }, 3000)
+                }).catch(err => console.log(err));
+        },
+        //删除订单
+        deletes(item) {
+            var that = this
+            that.$axios
+                .post(`${this.Baseurl}del_order?web_token=${that.token}&o_id=${item.id}`)
+                .then(function (res) {
+                    console.log(res)
+                    that.tishi(res.data.msg)
+                    setTimeout(() => {
+                        that.reload()
+                    }, 3000)
+                }).catch(err => console.log(err));
+        },
+        //获取订单
+        getorderlist() {
+            var that = this
+            that.$axios
+                .post(`${this.Baseurl}user_order_list?web_token=${that.token}&phone=${that.accountNumber}`)
+                .then(function (res) {
+                    console.log(res)
+                    var orderlist = res.data.data
+                    var result = [];
+                    for (var i = 0; i < orderlist.length; i += 5) {
+                        result.push(orderlist.slice(i, i + 5));
+                    }
+                    that.orderlist = result
+                    console.log(that.orderlist)
+                    that.$nextTick(() => {
+                        that.lunbo()
                     })
-                    .catch((err) => console.log(err));
-            },
-
-            showQrcode(text) {
-                document.getElementById("qrcode").innerHTML = "";
-                var qrcode = new QRCode("qrcode", {
-                    // 第一个参数是组件的id值
-                    text: text, // 生成二维码的文本
-                    width: 300,
-                    height: 300,
-                    colorDark: "#000000", // 二维码色
-                    colorLight: "#ffffff", // 二维码背景色
-                    correctLevel: QRCode.CorrectLevel.H, // 容错等级
-                });
-            },
-            //提示
-            tishi(text) {
-                this.tipshow = true;
-                this.tipstext = text;
-                setTimeout(() => {
-                    this.tipshow = false;
-                    this.tipstext = "";
-                }, 3000);
-            },
-            //取消订单
-            cancel(item) {
-                var that = this
-                that.$axios
-                    .post(`${this.Baseurl}cancel_order?web_token=${that.token}&id=${item.id}`)
-                    .then(function (res) {
-                        console.log(res)
-                        that.tishi(res.data.msg)
-                        setTimeout(() => {
-                            that.reload()
-                        }, 3000)
-                    }).catch(err => console.log(err));
-            },
-            //删除订单
-            deletes(item) {
-                var that = this
-                that.$axios
-                    .post(`${this.Baseurl}del_order?web_token=${that.token}&o_id=${item.id}`)
-                    .then(function (res) {
-                        console.log(res)
-                        that.tishi(res.data.msg)
-                        setTimeout(() => {
-                            that.reload()
-                        }, 3000)
-                    }).catch(err => console.log(err));
-            },
-            //获取订单
-            getorderlist() {
-                var that = this
-                that.$axios
-                    .post(`${this.Baseurl}user_order_list?web_token=${that.token}&phone=${that.accountNumber}`)
-                    .then(function (res) {
-                        console.log(res)
-                        var orderlist = res.data.data
-                        var result = [];
-                        for (var i = 0; i < orderlist.length; i += 5) {
-                            result.push(orderlist.slice(i, i + 5));
-                        }
-                        that.orderlist = result
-                        console.log(that.orderlist)
-                        that.$nextTick(() => {
-                            that.lunbo()
-                        })
-                    }).catch(err => console.log(err));
-            },
-            // 获取当前的日期
-            getTheCurrentDate() {
-                this.year = this.current.getFullYear();
-                this.month = this.current.getMonth() + 1;
-                this.day = this.current.getDate();
-            },
-            GetDateStr(AddDayCount) {
-                var dd = new Date();
-                dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期 
-                var y = dd.getFullYear();
-                var m = dd.getMonth() + 1;//获取当前月份的日期 
-                var d = dd.getDate();
-                return y + "-" + m + "-" + d;
-            },
-
-            lunbo() {
-                var lunroom = new Swiper(".lunroom", {
-                    // loop: true, // 循环模式选项
-                    // slidesPerView: 3,
-                    // centeredSlides: true,//这个是让第一个居中显示的
-                    spaceBetween: 20,
-                    // slidesPerView: 3,
-                    // 如果需要前进后退按钮
-                    navigation: {
-                        nextEl: ".nextroom",
-                        prevEl: ".prevroom",
-                    },
-                });
-            }
+                }).catch(err => console.log(err));
         },
-        mounted() {
-
+        // 获取当前的日期
+        getTheCurrentDate() {
+            this.year = this.current.getFullYear();
+            this.month = this.current.getMonth() + 1;
+            this.day = this.current.getDate();
+        },
+        GetDateStr(AddDayCount) {
+            var dd = new Date();
+            dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期 
+            var y = dd.getFullYear();
+            var m = dd.getMonth() + 1;//获取当前月份的日期 
+            var d = dd.getDate();
+            return y + "-" + m + "-" + d;
         },
 
-    };
+        lunbo() {
+            var lunroom = new Swiper(".lunroom", {
+                // loop: true, // 循环模式选项
+                // slidesPerView: 3,
+                // centeredSlides: true,//这个是让第一个居中显示的
+                spaceBetween: 20,
+                // slidesPerView: 3,
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: ".nextroom",
+                    prevEl: ".prevroom",
+                },
+            });
+        }
+    },
+    mounted() {
+
+    },
+
+};
 </script>
 <style scoped>
 .conts {

@@ -5,13 +5,13 @@
 
     <div class="conts">
       <div class="meal_top">
-        <img :src="Baseurl+img" alt="">
+        <img loading="lazy" :src="Baseurl + img" alt="">
         <p></p>
       </div>
       <div class="crumbs">
         <p>您的位置：首页 > 详情</p>
       </div>
-      <div class="ambitus" v-if="xinxilist.length==0">
+      <div class="ambitus" v-if="xinxilist.length == 0">
         <div class="main">
           <div class="huiyuan">
             <div class="huiyuan_text">
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <div class="ambitus" v-if="xinxilist.length!=0">
+      <div class="ambitus" v-if="xinxilist.length != 0">
         <div class="main">
           <div class="huiyuan">
             <div class="huiyuan_text">
@@ -53,8 +53,8 @@ export default {
       modularid: "", //模块id
       infolist: [],
       detailsId: "",
-      img:'',
-      xinxilist:[]
+      img: '',
+      xinxilist: []
     };
   },
   created() {
@@ -64,23 +64,23 @@ export default {
     this.token = sessionStorage.getItem("token");
     // console.log(this.token);
     this.hotel_id = sessionStorage.getItem("hotel_id");
-    
+
     if (sessionStorage.getItem("fieldData")) {
       var fieldData = JSON.parse(sessionStorage.getItem("fieldData"));
       this.modularid = fieldData[1].id;
     }
-    
-    if(this.$route.query.detailsId && this.$route.query.detailsId!=''){
+
+    if (this.$route.query.detailsId && this.$route.query.detailsId != '') {
       this.detailsId = this.$route.query.detailsId;
       this.img = this.$route.query.img
       this.getdatalist();
-      
+
     }
-    else{
+    else {
       this.wenben()
-      
+
     }
-   
+
   },
   methods: {
     getdatalist() {
@@ -111,14 +111,14 @@ export default {
         .then(function (res) {
           console.log(res);
           // this.img = this.$route.query.img
-          that.xinxilist= res.data.data.top_module_list[1]; //住宿的
+          that.xinxilist = res.data.data.top_module_list[1]; //住宿的
           that.img = that.xinxilist.pc_image
-          console.log( that.xinxilist);
+          console.log(that.xinxilist);
         })
         .catch((err) => console.log(err));
     },
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
 <style scoped>
@@ -188,4 +188,5 @@ export default {
   margin: 20px auto !important;
   display: block;
   /* margin: auto; */
-}</style>
+}
+</style>

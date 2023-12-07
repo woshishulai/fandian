@@ -5,11 +5,11 @@
 
     <div class="conts">
       <div class="conts_top">
-        <img :src="Baseurl+infolist[2].pc_image" alt="">
-        <p>{{infolist[2].title}}</p>
+        <img loading="lazy" :src="Baseurl + infolist[2].pc_image" alt="">
+        <p>{{ infolist[2].title }}</p>
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > {{infolist[2].title}}</p>
+        <p>您的位置：首页 > {{ infolist[2].title }}</p>
       </div>
       <div class="ambitus">
         <div class="main">
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      infolist:[],
+      infolist: [],
     };
   },
   created() {
@@ -45,7 +45,7 @@ export default {
     this.infolist = JSON.parse(localStorage.getItem("foot_module"))
   },
   methods: {},
-  mounted() {},
+  mounted() { },
 };
 </script>
 <style scoped>
@@ -90,4 +90,5 @@ export default {
 .huiyuan .huiyuan_text /deep/ img {
   max-width: 100%;
   margin: auto;
-}</style>
+}
+</style>

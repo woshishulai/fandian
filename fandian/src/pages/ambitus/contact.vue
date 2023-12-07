@@ -5,7 +5,7 @@
 
     <div class="conts">
       <div class="conts_top">
-        <img :src="Baseurl + infolist[1].pc_image" alt="" />
+        <img loading="lazy" :src="Baseurl + infolist[1].pc_image" alt="" />
         <p>{{ infolist[1].title }}</p>
       </div>
       <div class="crumbs">

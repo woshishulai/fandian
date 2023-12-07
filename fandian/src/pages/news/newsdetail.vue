@@ -19,7 +19,7 @@
                 <span class="jian" @click="jian()">A</span>
                 <span class="jia" @click="jia()">A</span>
                 <!-- <div class="weixin">
-                  <img src="../../assets/img/newweixin.png" alt="" />
+                  <img loading="lazy"src="../../assets/img/newweixin.png" alt="" />
                 </div> -->
               </div>
               <div class="newszuo_text" ref="ziti" v-html="meallist.pc_content">

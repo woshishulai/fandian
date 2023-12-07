@@ -1,11 +1,9 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 const routes = [
-    // {
-
-    // },
-    // {
-
-    // },
+    {
+        path: '/header',
+        component: () => import('@/components/layout/header.vue')
+    },
     {
         path: '/:id?',
         name: 'Hotel',

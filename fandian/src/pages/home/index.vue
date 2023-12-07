@@ -15,11 +15,11 @@
                     <!--  <div class="swiper-button-next"></div>-->
                     <div class="swiper-wrapper">
                         <!-- <div class="swiper-slide" v-for="(item,i) in imgs" :key="i">
-                        <img :src="item.pic">
+                        <img loading="lazy":src="item.pic">
                         </div> -->
                         <div class="swiper-slide" v-for="(item, index) in onelist.news" :key="index">
-                            <!-- <img src="../../assets/img/hotle1.jpg" alt=""> -->
-                            <img :src="Baseurl + item.pc_image" alt="">
+                            <!-- <img loading="lazy"src="../../assets/img/hotle1.jpg" alt=""> -->
+                            <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                         </div>
                     </div>
                 </div>
@@ -58,8 +58,8 @@
                     <div class="tansuo">
                         <!-- 至少有三个运行才正常 -->
                         <div class="tansuo_list" v-for="(item, index) in twolist.news" :key="index">
-                            <!-- <img src="../../assets/img/hotel2.jpg" alt=""> -->
-                            <img :src="Baseurl + item.pc_image" alt="">
+                            <!-- <img loading="lazy"src="../../assets/img/hotel2.jpg" alt=""> -->
+                            <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                             <!-- <div class="list_wen">
                                 <div class="neirong">
                                     <span>{{item.description}}</span>
@@ -89,8 +89,8 @@
                             <div class="swiper-slide" v-for="(item, index) in therelist.news" :key="index"
                                 @click="start(index)">
                                 <div class="gallery_list">
-                                    <!-- <img src="../../assets/img/hotel3.jpg" alt=""> -->
-                                    <img :src="Baseurl + item.pc_image" alt="">
+                                    <!-- <img loading="lazy"src="../../assets/img/hotel3.jpg" alt=""> -->
+                                    <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                                     <div class="gallery_list_version">
                                         <div class="version_eara">
                                             <span>{{ item.title }}</span>
@@ -124,15 +124,15 @@
                                 <p>{{ item.updated_at.slice(0, 4) }}</p>
                             </div>
                             <div class="news_tu">
-                                <!-- <img src="../../assets/img/hotel4.jpg" alt=""> -->
-                                <img :src="Baseurl + item.pc_image" alt="">
+                                <!-- <img loading="lazy"src="../../assets/img/hotel4.jpg" alt=""> -->
+                                <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                             </div>
                             <div class="news_text">
                                 {{ item.title }}
                             </div>
                             <!-- <div class="news_detail">
                                 <p>查看详细</p>
-                                <img src="../../assets/img/youjian.png" alt="">
+                                <img loading="lazy"src="../../assets/img/youjian.png" alt="">
                             </div> -->
                         </div>
 
@@ -145,7 +145,7 @@
                 <div class="meal_datu">
                     <!-- {{fivelist}} -->
                     <div class="meal_datu_img" v-for="(item, index) in fivelist" :key="index">
-                        <img :src="Baseurl + item.pc_image" alt="">
+                        <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                     </div>
                 </div>
                 <div class="meal_lunbo">
@@ -155,8 +155,8 @@
                                 @click="topath(item.pc_link)">
                                 <div class="meal_list">
                                     <div class="meal_tubiao" v-if="item.images[0]">
-                                        <img class="img1" :src="Baseurl + item.images[0].image" alt="">
-                                        <img class="img2" :src="Baseurl + item.images[1].image" alt="">
+                                        <img loading="lazy" class="img1" :src="Baseurl + item.images[0].image" alt="">
+                                        <img loading="lazy" class="img2" :src="Baseurl + item.images[1].image" alt="">
                                     </div>
                                     <p class="meal_list_tit">{{ item.title }}</p>
                                     <div class="meal_detail">查看详情</div>
@@ -169,7 +169,7 @@
         </div>
         <div class="topTips" v-if="swipershow">
             <div class="close" @click="guanbi()">
-                <img src="../../assets/img/cha.png" alt="">
+                <img loading="lazy" src="../../assets/img/cha.png" alt="">
             </div>
             <div class="lunboblos">
                 <div class="swiper-container lunbotuku">
@@ -180,8 +180,8 @@
                     <div class="swiper-button-next lunyoutuku"></div>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(item, index) in therelist.news" :key="index">
-                            <!-- <img src="../../assets/img/hotle1.jpg" alt="" /> -->
-                            <img :src="Baseurl + item.pc_image" alt="">
+                            <!-- <img loading="lazy"src="../../assets/img/hotle1.jpg" alt="" /> -->
+                            <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                             <div class="wenzis">{{ item.title }}<br />{{ item.description }}</div>
                         </div>
                     </div>

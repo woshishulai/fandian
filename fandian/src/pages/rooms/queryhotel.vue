@@ -8,7 +8,7 @@
             <p class="blotext">目的地：</p>
             <div class="contbox mudi" @click="getomudi()">
               <p>{{ mudiIndex }}</p>
-              <img src="../../assets/img/botxia.png" alt="" />
+              <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
             <!-- v-show="mudishow" :class="mudishow ? 'active' : ''" -->
             <div class="roomnums " v-show="mudishow" :class="mudishow ? 'active' : ''">
@@ -44,20 +44,20 @@
             <p class="blotext">入住：</p>
             <div class="contbox checkin" @click="getrilis()">
               <p>{{ wwks1 }}</p>
-              <img class="rilimg" src="../../assets/img/rili.png" alt="" />
+              <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
             </div>
             <div id="calender" v-show="rilishow">
               <div class="calender_close" @click="guan()">
-                <img src="../../assets/img/gunbi.png" alt="" />
+                <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
               </div>
               <div class="daterangepicker">
                 <div class="drp_calendar left">
                   <div class="drp_calendar_top">
                     <div @click="prev" class="prev">
-                      <img src="../../assets/img/jt.png" alt="" />
+                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                     </div>
                     <div @click="next" class="next">
-                      <img src="../../assets/img/jt.png" alt="" />
+                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                     </div>
                     <span class="tishispan">选择入住时间 </span>
                     <span style=""> {{ year }}年{{ month }}月 </span>
@@ -77,7 +77,7 @@
             </div>
             <div id="calender" v-show="rilishow2">
               <div class="calender_close" @click="guan2()">
-                <img src="../../assets/img/gunbi.png" alt="" />
+                <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
               </div>
               <div class="daterangepicker">
                 <div class="drp_calendar left">
@@ -85,10 +85,10 @@
                     <span class="tishispan">选择退房时间 </span>
                     <span style=""> {{ year2 }}年{{ month2 }}月 </span>
                     <div @click="prev" class="prev">
-                      <img src="../../assets/img/jt.png" alt="" />
+                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                     </div>
                     <div @click="next" class="next">
-                      <img src="../../assets/img/jt.png" alt="" />
+                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                     </div>
                   </div>
                   <div class="weekDay">
@@ -119,7 +119,7 @@
             <p class="blotext">退房：</p>
             <div class="contbox checkin" @click="getrilis2()">
               <p>{{ wwks2 }}</p>
-              <img class="rilimg" src="../../assets/img/rili.png" alt="" />
+              <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
             </div>
           </div>
           <!-- 房间数 -->
@@ -127,7 +127,8 @@
             <p class="blotext">房间数量：</p>
             <div class="contbox romsnum" @click="getroom()">
               <p>{{ roomIndex }}间</p>
-              <img src="../../assets/img/botxia.png" alt="" :style="roomshow ? 'transform: rotate(180deg)' : ''" />
+              <img loading="lazy" src="../../assets/img/botxia.png" alt=""
+                :style="roomshow ? 'transform: rotate(180deg)' : ''" />
             </div>
             <div class="roomnums" v-show="roomshow" :class="roomshow ? 'active' : ''">
               <ul>
@@ -143,12 +144,12 @@
             <p class="blotext">人数：</p>
             <div class="contbox peoplenum">
               <p>{{ daren }}成人,{{ xiaohai }}儿童</p>
-              <img src="../../assets/img/botxia.png" alt="" />
+              <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
             <div class="persons" v-if="peopleshow">
               <!--  -->
               <!-- <div @click="prev" class="person s_prev">
-                <img src="../../assets/img/jt.png" alt="" />
+                <img loading="lazy"src="../../assets/img/jt.png" alt="" />
               </div> -->
               <div class="peolcont">
                 <div class="peolcontlist">
@@ -185,7 +186,7 @@
             <p class="blotext">房屋偏好：</p>
             <div class="contbox housegood" @click="getoianhao()">
               <p>{{ compIndex }}</p>
-              <img src="../../assets/img/botxia.png" alt="" />
+              <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
             <div class="roomnums" v-show="houseshow" :class="houseshow ? 'active' : ''">
               <ul>
@@ -202,7 +203,7 @@
             <div class="contbox companyid">
               <input type="text" v-model="compid" />
               <!-- <p>1间</p> -->
-              <!-- <img src="../../assets/img/botxia.png" alt="" /> -->
+              <!-- <img loading="lazy"src="../../assets/img/botxia.png" alt="" /> -->
             </div>
           </div>
           <!-- 查询-->

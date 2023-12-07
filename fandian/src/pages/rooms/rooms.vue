@@ -10,8 +10,8 @@
         <div class="conts">
             <!-- 头部条 -->
             <div class="conts_top">
-                <!-- <img src="../../assets/img/zhan1.jpg" alt=""> -->
-                <img :src="Baseurl + topimg" alt="">
+                <!-- <img loading="lazy"src="../../assets/img/zhan1.jpg" alt=""> -->
+                <img loading="lazy" :src="Baseurl + topimg" alt="">
                 <p>房型展示</p>
             </div>
             <!-- 第一块房子 -->
@@ -21,7 +21,7 @@
                         <div class="type_left_list" v-if="roomslist[0]"
                             @click="roomdeatil(roomslist[0].id, roomslist[0].looks)">
                             <div class="left_img">
-                                <img :src="Baseurl + roomslist[0].pc_image" alt="">
+                                <img loading="lazy" :src="Baseurl + roomslist[0].pc_image" alt="">
                             </div>
                             <div class="tit">{{ roomslist[0].title }}</div>
                             <div class="type_left_text" v-html="roomslist[0].pc_content">
@@ -36,7 +36,7 @@
                         <div class="type_right_list clearfix" v-for="(item, index) in roomslist.slice(1, 5)" :key="index"
                             @click="roomdeatil(item.id, item.looks)">
                             <div class="right_img">
-                                <img :src="Baseurl + item.pc_image" alt="">
+                                <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
                             </div>
                             <div class="tit">{{ item.title }}</div>
                             <div class="detail">查看详细</div>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="room_more" @click="roomlists()">
-                    <img src="../../assets/img/jia.png" alt="">
+                    <img loading="lazy" src="../../assets/img/jia.png" alt="">
                     <p>更多房型</p>
                 </div>
             </div>
@@ -52,13 +52,13 @@
             <div class="bodybuild">
                 <div class="body_back">
                     <div class="body_back_img" v-for="(item, index) in infolist" :key="index">
-                        <img :src="Baseurl + item.news[0].pc_image" alt="">
+                        <img loading="lazy" :src="Baseurl + item.news[0].pc_image" alt="">
                     </div>
                 </div>
                 <div class="body_hua">
                     <div class="body_hua_left">
                         <div class="body_hua_list" v-for="(item, index) in infolist" :key="index">
-                            <img :src="Baseurl + item.pc_icon1" alt="">
+                            <img loading="lazy" :src="Baseurl + item.pc_icon1" alt="">
                             <p>{{ item.name }}</p>
                         </div>
                     </div>

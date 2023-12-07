@@ -21,17 +21,17 @@
                                             <!-- Slides -->
                                             <div class="swiper-slide" v-for="(item, index) in listimgs" :key="index">
                                                 <div class="deta_leftimg">
-                                                    <img :src="Baseurl + item.image" alt="">
+                                                    <img loading="lazy" :src="Baseurl + item.image" alt="">
                                                 </div>
                                             </div>
                                             <!-- <div class="swiper-slide">
                                                 <div class="deta_leftimg">
-                                                    <img src="../../assets/img/deatl1.jpg" alt="">
+                                                    <img loading="lazy"src="../../assets/img/deatl1.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide">
                                                 <div class="deta_leftimg">
-                                                    <img src="../../assets/img/deatl1.jpg" alt="">
+                                                    <img loading="lazy"src="../../assets/img/deatl1.jpg" alt="">
                                                 </div>
                                             </div> -->
                                         </div>
@@ -50,7 +50,7 @@
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide" v-for="(item, index) in listimgs" :key="index">
                                                 <div class="deta_rightimg">
-                                                    <img :src="Baseurl + item.image" alt="">
+                                                    <img loading="lazy" :src="Baseurl + item.image" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -64,7 +64,7 @@
                                     <p>客房概览</p>
                                     <div class="close" @click="close(1)">
                                         <p>{{ close1 ? '关闭' : '展开' }}</p>
-                                        <img src="../../assets/img/jt.png" alt=""
+                                        <img loading="lazy" src="../../assets/img/jt.png" alt=""
                                             :style="close1 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                     <p>客房设施</p>
                                     <div class="close" @click="close(2)">
                                         <p>{{ close1 ? '关闭' : '展开' }}</p>
-                                        <img src="../../assets/img/jt.png" alt=""
+                                        <img loading="lazy" src="../../assets/img/jt.png" alt=""
                                             :style="close2 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                                     <p>其他</p>
                                     <div class="close" @click="close(3)">
                                         <p>{{ close1 ? '关闭' : '展开' }}</p>
-                                        <img src="../../assets/img/jt.png" alt=""
+                                        <img loading="lazy" src="../../assets/img/jt.png" alt=""
                                             :style="close3 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                         <div class="detailtwo_area" v-if="paricelist != ''">
                             <div class="area_list" v-for="(item, index) in paricelist" :key="index">
                                 <div class="pianhao">
-                                    <img src="../../assets/img/bofang.png" alt="">
+                                    <img loading="lazy" src="../../assets/img/bofang.png" alt="">
                                     <p>{{ item.ratecodeName }}</p>
                                 </div>
                                 <div class="zhifu">

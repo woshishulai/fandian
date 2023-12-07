@@ -337,9 +337,8 @@ html {
 * {
   margin: 0;
   padding: 0;
-  font-family: 'siyuan';
+  /* font-family: 'siyuan'; */
   font-weight: 300;
-
 }
 
 /* 清除浮动 */
