@@ -19,7 +19,8 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
     "axios": "^1.6.2",
-    "vite": "^5.0.0",
-    "qrcodejs2-fix": "^0.0.1"
+    "qrcodejs2-fix": "^0.0.1",
+    "terser": "^5.26.0",
+    "vite": "^5.0.0"
   }
 }

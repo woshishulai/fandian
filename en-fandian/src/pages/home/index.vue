@@ -232,7 +232,6 @@ export default {
         //    this.modularid = fieldData[0].id
         // }
         const query = this.$route.params.id
-        console.log(query);
         if (query) {
             localStorage.setItem('query', query);
             this.getQueryList(query);
@@ -1419,4 +1418,5 @@ export default {
     background-color: #000000;
     height: 80px;
     /* overflow: auto; */
-}</style>
+}
+</style>

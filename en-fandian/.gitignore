@@ -13,7 +13,8 @@ dist-ssr
 *.local
 cn-fandian
 cn-fandian.zip
-
+en-fandian
+en-fandian.zip
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

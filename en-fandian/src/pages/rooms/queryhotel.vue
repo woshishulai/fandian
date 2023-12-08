@@ -276,7 +276,7 @@ export default {
       houseshow: false, //房间偏好弹窗
       compid: "", //公司id
       cpmlist: [
-        "全部",
+        "All",
         "最优门市价含单早",
         "最优门市价无早",
         "会员价格",

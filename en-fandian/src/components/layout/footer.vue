@@ -6,7 +6,7 @@
         <img src="../../assets/img/shijilogo.png" alt="" />
       </div>
       <p class="jiaru" @click="pages(0)">
-        {{ footlist.str }}
+        {{ footlist?.str }}
       </p>
     </div>
     <div class="footer_bottom">
@@ -21,10 +21,10 @@
                         <p @click="pages(4)">法律声明</p> -->
         </div>
         <div class="bot_cen">
-          <p v-if="footlist.company_address != ''">Add : {{ footlist.company_address }}</p>
-          <p v-if="footlist.company_email != ''">Zipcode : {{ footlist.company_email }}</p>
-          <p v-if="footlist.company_tphone != ''">Switchboard : {{ footlist.company_tphone }}</p>
-          <p v-if="footlist.web_domain != ''">Fax : {{ footlist.web_domain }}</p>
+          <p v-if="footlist?.company_address != ''">Add : {{ footlist?.company_address }}</p>
+          <p v-if="footlist?.company_email != ''">Zipcode : {{ footlist?.company_email }}</p>
+          <p v-if="footlist?.company_tphone != ''">Switchboard : {{ footlist?.company_tphone }}</p>
+          <p v-if="footlist?.web_domain != ''">Fax : {{ footlist?.web_domain }}</p>
         </div>
 
         <!-- <div class="bot_fot">
@@ -33,10 +33,10 @@
           <p>{{ footlist.company_name }}</p>
         </div> -->
         <div class="bot_fot">
-          <p>{{ footlist.web_copyright }} All rights reserved.</p>
-          <p v-html="footlist.web_beian"></p>
+          <p>{{ footlist?.web_copyright }} All rights reserved.</p>
+          <p v-html="footlist?.web_beian"></p>
           <img class="bei" src="../../assets/img/bei.png" alt="">
-          <p v-html="footlist.company_name"></p>
+          <p v-html="footlist?.company_name"></p>
         </div>
       </div>
       <div class="bottom_right">
@@ -45,14 +45,14 @@
           <div class="guan guan1">
             <!-- <div class="xian xian1"></div> -->
             <!-- footlist.web_name -->
-            <a :href="footlist.web_name"><img src="../../assets/img/weibo.png" alt="" /></a>
+            <a :href="footlist?.web_name"><img src="../../assets/img/weibo.png" alt="" /></a>
           </div>
           <div class="guan guan2">
             <img src="../../assets/img/weixin.png" alt="" />
             <div class="xian">
               <!-- <img src="../../assets/img/erweima.jpg" alt=""> -->
               <!-- weixin_path -->
-              <img :src="Baseurl + footlist.weixin_path" alt="" />
+              <img :src="Baseurl + footlist?.weixin_path" alt="" />
             </div>
           </div>
         </div>

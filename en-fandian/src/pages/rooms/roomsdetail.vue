@@ -76,7 +76,7 @@
                                 <div class="servicetit">
                                     <p>Guest room facilities</p>
                                     <div class="close" @click="close(2)">
-                                        <p>{{ close1 ? 'Close' : 'Expand' }}</p>
+                                        <p>{{ close2 ? 'Close' : 'Expand' }}</p>
                                         <img src="../../assets/img/jt.png" alt=""
                                             :style="close2 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
@@ -89,7 +89,7 @@
                                 <div class="servicetit">
                                     <p>Other</p>
                                     <div class="close" @click="close(3)">
-                                        <p>{{ close1 ? 'Close' : 'Expand' }}</p>
+                                        <p>{{ close3 ? 'Close' : 'Expand' }}</p>
                                         <img src="../../assets/img/jt.png" alt=""
                                             :style="close3 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>

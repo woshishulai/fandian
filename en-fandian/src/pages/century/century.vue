@@ -14,12 +14,12 @@
             <Queryhotel class="Queryhotel" />
             <div class="tiyanone">
                 <div class="main">
-                    <div class="zhoubian" v-if="infolist[0].news != ''">
-                        <div class="zhoubian_tit">{{ infolist[0].name }}</div>
+                    <div class="zhoubian" v-if="infolist[0]?.news != ''">
+                        <div class="zhoubian_tit">{{ infolist[0]?.name }}</div>
                         <div class="zhoubian_lunbo">
                             <div class="swiper-container lunzhou">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" v-for="(item, index) in infolist[0].news" :key="index"
+                                    <div class="swiper-slide" v-for="(item, index) in infolist[0]?.news" :key="index"
                                         @click="topath(item)">
                                         <div class="list">
                                             <div class="list_nei">
@@ -54,7 +54,7 @@
                         </baidu-map>
                         <div class="infomercial">
                             <span>Contact us</span>
-                            <div v-html="infolist[1].news[0].pc_content"></div>
+                            <div v-html="infolist[1]?.news[0].pc_content"></div>
                         </div>
                     </div>
                 </div>
