@@ -9,7 +9,7 @@
         <p>{{ infolist[1].title }}</p>
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > {{ infolist[1].title }}</p>
+        <p>Your location: Home> {{ infolist[1].title }}</p>
       </div>
       <div class="ambitus">
         <div class="main">
@@ -31,45 +31,46 @@
             <div class="lianxiright">
               <div class="lianxi_form">
                 <div class="xinxi">
-                  <span>联系我们</span>
+                  <span>Contact us</span>
                   <p>
-                    如果您有任何问题或意见，请通过一下方式与我们联系，我们会尽快回复。
+                    If you have any questions or comments, please contact us through the following ways, we will reply as
+                    soon as possible。
                   </p>
                 </div>
                 <div class="inpform">
                   <div class="inplist">
-                    <p>姓名：</p>
+                    <p>Name：</p>
                     <div class="inp">
                       <input type="text" v-model="name" />
-                      <p v-show="nameshow">请填写姓名</p>
+                      <p v-show="nameshow">Please fill in name</p>
                     </div>
                   </div>
                   <div class="inplist">
-                    <p>电话：</p>
+                    <p>Phone：</p>
                     <div class="inp">
                       <input type="text" v-model="phone" />
-                      <p v-show="phoneshow">请填写电话</p>
+                      <p v-show="phoneshow">Please fill in the telephone number</p>
                     </div>
                   </div>
                   <div class="inplist">
-                    <p>邮箱：</p>
+                    <p>E-mail：</p>
                     <div class="inp">
                       <input type="text" v-model="email" />
-                      <p v-show="emailshow">请填写邮箱</p>
+                      <p v-show="emailshow">Please fill in the email</p>
                     </div>
                   </div>
                   <div class="inplist clearfix">
-                    <p>留言内容：</p>
+                    <p>Message content：</p>
                     <div class="inptext">
                       <textarea cols="30" rows="10" v-model="wenben" maxlength="200"
                         οnchange="this.value=this.value.substring(0, 200)"
                         οnkeydοwn="this.value=this.value.substring(0, 200)"
                         οnkeyup="this.value=this.value.substring(0, 200)"></textarea>
-                      <p v-show="wenbenshow">请填写留言</p>
+                      <p v-show="wenbenshow">Please fill in the message</p>
                     </div>
                     <div class="shuzi">{{ wenben.length }}/200</div>
                   </div>
-                  <div class="tijiao" @click="tijiao()">提交</div>
+                  <div class="tijiao" @click="tijiao()">Submit</div>
                 </div>
               </div>
             </div>

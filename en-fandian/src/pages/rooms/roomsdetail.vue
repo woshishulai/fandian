@@ -3,7 +3,7 @@
         <!-- 公共头部 -->
         <Header />
         <div class="crumbs">
-            <p>您的位置：首页 > 住宿</p>
+            <p>Your location: Home > Rooms</p>
         </div>
         <!-- 日历 -->
         <Queryhotel class="Queryhotel" />
@@ -21,17 +21,17 @@
                                             <!-- Slides -->
                                             <div class="swiper-slide" v-for="(item, index) in listimgs" :key="index">
                                                 <div class="deta_leftimg">
-                                                    <img loading="lazy" :src="Baseurl + item.image" alt="">
+                                                    <img :src="Baseurl + item.image" alt="">
                                                 </div>
                                             </div>
                                             <!-- <div class="swiper-slide">
                                                 <div class="deta_leftimg">
-                                                    <img loading="lazy"src="../../assets/img/deatl1.jpg" alt="">
+                                                    <img src="../../assets/img/deatl1.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide">
                                                 <div class="deta_leftimg">
-                                                    <img loading="lazy"src="../../assets/img/deatl1.jpg" alt="">
+                                                    <img src="../../assets/img/deatl1.jpg" alt="">
                                                 </div>
                                             </div> -->
                                         </div>
@@ -50,7 +50,7 @@
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide" v-for="(item, index) in listimgs" :key="index">
                                                 <div class="deta_rightimg">
-                                                    <img loading="lazy" :src="Baseurl + item.image" alt="">
+                                                    <img :src="Baseurl + item.image" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,10 +61,10 @@
                         <div class="service">
                             <div class="service_list">
                                 <div class="servicetit">
-                                    <p>客房概览</p>
+                                    <p>Guest room overview</p>
                                     <div class="close" @click="close(1)">
-                                        <p>{{ close1 ? '关闭' : '展开' }}</p>
-                                        <img loading="lazy" src="../../assets/img/jt.png" alt=""
+                                        <p>{{ close1 ? 'Close' : 'Expand' }}</p>
+                                        <img src="../../assets/img/jt.png" alt=""
                                             :style="close1 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
                                 </div>
@@ -74,10 +74,10 @@
                             </div>
                             <div class="service_list">
                                 <div class="servicetit">
-                                    <p>客房设施</p>
+                                    <p>Guest room facilities</p>
                                     <div class="close" @click="close(2)">
-                                        <p>{{ close1 ? '关闭' : '展开' }}</p>
-                                        <img loading="lazy" src="../../assets/img/jt.png" alt=""
+                                        <p>{{ close1 ? 'Close' : 'Expand' }}</p>
+                                        <img src="../../assets/img/jt.png" alt=""
                                             :style="close2 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
                                 </div>
@@ -87,10 +87,10 @@
                             </div>
                             <div class="service_list">
                                 <div class="servicetit">
-                                    <p>其他</p>
+                                    <p>Other</p>
                                     <div class="close" @click="close(3)">
-                                        <p>{{ close1 ? '关闭' : '展开' }}</p>
-                                        <img loading="lazy" src="../../assets/img/jt.png" alt=""
+                                        <p>{{ close1 ? 'Close' : 'Expand' }}</p>
+                                        <img src="../../assets/img/jt.png" alt=""
                                             :style="close3 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
                                 </div>
@@ -103,30 +103,30 @@
                     </div>
                     <div class="detailtwo">
                         <div class="detailtwo_biao">
-                            <p>房屋偏好</p>
-                            <p>支付</p>
-                            <p>价格</p>
+                            <p>Rate type</p>
+                            <p>Rate details</p>
+                            <p>Rate</p>
                         </div>
                         <!-- rateCodeInfos -->
                         <div class="detailtwo_area" v-if="paricelist != ''">
                             <div class="area_list" v-for="(item, index) in paricelist" :key="index">
                                 <div class="pianhao">
-                                    <img loading="lazy" src="../../assets/img/bofang.png" alt="">
+                                    <img src="../../assets/img/bofang.png" alt="">
                                     <p>{{ item.ratecodeName }}</p>
                                 </div>
                                 <div class="zhifu">
-                                    <p>线上支付</p>
+                                    <p>The online payment</p>
                                 </div>
                                 <div class="jiage">
-                                    <p>最低：{{ item.salePrice }} CNY</p>
+                                    <p>From{{ item.salePrice }} CNY</p>
                                 </div>
                                 <div class="yuding" @click="yuding(item, index)">
-                                    <div>预定</div>
+                                    <div>Reserve</div>
                                 </div>
                             </div>
                         </div>
                         <div class="detailtwo_area" v-if="paricelist == ''">
-                            <p style="font-size:20px;padding:30px;">查询时间段内暂无房型</p>
+                            <p style="font-size:20px;padding:30px;">No room type is available within the query period</p>
                         </div>
                     </div>
                 </div>
@@ -281,6 +281,7 @@ export default {
         },
 
         close(num) {
+            console.log(num);
             if (num == 1) {
                 this.close1 = !this.close1
             }
@@ -326,7 +327,7 @@ export default {
                     // }
                 })
             } else {
-                alert("请先登录")
+                alert("Please sign in first")
             }
 
         },
@@ -526,9 +527,6 @@ export default {
 }
 
 /* 设施... */
-.service {
-    /* 大框 里面右三个 */
-}
 
 .service .service_list {
     border-top: 1px solid #d8d8d8;

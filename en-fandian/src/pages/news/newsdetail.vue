@@ -5,7 +5,7 @@
 
     <div class="conts">
       <div class="crumbs">
-        <p>您的位置：首页 > 新闻</p>
+        <p>Your location: Home > News</p>
       </div>
       <div class="news">
         <div class="main">
@@ -18,21 +18,18 @@
                 <span class="time">{{ meallist.updated_at }}</span>
                 <span class="jian" @click="jian()">A</span>
                 <span class="jia" @click="jia()">A</span>
-                <!-- <div class="weixin">
-                  <img loading="lazy"src="../../assets/img/newweixin.png" alt="" />
-                </div> -->
               </div>
               <div class="newszuo_text" ref="ziti" v-html="meallist.pc_content">
               </div>
             </div>
             <div class="newsyou">
               <div class="newsyou_list" @click="qiehuan(mealuplist.id)">
-                <span class="newsyou_list_tit">上一篇</span>
+                <span class="newsyou_list_tit">In the previous</span>
                 <span class="time">{{ mealuplist.updated_at }}</span>
                 <p>{{ mealuplist.title }}</p>
               </div>
               <div class="newsyou_list" @click="qiehuan(mealdownlist.id)">
-                <span class="newsyou_list_tit">下一篇</span>
+                <span class="newsyou_list_tit">The next article</span>
                 <span class="time">{{ mealdownlist.updated_at }}</span>
                 <p>{{ mealdownlist.title }}</p>
               </div>

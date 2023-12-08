@@ -93,25 +93,23 @@ export default {
 
         <div class="conts">
             <div class="meal_top">
-                <!-- <img loading="lazy":src="Baseurl+infolist[0].pc_image" alt=""> -->
-                <img loading="lazy" :src="Baseurl + topimg" alt="">
+                <!-- <img :src="Baseurl+infolist[0].pc_image" alt=""> -->
+                <img :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
-                <p>您的位置：首页 > {{ topname ? 'topname' : '' }}</p>
+                <p>Your location: Home > {{ topname }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="ambitus">
                 <div class="main">
                     <div class="assoc">
                         <div class="shiji">
-                            <div class="shiji_logo">
-                                <img loading="lazy" src="../../assets/img/shijilogo.png" alt="">
-                            </div>
-                            <p class="jiaru">{{ infolist[0]?.news[0]?.description }}</p>
+                            <div class="shiji_logo"><img src="../../assets/img/shijilogo.png" alt=""></div>
+                            <p class="jiaru">{{ infolist[0]?.news[0].description }}</p>
                         </div>
                         <div class="buttons">
-                            <div class="btn" @click="denglv()">登录</div>
-                            <div class="btn" @click="zhuce()">注册</div>
+                            <div class="btn" @click="denglv()">Sign In</div>
+                            <div class="btn" @click="zhuce()">Join us</div>
                         </div>
                     </div>
                     <div class="huiyuan">

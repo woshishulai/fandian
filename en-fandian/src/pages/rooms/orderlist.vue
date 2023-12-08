@@ -4,37 +4,40 @@
         <Header />
         <div class="conts">
             <div class="main">
-                <div class="title">我的订单</div>
+                <div class="title">My Order</div>
                 <div class="roomslist_lunbo">
                     <div class="swiper-container lunroom">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" v-for="(item, index) in orderlist" :key="index">
                                 <div class="ordelist" v-for="(itemMsg, indexMsg) in item" :key="indexMsg">
                                     <div class="ordelist_tit">
-                                        <img loading="lazy" src="../../assets/img/dd.png" alt="">
+                                        <img src="../../assets/img/dd.png" alt="">
                                         <p v-if="itemMsg.hotel">{{ itemMsg.hotel[0].hotel_name }}</p>
                                         <div class="wan"
                                             v-if="itemMsg.status == 1 && itemMsg.ok == 1 && itemMsg.cancel_order == 2">
-                                            交易完成</div>
-                                        <div class="wan" v-if="itemMsg.cancel_order == 2 && itemMsg.status == 2">订单已取消</div>
-                                        <div class="wan" v-if="itemMsg.status == 3">订单超时</div>
+                                            Transaction Completion</div>
+                                        <div class="wan" v-if="itemMsg.cancel_order == 2 && itemMsg.status == 2">Order
+                                            cancelled</div>
+                                        <div class="wan" v-if="itemMsg.status == 3">Order timeout</div>
                                     </div>
                                     <div class="ordelist_text">
                                         <div class="order_left">
                                             <div class="orli">
-                                                <span class="tisw">房型：</span>
+                                                <span class="tisw">Room type:</span>
                                                 <span class="tes" v-if="itemMsg.room">{{ itemMsg.room[0].title }}</span>
                                             </div>
                                             <div class="orli">
-                                                <span class="tisw">房间数量：</span>
-                                                <span class="tes">{{ itemMsg.room_num }}间</span>
+                                                <span class="tisw">Number of rooms:</span>
+                                                <span class="tes">{{ itemMsg.room_num }}<span
+                                                        v-if="itemMsg.room_num > 1">Rooms</span><span
+                                                        v-else>Room</span></span>
                                             </div>
                                             <div class="orli">
-                                                <span class="tisw">价格：</span>
-                                                <span class="tes">{{ itemMsg.money }}元</span>
+                                                <span class="tisw">Price:</span>
+                                                <span class="tes">￥{{ itemMsg.money }}</span>
                                             </div>
                                             <div class="orli">
-                                                <span class="tisw">开始结束日期：</span>
+                                                <span class="tisw">Start End Date:</span>
                                                 <span class="tes">{{ itemMsg.start_time }} — {{ itemMsg.end_time }}</span>
                                             </div>
                                         </div>
@@ -46,28 +49,21 @@
                                         <div class="order_right">
                                             <div class="oebtn oebtn1"
                                                 v-if="itemMsg.cancel_order == 1 && itemMsg.pay_type == 2 && itemMsg.status == 0 && itemMsg.ok == 2"
-                                                @click="zhifu(itemMsg)">待支付</div>
+                                                @click="zhifu(itemMsg)">To be paid</div>
                                             <div class="oebtn oebtn1"
                                                 v-if="itemMsg.cancel_order == 1 && itemMsg.pay_type == 1 && itemMsg.status == 0">
-                                                酒店前台支付</div>
+                                                Hotel front desk payment</div>
                                             <div class="oebtn oebtn2"
                                                 v-if="itemMsg.cancel_order == 1 && itemMsg.status != 2"
-                                                @click="cancel(itemMsg)">取消订单</div>
-                                            <!-- <div v-if="itemMsg.status!=2">
-                                                <div class="oebtn oebtn3" v-if="itemMsg.status==2||itemMsg.ok==1"
-                                                    @click="deletes(itemMsg)">删除订单
-                                                </div>
-                                            </div> -->
-                                            <!-- <div v-if="itemMsg.status==1&&itemMsg.ok==1&&itemMsg.cancel_order==2" @click="deletes(itemMsg)">删除订单</div> -->
-
+                                                @click="cancel(itemMsg)">Cancel an order</div>
                                             <div class="oebtn oebtn3"
                                                 v-if="itemMsg.status == 1 && itemMsg.ok == 1 && itemMsg.cancel_order == 2"
-                                                @click="deletes(itemMsg)">删除订单</div>
+                                                @click="deletes(itemMsg)">Delete an order</div>
                                             <div class="oebtn oebtn3"
                                                 v-if="itemMsg.cancel_order == 2 && itemMsg.status == 2"
-                                                @click="deletes(itemMsg)">删除订单</div>
+                                                @click="deletes(itemMsg)">Delete an order</div>
                                             <div class="oebtn oebtn3" v-if="itemMsg.status == 3" @click="deletes(itemMsg)">
-                                                删除订单</div>
+                                                Delete an order</div>
                                         </div>
                                     </div>
                                 </div>
@@ -89,23 +85,23 @@
         <div class="zhifuye" v-if="zhifushow">
             <div class="erweima">
                 <div v-if="success == 0">
-                    <div class="erweima_title">请扫描下方二维码支付</div>
+                    <div class="erweima_title">Please scan the QR code below to pay</div>
                     <div id="qrcode" ref="qrcode"></div>
                 </div>
                 <div class="erweima_text" v-if="success == 1">
-                    <img loading="lazy" src="../../assets/img/pay_over.png" alt="" />
-                    <div class="erweima_title">支付成功</div>
-                    <div>订单号：{{ hy_bill_no }}</div>
+                    <img src="../../assets/img/pay_over.png" alt="" />
+                    <div class="erweima_title">Pay for success</div>
+                    <div>The order no：{{ hy_bill_no }}</div>
                 </div>
                 <div class="erweima_text" v-if="success == 2">
-                    <div class="erweima_title">订单已取消</div>
-                    <div>订单号：{{ hy_bill_no }}</div>
+                    <div class="erweima_title">The order has been cancelled</div>
+                    <div>The order no：{{ hy_bill_no }}</div>
                 </div>
                 <div class="erweima_text" v-if="success == 3">
-                    <div class="erweima_title">订单已超时</div>
-                    <div>订单号：{{ hy_bill_no }}</div>
+                    <div class="erweima_title">The order has timed out</div>
+                    <div>The order no：{{ hy_bill_no }}</div>
                 </div>
-                <div class="retunrnindex" @click="retunrnindex">取消</div>
+                <div class="retunrnindex" @click="retunrnindex">cancellation</div>
             </div>
         </div>
         <!-- 公共底部 -->
@@ -534,5 +530,4 @@ export default {
     font-size: 20px;
     line-height: 30px;
     margin-top: 20px;
-}
-</style>
+}</style>

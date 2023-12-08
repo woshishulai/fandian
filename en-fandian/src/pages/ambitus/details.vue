@@ -9,7 +9,7 @@
         <p></p>
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > 详情</p>
+        <p>Your location: Home > Details</p>
       </div>
       <div class="ambitus" v-if="xinxilist.length == 0">
         <div class="main">
@@ -25,7 +25,7 @@
         <div class="main">
           <div class="huiyuan">
             <div class="huiyuan_text">
-              <p class="bigtitle">使用条款</p>
+              <p class="bigtitle">Terms & Conditions</p>
               <div v-html="xinxilist.description2"></div>
             </div>
           </div>

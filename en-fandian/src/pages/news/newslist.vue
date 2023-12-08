@@ -5,10 +5,10 @@
 
         <div class="conts">
             <div class="meal_top">
-                <img loading="lazy" :src="Baseurl + topimg" alt="">
+                <img :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
-                <p>您的位置：首页 > 新闻</p>
+                <p>Your location: Home > News</p>
             </div>
             <div class="newslist">
                 <div class="main">
@@ -20,8 +20,8 @@
                                     <div class="news_list" v-for="(itemMsg, indexMsg) in item" :key="indexMsg"
                                         @click="newsdeatil(itemMsg.id)">
                                         <div class="newslist_img">
-                                            <!-- <img loading="lazy"src="../../assets/img/new1.jpg" alt=""> -->
-                                            <img loading="lazy" :src="Baseurl + itemMsg.pc_image" alt="">
+                                            <!-- <img src="../../assets/img/new1.jpg" alt=""> -->
+                                            <img :src="Baseurl + itemMsg.pc_image" alt="">
                                         </div>
                                         <div class="newslist_version">
                                             <div class="version_eara">

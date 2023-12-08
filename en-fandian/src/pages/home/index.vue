@@ -95,7 +95,7 @@
                                         <div class="version_eara">
                                             <span>{{ item.title }}</span>
                                             <p v-html="item.description"></p>
-                                            <div class="chakan">查看详细</div>
+                                            <div class="chakan">Learn More</div>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                                         <img loading="lazy" class="img2" :src="Baseurl + item.images[1].image" alt="">
                                     </div>
                                     <p class="meal_list_tit">{{ item.title }}</p>
-                                    <div class="meal_detail">查看详情</div>
+                                    <div class="meal_detail">Learn More</div>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +268,7 @@ export default {
                 .then(function (res) {
                     console.log(res)
                     if (res.data.code == 0) {
-                        alert(res.data.msg + '将为您展示默认酒店')
+                        alert(res.data.msg + 'You will be shown a default hotel')
                         that.$router.replace({ params: { id: '' } });
                         that.getdatalist()
                         return
@@ -282,7 +282,6 @@ export default {
                         localStorage.setItem('mudiIndex', res.data.data.hotel.city)
                         localStorage.setItem('mudiIndexnum1', res.data.data.hotel.city)
                         localStorage.setItem('mudiIndexnum2', res.data.data.hotel.key)
-                        console.log('舒来测试酒店', sessionStorage.getItem('hotel_id'), sessionStorage.getItem('hotelcode'), sessionStorage.getItem('codesh'), sessionStorage.getItem('hotel_name'), sessionStorage.getItem('dituxinxi'), sessionStorage.getItem('city'), localStorage.getItem('mudiIndex'), localStorage.getItem('mudiIndexnum2'),);
                         that.infolist = res.data.data.defaul_module_list
                         that.onelist = res.data.data.defaul_module_list[0]
                         that.twolist = res.data.data.defaul_module_list[1]
@@ -759,14 +758,16 @@ export default {
 }
 
 .explore .youhui {
-    width: 600px;
+    /* width: 600px; */
+    width: 1320px;
     margin: auto;
     position: relative;
     margin-top: 50px;
 }
 
 .explore .youhui .luntwo {
-    width: 600px;
+    /* width: 600px; */
+    width: 100%;
     margin: auto;
     /* background-color: pink; */
     /* position: relative; */
@@ -774,11 +775,13 @@ export default {
 
 .explore .youhui .luntwo .swiper-slide {
     width: 200px;
+    width: 440px;
     /* border: 1px solid #000; */
 }
 
 .explore .youhui .luntwo .swiper-slide .list {
     width: 200px;
+    width: 440px;
     font-size: 24px;
     color: #000000;
     text-align: center;
@@ -909,7 +912,8 @@ export default {
 }
 
 .gallery .title {
-    width: 200px;
+    /* width: 200px; */
+    width: 350px;
     margin: auto;
 }
 
@@ -1092,7 +1096,7 @@ export default {
 }
 
 .news .title {
-    width: 200px;
+    width: 350px;
     margin: auto;
 }
 
@@ -1162,7 +1166,8 @@ export default {
 
 .news .new_list .new_list_item .news_detail {
     margin-top: 50px;
-    width: 146px;
+    /* width: 146px; */
+    width: 165px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -1414,5 +1419,4 @@ export default {
     background-color: #000000;
     height: 80px;
     /* overflow: auto; */
-}
-</style>
+}</style>

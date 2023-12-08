@@ -76,7 +76,7 @@
                                 <div class="servicetit">
                                     <p>客房设施</p>
                                     <div class="close" @click="close(2)">
-                                        <p>{{ close1 ? '关闭' : '展开' }}</p>
+                                        <p>{{ close2 ? '关闭' : '展开' }}</p>
                                         <img loading="lazy" src="../../assets/img/jt.png" alt=""
                                             :style="close2 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
@@ -89,7 +89,7 @@
                                 <div class="servicetit">
                                     <p>其他</p>
                                     <div class="close" @click="close(3)">
-                                        <p>{{ close1 ? '关闭' : '展开' }}</p>
+                                        <p>{{ close3 ? '关闭' : '展开' }}</p>
                                         <img loading="lazy" src="../../assets/img/jt.png" alt=""
                                             :style="close3 ? 'transform: rotate(90deg)' : 'transform: rotate(-90deg)'">
                                     </div>
@@ -525,10 +525,6 @@ export default {
     background-image: url(../../assets/img/anniu1.png);
 }
 
-/* 设施... */
-.service {
-    /* 大框 里面右三个 */
-}
 
 .service .service_list {
     border-top: 1px solid #d8d8d8;

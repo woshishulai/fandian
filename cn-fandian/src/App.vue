@@ -41,10 +41,10 @@ export default {
   created() {
     // if (sessionStorage.getItem("hotelcode") && sessionStorage.getItem("hotelcode") != '') {
     this.gettoken();
-    // setTimeout(() => {
-    //   this.reload()
-    //   this.gettoken();
-    // }, 1500)
+    setTimeout(() => {
+      this.reload()
+      this.gettoken();
+    }, 500)
     this.goOrther()
   },
   methods: {

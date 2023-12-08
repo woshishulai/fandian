@@ -3,7 +3,7 @@
   <div class="footer" @click="fotshow = false">
     <div class="shiji">
       <div class="shiji_logo">
-        <img src="../../assets/img/shijilogo.png" alt="" />
+        <img loading="lazy" src="../../assets/img/shijilogo.png" alt="" />
       </div>
       <p class="jiaru" @click="pages(0)">
         {{ footlist.str }}
@@ -17,48 +17,44 @@
             {{ item.title }}
           </p>
           <!-- <p @click="pages(2)">媒体中心</p>
-                        <p @click="pages(3)">联系我们</p>
-                        <p @click="pages(4)">法律声明</p> -->
+            <p @click="pages(3)">联系我们</p>
+            <p @click="pages(4)">法律声明</p> -->
         </div>
         <div class="bot_cen">
-          <p v-if="footlist.company_address != ''">Add : {{ footlist.company_address }}</p>
-          <p v-if="footlist.company_email != ''">Zipcode : {{ footlist.company_email }}</p>
-          <p v-if="footlist.company_tphone != ''">Switchboard : {{ footlist.company_tphone }}</p>
-          <p v-if="footlist.web_domain != ''">Fax : {{ footlist.web_domain }}</p>
+          <p v-if="footlist.company_address != ''">地址 : {{ footlist.company_address }}</p>
+          <p v-if="footlist.company_email != ''">邮政编码 : {{ footlist.company_email }}</p>
+          <p v-if="footlist.company_tphone != ''">总机 : {{ footlist.company_tphone }}</p>
+          <p v-if="footlist.web_domain != ''">传真 : {{ footlist.web_domain }}</p>
         </div>
-
-        <!-- <div class="bot_fot">
-          <p>{{ footlist.web_copyright }} All rights reserved.</p>
-          <p>{{ footlist.web_beian }}</p>
-          <p>{{ footlist.company_name }}</p>
-        </div> -->
         <div class="bot_fot">
-          <p>{{ footlist.web_copyright }} All rights reserved.</p>
+          <p>{{ footlist.web_copyright }} 保留所有权利</p>
           <p v-html="footlist.web_beian"></p>
-          <img class="bei" src="../../assets/img/bei.png" alt="">
+          <img loading="lazy" class="bei" src="../../assets/img/bei.png" alt="">
           <p v-html="footlist.company_name"></p>
         </div>
       </div>
       <div class="bottom_right">
         <div class="guanzhu">
-          <p>Follow us:</p>
+          <p>关注我们：</p>
           <div class="guan guan1">
             <!-- <div class="xian xian1"></div> -->
             <!-- footlist.web_name -->
-            <a :href="footlist.web_name"><img src="../../assets/img/weibo.png" alt="" /></a>
+            <a :href="footlist.web_name">
+              <img loading="lazy" src="../../assets/img/weibo.png" alt="" />
+            </a>
           </div>
           <div class="guan guan2">
-            <img src="../../assets/img/weixin.png" alt="" />
+            <img loading="lazy" src="../../assets/img/weixin.png" alt="" />
             <div class="xian">
-              <!-- <img src="../../assets/img/erweima.jpg" alt=""> -->
+              <!-- <img loading="lazy"src="../../assets/img/erweima.jpg" alt=""> -->
               <!-- weixin_path -->
-              <img :src="Baseurl + footlist.weixin_path" alt="" />
+              <img loading="lazy" :src="Baseurl + footlist.weixin_path" alt="" />
             </div>
           </div>
         </div>
         <!-- <div class="switch" @click.stop="select()">
           <div class="switch_wen">
-            <p>Choose another hotel</p>
+            <p>选择其他酒店</p>
             <img
               src="../../assets/img/botxia.png"
               :style="fotshow ? 'transform: rotate(180deg)' : ''"
@@ -73,7 +69,7 @@
                     class="chooise_list_item"
                     v-for="(item, index) in hotelist"
                     :key="index"
-                    @click="qiehuan(index)"
+                    @click="qiehuan(item,index)"
                   >
                     <span>{{ item.hotel_name }}</span>
                   </li>
@@ -141,7 +137,6 @@ export default {
             console.log(that.mudiIndexnum1);
             console.log(that.mudiIndexnum2);
             that.city_centry = that.city[that.mudiIndexnum1];
-
             sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);
             sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);
             sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);
@@ -157,6 +152,7 @@ export default {
             // localStorage.setItem("jiudianid", that.jiudianid);
             localStorage.setItem("mudiIndexnum1", "北京");
             localStorage.setItem("mudiIndexnum2", 0);
+
             sessionStorage.setItem("hotel_id", that.city["北京"][0].id);
             sessionStorage.setItem("hotelcode", that.city["北京"][0].hotel_code);
             sessionStorage.setItem("codesh", that.city["北京"][0].code);
@@ -200,22 +196,22 @@ export default {
       }
       this.reload();
     },
-    //底部选择
-    select() {
-      this.fotshow = !this.fotshow;
-    },
-    qiehuan(item, index) {
-      // console.log(item.id);
-      // console.log(index);
-      sessionStorage.setItem("hotel_index_data", item.id);
-      // this.gettoken()
-      this.reload();
-      this.gettoken()
-      setTimeout(() => {
-        this.reload();
-      }, 1000)
+    // //底部选择
+    // select() {
+    //   this.fotshow = !this.fotshow;
+    // },
+    // qiehuan(item,index) {
+    //   // console.log(item.id);
+    //   // console.log(index);
+    //   sessionStorage.setItem("hotel_index_data", item.id);
+    //   // this.gettoken()
+    //   this.reload();
+    //   this.gettoken()
+    //   setTimeout(()=>{
+    //     this.reload();
+    //   },1000)
 
-    },
+    // },
   },
 };
 </script>
@@ -288,6 +284,7 @@ export default {
 
 .footer .footer_bottom .bottom_left .bot_fot {
   display: flex;
+  align-items: center;
   font-size: 14px;
   color: #5f5f5f;
   margin-top: 15px;

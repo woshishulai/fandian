@@ -9,7 +9,7 @@
         <p>{{ infolist[0].title }}</p>
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > {{ infolist[0].title }}</p>
+        <p>Your location: Home > {{ infolist[0].title }}</p>
       </div>
       <div class="ambitus">
         <div class="main">

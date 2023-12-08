@@ -4,14 +4,12 @@
         <Header />
 
         <div class="conts">
-
             <div class="meal_top">
-                <!-- <img loading="lazy"src="../../assets/img/can1.jpg" alt=""> -->
-                <img loading="lazy" :src="Baseurl + topimg" alt="">
+                <!-- <img src="../../assets/img/can1.jpg" alt=""> -->
+                <img :src="Baseurl + topimg" alt="">
             </div>
-
             <div class="crumbs">
-                <p>您的位置：首页 > {{ topname }}</p>
+                <p>Your location: Home > {{ topname }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="canyin">
@@ -34,13 +32,13 @@
                                     @click='topath(item.id)'>
                                     <div class="can_list">
                                         <div class="can_list_img">
-                                            <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
+                                            <img :src="Baseurl + item.pc_image" alt="">
                                         </div>
                                         <div class="can_list_text">
                                             <p class="title">{{ item.title }}</p>
                                             <p class="can_list_cont">{{ item.description }}</p>
                                             <div class="button">
-                                                查看详情
+                                                Learn More
                                             </div>
                                         </div>
 
@@ -58,8 +56,8 @@
                         <div class="vips_list" v-for="(item, index) in infolist[1].news" :key="index"
                             @click="todetail(item.id)">
                             <div class="vips_list_img">
-                                <!-- <img loading="lazy"src="../../assets/img/can3.jpg" alt=""> -->
-                                <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
+                                <!-- <img src="../../assets/img/can3.jpg" alt=""> -->
+                                <img :src="Baseurl + item.pc_image" alt="">
                             </div>
                             <div class="vips_list_text">
                                 <span>{{ item.title }}</span>
@@ -273,7 +271,7 @@ export default {
     height: 44px;
     background-repeat: no-repeat;
     background-size: 100%;
-    background: url(../../assets/img/canjt.png);
+    background: url('(../../assets/img/canjt.png');
     top: -75px;
 }
 
@@ -291,11 +289,7 @@ export default {
     display: none;
 }
 
-.canyinlun .luncanyin .swiper-slide {
-    /* width: 315px !important; */
-    /* width: px !important; */
-    /* margin-right: 35px; */
-}
+
 
 .canyinlun .luncanyin .swiper-slide .can_list {
     cursor: pointer;

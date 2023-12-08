@@ -5,11 +5,11 @@
 
     <div class="conts">
       <div class="meal_top">
-        <!-- <img loading="lazy"src="../../assets/img/newwbg.jpg" alt="" /> -->
-        <img loading="lazy" :src="Baseurl + topimg" alt="">
+        <!-- <img src="../../assets/img/newwbg.jpg" alt="" /> -->
+        <img :src="Baseurl + topimg" alt="">
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > {{ topname }}</p>
+        <p>Your location: Home > {{ topname }}</p>
       </div>
       <div class="newslist">
         <div class="main">
@@ -17,7 +17,7 @@
           <div class="newslist_lunbo">
             <div class="tuku">
               <div class="tuku_list" v-for="(item, index) in infolist" :key="index" @click="start(index)">
-                <img loading="lazy" :src="Baseurl + item.pc_image" alt="" />
+                <img :src="Baseurl + item.pc_image" alt="" />
                 <div class="names">{{ item.description }}</div>
               </div>
             </div>
@@ -27,7 +27,7 @@
     </div>
     <div class="topTips" v-if="swipershow">
       <div class="close" @click="guanbi()">
-        <img loading="lazy" src="../../assets/img/cha.png" alt="" />
+        <img src="../../assets/img/cha.png" alt="" />
       </div>
       <div class="lunboblos">
         <div class="swiper-container lunbotuku">
@@ -38,8 +38,8 @@
           <div class="swiper-button-next lunyoutuku"></div>
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(item, index) in infolist" :key="index">
-              <!-- <img loading="lazy"src="../../assets/img/hotle1.jpg" alt="" /> -->
-              <img loading="lazy" :src="Baseurl + item.pc_image" alt="" />
+              <!-- <img src="../../assets/img/hotle1.jpg" alt="" /> -->
+              <img :src="Baseurl + item.pc_image" alt="" />
               <div class="wenzis">{{ item.title }}<br />{{ item.description }}</div>
             </div>
           </div>

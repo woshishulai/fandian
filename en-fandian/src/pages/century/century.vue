@@ -5,29 +5,29 @@
 
         <div class="conts">
             <div class="meal_top">
-                <!-- <img loading="lazy"src="../../assets/img/tiyan.jpg" alt=""> -->
-                <img loading="lazy" :src="Baseurl + topimg" alt="">
+                <!-- <img src="../../assets/img/tiyan.jpg" alt=""> -->
+                <img :src="Baseurl + topimg" alt="">
             </div>
             <div class="crumbs">
-                <p>您的位置：首页 > {{ topname }}</p>
+                <p>Your location: Home > {{ topname }}</p>
             </div>
             <Queryhotel class="Queryhotel" />
             <div class="tiyanone">
                 <div class="main">
-                    <div class="zhoubian" v-if="infolist[0]?.news != ''">
-                        <div class="zhoubian_tit">{{ infolist[0]?.name }}</div>
+                    <div class="zhoubian" v-if="infolist[0].news != ''">
+                        <div class="zhoubian_tit">{{ infolist[0].name }}</div>
                         <div class="zhoubian_lunbo">
                             <div class="swiper-container lunzhou">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" v-for="(item, index) in infolist[0]?.news" :key="index"
+                                    <div class="swiper-slide" v-for="(item, index) in infolist[0].news" :key="index"
                                         @click="topath(item)">
                                         <div class="list">
                                             <div class="list_nei">
                                                 <span>{{ item.title }}</span>
                                                 <p>{{ item.description }}</p>
                                                 <div class="tupian">
-                                                    <!-- <img loading="lazy"src="../../assets/img/tiyan1.jpg" alt=""> -->
-                                                    <img loading="lazy" :src="Baseurl + item.pc_image" alt="">
+                                                    <!-- <img src="../../assets/img/tiyan1.jpg" alt=""> -->
+                                                    <img :src="Baseurl + item.pc_image" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -53,35 +53,10 @@
                             }" title="Hover me" />
                         </baidu-map>
                         <div class="infomercial">
-                            <span>联系我们</span>
-                            <!-- <div v-html="infolist[1].news[0].description"></div> -->
-                            <div v-html="infolist[1]?.news[0]?.pc_content"></div>
-                            <!-- //pc_content -->
+                            <span>Contact us</span>
+                            <div v-html="infolist[1].news[0].pc_content"></div>
                         </div>
                     </div>
-                    <!-- 服务 -->
-                    <!-- <div class="fuwu">
-                        <div class="fuwuleft">
-                            <img loading="lazy":src="Baseurl+infolist[1].news[0].pc_image" alt="">
-                        </div>
-                        <div class="fueurigth">
-                            <div class="fueurigth_text">
-                                <div class="text_wenben">
-                                    <span>{{infolist[1].name}}</span>
-                                    <p>{{infolist[1].news[0].description}}</p>
-                                </div>
-                            </div>
-                            //两小块不要
-                            <div class="fueurigth_img">
-                                <div class="img">
-                                    <img loading="lazy":src="Baseurl+infolist[1].news[0].images[1].image" alt="">
-                                </div>
-                                <div class="img">
-                                    <img loading="lazy":src="Baseurl+infolist[1].news[0].images[2].image" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <!-- <div class="tiyanthere" v-if="infolist[2]">
@@ -92,7 +67,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" v-for="(item,index) in infolist[2].news" :key="index">
                                     <div class="there_tu">
-                                        <img loading="lazy":src="Baseurl+item.pc_image" alt="">
+                                        <img :src="Baseurl+item.pc_image" alt="">
                                     </div>
                                 </div>       
                                 

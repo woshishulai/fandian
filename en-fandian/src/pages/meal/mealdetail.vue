@@ -5,11 +5,11 @@
 
     <div class="conts">
       <div class="meal_top">
-        <!-- <img loading="lazy"src="../../assets/img/cande1.jpg" alt="" /> -->
-        <img loading="lazy" :src="Baseurl + topimg" alt="">
+        <!-- <img src="../../assets/img/cande1.jpg" alt="" /> -->
+        <img :src="Baseurl + topimg" alt="">
       </div>
       <div class="crumbs">
-        <p>您的位置：首页 > 餐饮</p>
+        <p>Your location: Home > {{ topname }}</p>
       </div>
       <div class="canyin">
         <div class="main">
@@ -23,7 +23,7 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" v-for="(item, index) in meallist.images" :key="index">
                     <div class="can_list_img">
-                      <img loading="lazy" :src="Baseurl + item.image" alt="" />
+                      <img :src="Baseurl + item.image" alt="" />
                     </div>
                   </div>
                 </div>
@@ -35,24 +35,24 @@
                 <p v-html="meallist.description"></p>
                 <div class="cancont">
                   <div class="rig_list">
-                    <img loading="lazy" src="../../assets/img/icon1.png" alt="" />
-                    <span>营业时间</span>
+                    <img src="../../assets/img/icon1.png" alt="" />
+                    <span>Hours of Operation </span>
                     <!-- <p>午餐: 11:30 - 14:00 , 晚餐: 17:30 - 22:00</p> -->
                     <p>{{ meallist.add_time }}</p>
                   </div>
                   <div class="rig_list">
-                    <img loading="lazy" src="../../assets/img/icon2.png" alt="" />
-                    <span>电话</span>
+                    <img src="../../assets/img/icon2.png" alt="" />
+                    <span>Phone</span>
                     <p>{{ meallist.emails }}</p>
                   </div>
                   <div class="rig_list">
-                    <img loading="lazy" src="../../assets/img/icon3.png" alt="" />
-                    <span>位置</span>
+                    <img src="../../assets/img/icon3.png" alt="" />
+                    <span>Location</span>
                     <p>{{ meallist.address }}</p>
                   </div>
                   <div class="rig_list">
-                    <img loading="lazy" src="../../assets/img/icon4.png" alt="" />
-                    <span>菜式</span>
+                    <img src="../../assets/img/icon4.png" alt="" />
+                    <span>Cuisine</span>
                     <p>{{ meallist.en_title }}</p>
                   </div>
                 </div>
@@ -60,20 +60,20 @@
               <div class="link">
                 <div class="links" @click="tolink(meallist.pc_link)">
                   <div class="img">
-                    <img loading="lazy" src="../../assets/img/link1.png" alt="">
-                    <img loading="lazy" src="../../assets/img/link1b.png" alt="">
+                    <img src="../../assets/img/link1.png" alt="">
+                    <img src="../../assets/img/link1b.png" alt="">
                   </div>
-                  <p>查看详细</p>
+                  <p>Details</p>
                 </div>
                 <div class="links">
                   <div class="img">
-                    <img loading="lazy" src="../../assets/img/link2.png" alt="">
-                    <img loading="lazy" src="../../assets/img/link2b.png" alt="">
+                    <img src="../../assets/img/link2.png" alt="">
+                    <img src="../../assets/img/link2b.png" alt="">
                   </div>
-                  <p>宴会预定</p>
+                  <p>Reserve</p>
                   <div class="fudong">
-                    <p>扫描二维码预定宴会</p>
-                    <img loading="lazy" :src="Baseurl + meallist.pinpai" alt="">
+                    <p>Scan QR code to reserve banquet</p>
+                    <img :src="Baseurl + meallist.pinpai" alt="">
                   </div>
                 </div>
               </div>
@@ -83,12 +83,12 @@
       </div>
       <div class="youhui">
         <div class="main">
-          <div class="youhui_title">其他餐饮推荐</div>
+          <div class="youhui_title">Other Restaurant Recommendations</div>
           <div class="vips">
             <div class="vips_list" v-if="mealuplist" @click="topath(boxupIndex, mealuplist.id)">
               <div class="vips_list_img">
-                <!-- <img loading="lazy"src="../../assets/img/can3.jpg" alt=""> -->
-                <img loading="lazy" :src="Baseurl + mealuplist.pc_image" alt="" />
+                <!-- <img src="../../assets/img/can3.jpg" alt=""> -->
+                <img :src="Baseurl + mealuplist.pc_image" alt="" />
               </div>
               <div class="vips_list_text">
                 <span>{{ mealuplist.title }}</span>
@@ -96,7 +96,7 @@
             </div>
             <div class="vips_list" v-if="mealdownlist" @click="topath(boxdownIndex, mealdownlist.id)">
               <div class="vips_list_img">
-                <img loading="lazy" :src="Baseurl + mealdownlist.pc_image" alt="" />
+                <img :src="Baseurl + mealdownlist.pc_image" alt="" />
               </div>
               <div class="vips_list_text">
                 <span>{{ mealdownlist.title }}</span>

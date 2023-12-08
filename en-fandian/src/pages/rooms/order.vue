@@ -5,7 +5,7 @@
 
     <div class="conts">
       <div class="crumbs">
-        <p>您的位置：首页 > 订单</p>
+        <p>Your location: Home > Orders</p>
       </div>
       <div class="order" @click="timeclose()">
         <div class="main">
@@ -13,47 +13,44 @@
             <div class="order_left">
               <div class="blocks">
                 <div class="blocklist xuzhi">
-                  <span class="spantit">订房必读</span>
+                  <span class="spantit">Room reservation notice</span>
                   <p v-html="xinxilist.description">
                   </p>
-                  <!-- <p v-html="xinxilist.description"> -->
-                  <!-- {{xinxilist.description}} -->
-                  <!-- </p> -->
                 </div>
               </div>
               <div class="blocks">
                 <div class="blocklist yuding">
-                  <span class="spantit">预定信息</span>
+                  <span class="spantit">Booking information</span>
                   <div class="reserve">
                     <!--日期  -->
                     <div class="riqi">
                       <div class="hotel_riqi">
                         <!-- 时间 -->
                         <div class="blocks">
-                          <p class="blotext">入住日期</p>
+                          <p class="blotext">Check in date</p>
                           <div class="contbox checkin" @click="getrilis()">
                             <p>{{ wwks1 }}</p>
-                            <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
+                            <img class="rilimg" src="../../assets/img/rili.png" alt="" />
                           </div>
                           <div id="calender" v-show="rilishow">
                             <div class="calender_close" @click="guan()">
-                              <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
+                              <img src="../../assets/img/gunbi.png" alt="" />
                             </div>
                             <div class="daterangepicker">
                               <div class="drp_calendar left">
                                 <div class="drp_calendar_top">
                                   <div @click="prev" class="prev">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <div @click="next" class="next">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img src="../../assets/img/jt.png" alt="" />
                                   </div>
-                                  <span class="tishispan">选择入住时间 </span>
+                                  <span class="tishispan">Select check-in time </span>
                                   <span style="">
-                                    {{ year }}年{{ month }}月
+                                    {{ year }} year {{ month }} month
                                   </span>
                                   <!-- <div @click="next" class="next"> 
-                        <img loading="lazy"src="../../assets/img/jt.png" alt=""> 
+                        <img src="../../assets/img/jt.png" alt=""> 
                       </div> -->
                                 </div>
                                 <div class="weekDay week">
@@ -77,27 +74,27 @@
                           </div>
                           <div id="calender" v-show="rilishow2">
                             <div class="calender_close" @click="guan2()">
-                              <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
+                              <img src="../../assets/img/gunbi.png" alt="" />
                             </div>
                             <div class="daterangepicker">
                               <div class="drp_calendar left">
                                 <div class="drp_calendar_top">
                                   <!-- ⬅️ ➡️️️️-->
                                   <!-- <div @click="prev" class="prev"> 
-                        <img loading="lazy"src="../../assets/img/jt.png" alt=""> 
+                        <img src="../../assets/img/jt.png" alt=""> 
                       </div> -->
-                                  <span class="tishispan">选择退房时间 </span>
+                                  <span class="tishispan">Select check-out time </span>
                                   <span style="">
-                                    {{ year2 }}年{{ month2 }}月
+                                    {{ year2 }} year {{ month2 }} month
                                   </span>
                                   <div @click="prev" class="prev">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <div @click="next" class="next">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img src="../../assets/img/jt.png" alt="" />
                                   </div>
                                   <!-- <div @click="next" class="next">
-                      <img loading="lazy"src="../../assets/img/jt.png" alt="" />
+                      <img src="../../assets/img/jt.png" alt="" />
                     </div> -->
                                 </div>
                                 <div class="weekDay">
@@ -123,21 +120,21 @@
                         <div class="blocks">
                           <p class="blotext"></p>
                           <div class="contbox jiwan">
-                            <p>{{ numwan }}晚</p>
+                            <p>{{ numwan }}<span v-if="numwan > 1">Nights</span><span v-else>Night</span></p>
                           </div>
                         </div>
                         <div class="blocks">
-                          <p class="blotext">退房日期</p>
+                          <p class="blotext">Check out date</p>
                           <div class="contbox checkin" @click="getrilis2()">
                             <p>{{ wwks2 }}</p>
-                            <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
+                            <img class="rilimg" src="../../assets/img/rili.png" alt="" />
                           </div>
                         </div>
                       </div>
                     </div>
                     <!-- 房间数下拉 -->
                     <div class="house">
-                      <p>房间数量</p>
+                      <p>No. of Room</p>
                       <div class="house_text" @click="getroom()">
                         <div class="getroom">{{ roomIndex }}</div>
                         <div class="roomnums" v-show="roomshow" :class="roomshow ? 'active' : ''">
@@ -155,23 +152,23 @@
               </div>
               <div class="blocks">
                 <div class="blocklist zhuke">
-                  <span class="spantit">住客信息</span>
+                  <span class="spantit">Guest Info</span>
                   <div class="rooms">
                     <div class="roomslist" v-if="roomIndex >= 1">
-                      <p>房间1(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names1" />
+                      <p>Room1(name)</p>
+                      <input type="text" placeholder="Please fill in one name per room" v-model="names1" />
                     </div>
                     <div class="roomslist" v-if="roomIndex >= 2">
-                      <p>房间2(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names2" />
+                      <p>Room2(name)</p>
+                      <input type="text" placeholder="Please fill in one name per room" v-model="names2" />
                     </div>
                     <div class="roomslist" v-if="roomIndex >= 3">
-                      <p>房间3(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names3" />
+                      <p>Room3(name)</p>
+                      <input type="text" placeholder=" Please fill in one name per room" v-model="names3" />
                     </div>
                     <div class="roomslist" v-if="roomIndex == 4">
-                      <p>房间4(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names4" />
+                      <p>Room4(name)</p>
+                      <input type="text" placeholder="Please fill in one name per room" v-model="names4" />
                     </div>
                     <!-- <div class="roomslist">
                       <p>房间2(姓名)</p>
@@ -179,13 +176,13 @@
                     </div> -->
                   </div>
                   <div class="dianhua">
-                    <p>电话号码</p>
+                    <p>Mobile Number</p>
                     <!-- 地区 -->
                     <div class="dianhua_cont">
                       <!-- <div class="phone_group">
                         <div class="region" @click.stop="phoneis()"> 
                           <span>{{bianhao}}</span>
-                          <img loading="lazy"class="phone_group_jt" src="../../assets/img/jt.png" :class="phoneshow?'active':''" alt=""> 
+                          <img class="phone_group_jt" src="../../assets/img/jt.png" :class="phoneshow?'active':''" alt=""> 
                         </div>                   
                         <ul class="dropul"  :class="phoneshow?'active':''"> 
                           <li class="dropul_li" v-for="(region,index) in regions" :key="index" @click="setregion(region.zone)" :class="bianhao==region.zone?'active':''">
@@ -194,26 +191,27 @@
                           </li>
                         </ul>
                       </div>   -->
-                      <input type="text" placeholder="请填写预定人电话号码" class="phones" v-model="dianhua" />
+                      <input type="text" placeholder="Please fill in mobile number" class="phones" v-model="dianhua" />
                     </div>
                   </div>
                   <div class="youxiang">
-                    <p>证件号</p>
-                    <input type="text" placeholder="请输入证件号" class="phones" v-model="shenfenID" />
+                    <p> Personal identification Document No</p>
+                    <input type="text" placeholder="Please fill in ID or passport no" class="phones"
+                      v-model="shenfenID" />
                   </div>
                   <div class="youxiang">
-                    <p>邮箱地址</p>
-                    <input type="text" placeholder="输入后请核查一下，避免输入错误" class="phones" v-model="emalis" />
+                    <p>E-mail Address</p>
+                    <input type="text" placeholder="Please fill in email address" class="phones" v-model="emalis" />
                   </div>
                 </div>
               </div>
               <div class="blocks">
                 <div class="blocklist daodian">
-                  <span class="spantit">到店时间</span>
+                  <span class="spantit">Estimated arrival time</span>
                   <div class="daodian_text">
-                    <p>客房14:00可办理入住</p>
-                    <p>24小时前台-随时提供帮助！</p>
-                    <p>预计到店时间（可选）</p>
+                    <p> Our standard check in time is 14:00 onwards</p>
+                    <p> Our front desks operate 24 hours a day</p>
+                    <p>Estimated time of arrival (optional)</p>
                   </div>
                   <div class="time" @click.stop="gettime()" :class="timeshow ? 'active' : ''">
                     <div class="gettimePart">
@@ -224,7 +222,7 @@
                       {{
                         timehour != "" && timeminute != ""
                         ? timehour + ":" + timeminute
-                        : "请选择"
+                        : "Please select "
                       }}
                     </div>
                     <div class="timePart" v-if="timeshow">
@@ -257,26 +255,26 @@
               </div>
               <div class="blocks">
                 <div class="blocklist fapiao">
-                  <span class="spantit">发票信息</span>
-                  <p>如需要发票，请在入住当天从酒店前台索取</p>
+                  <span class="spantit">The invoice information</span>
+                  <p>Should you need an invoice for your stay, please request for it upon check in at the front desk</p>
                   <!-- <div class=""></div> -->
-                  <span class="spantit">支付方式</span>
+                  <span class="spantit">Method of Payment</span>
                   <div class="zhifu">
                     <div class="zhifulist" v-if="roomslist.zffs != '1'">
                       <div class="zhifuicon" @click="payment(2)">
-                        <img loading="lazy" v-if="zhifu == 2" src="../../assets/img/xz.png" alt="" />
-                        <img loading="lazy" v-if="zhifu == 1" src="../../assets/img/wxz.png" alt="" />
+                        <img v-if="zhifu == 2" src="../../assets/img/xz.png" alt="" />
+                        <img v-if="zhifu == 1" src="../../assets/img/wxz.png" alt="" />
                       </div>
-                      <p>微信支付</p>
+                      <p>WeChat pay</p>
                     </div>
                     <div class="zhifulist" v-if="roomslist.zffs != '2'">
                       <div class="zhifuicon" @click="payment(1)">
-                        <!-- <img loading="lazy":class="zhifu==1?'img2':'img1'" src="../../assets/img/xz.png" alt="" />
-                        <img loading="lazy":class="zhifu==1?'img1':'img2'" src="../../assets/img/wxz.png" alt="" /> -->
-                        <img loading="lazy" v-if="zhifu == 1" src="../../assets/img/xz.png" alt="" />
-                        <img loading="lazy" v-if="zhifu == 2" src="../../assets/img/wxz.png" alt="" />
+                        <!-- <img :class="zhifu==1?'img2':'img1'" src="../../assets/img/xz.png" alt="" />
+                        <img :class="zhifu==1?'img1':'img2'" src="../../assets/img/wxz.png" alt="" /> -->
+                        <img v-if="zhifu == 1" src="../../assets/img/xz.png" alt="" />
+                        <img v-if="zhifu == 2" src="../../assets/img/wxz.png" alt="" />
                       </div>
-                      <p>酒店前台支付</p>
+                      <p>Pay upon Check-in</p>
                     </div>
                   </div>
                 </div>
@@ -284,79 +282,80 @@
               <div class="blocks">
                 <div class="blocklist dinggou">
                   <div class="tiaokuan">
-                    <img loading="lazy" src="../../assets/img/xz.png" alt="" />
-                    <p>同意</p>
-                    <span @click="getwin(2)">使用条款</span>
+                    <img src="../../assets/img/xz.png" alt="" />
+                    <p>Accept</p>
+                    <span @click="getwin(2)">Terms & Conditions</span>
                   </div>
                   <div class="price">
                     <div class="price_text">
-                      <p>价格：</p>
-                      <span>{{ jiage }}元</span>
+                      <p>Price:</p>
+                      <span>￥{{ jiage }}</span>
                     </div>
-                    <div class="price_pay" @click="tijiao">去订购</div>
+                    <div class="price_pay" @click="tijiao">Reserve now</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="order_right">
-              <span class="spantie">订单详情</span>
+              <span class="spantie">The order details</span>
               <div class="tupian">
-                <!-- <img loading="lazy"src="../../assets/img/room1.jpg" alt="" /> -->
-                <img loading="lazy" :src="Baseurl + roomslist.pc_image" alt="" />
+                <!-- <img src="../../assets/img/room1.jpg" alt="" /> -->
+                <img :src="Baseurl + roomslist.pc_image" alt="" />
               </div>
               <div class="jieshao">
                 <div class="blo1">
-                  <span class="spnas">房型：</span>
+                  <span class="spnas">Room:</span>
                   <p>{{ roomslist.title }}</p>
                 </div>
                 <div class="blo2">
                   <div class="blo2_left">
-                    <span class="spnas">入住时间：</span>
+                    <span class="spnas">C/I Time</span>
                     <p v-if="starttime">
-                      {{ starttime.split("-")[0] }}年
-                      {{ starttime.split("-")[1] }}月{{
+                      {{ starttime.split("-")[0] }}/{{ starttime.split("-")[1] }}/{{
                         starttime.split("-")[2]
-                      }}日
+                      }}
                     </p>
                     <!-- starttime: "",endtime -->
                     <!-- <p>星期{{ wwks1.slice(1, 2) }} 14:00起</p> -->
                     <p>{{ nowweek1 }}</p>
                   </div>
                   <div class="blo2_right">
-                    <span class="spnas">退房时间：</span>
+                    <span class="spnas">C/O Time</span>
                     <p v-if="endtime">
-                      {{ endtime.split("-")[0] }}年
-                      {{ endtime.split("-")[1] }}月{{ endtime.split("-")[2] }}日
+                      {{ endtime.split("-")[0] }}/{{ endtime.split("-")[1] }}/{{ endtime.split("-")[2] }}
                     </p>
                     <!-- <p>星期{{ wwks2.slice(1, 2) }} 12:00前</p> -->
                     <p>{{ nowweek2 }}</p>
                   </div>
                 </div>
                 <div class="blo3">
-                  <span class="spnas">入住总天数：</span>
-                  <p>{{ numwan }}晚</p>
+                  <span class="spnas">Length of stay:</span>
+                  <p>{{ numwan }}<span v-if="numwan > 1">Nights</span><span v-else>Night</span></p>
                 </div>
                 <div class="blo4">
-                  <span class="spnas">价格汇总</span>
+                  <span class="spnas">Rate</span>
                   <div class="jiage" v-for="(item, index) in pricetimelist" :key="index">
                     <p>{{ item.day }}</p>
-                    <p>{{ item.salePrice }}元</p>
+                    <p>￥{{ item.salePrice }}</p>
                   </div>
                   <div class="jiage">
-                    <p>{{ endtime }}离店</p>
+                    <p>{{ endtime }} Check Out</p>
                   </div>
                   <div class="jiage">
-                    <p>总计：{{ numwan }}晚{{ roomIndex }}间</p>
-                    <p>{{ jiage }}元</p>
+                    <p>Rate:{{ numwan }}<span v-if="numwan > 1">Nights</span><span v-else>Night</span>
+                      {{ roomIndex }}
+                      <span v-if="roomIndex > 1">Rooms</span><span v-else>Room</span>
+                    </p>
+                    <p>￥{{ jiage }}</p>
                   </div>
                 </div>
               </div>
               <div class="yingfu">
-                <p>应付总额：</p>
-                <p>{{ jiage }}元</p>
+                <p>Total amount payable:</p>
+                <p>￥{{ jiage }}</p>
               </div>
               <div class="quxiao">
-                <p>取消规则</p>
+                <p>Cancellation rules</p>
                 <p v-html="xinxilist.description1">
                 </p>
               </div>
@@ -376,28 +375,28 @@
     <div class="zhifuye" v-if="zhifushow">
       <div class="erweima">
         <div v-if="success == 0">
-          <div class="erweima_title">请扫描下方二维码支付</div>
+          <dir class="erweima_title">Please scan the QR code below to pay</dir>
           <div id="qrcode" ref="qrcode"></div>
         </div>
         <div class="erweima_text" v-if="success == 1">
-          <img loading="lazy" src="../../assets/img/pay_over.png" alt="" />
-          <div class="erweima_title">支付成功</div>
-          <div>订单号：{{ hy_bill_no }}</div>
+          <img src="../../assets/img/pay_over.png" alt="" />
+          <div class="erweima_title">Pay for success</div>
+          <div>The order no：{{ hy_bill_no }}</div>
         </div>
         <div class="erweima_text" v-if="success == 2">
-          <div class="erweima_title">订单已取消</div>
-          <div>订单号：{{ hy_bill_no }}</div>
+          <div class="erweima_title">The order has been cancelled</div>
+          <div>The order no：{{ hy_bill_no }}</div>
         </div>
         <div class="erweima_text" v-if="success == 3">
-          <div class="erweima_title">订单已超时</div>
-          <div>订单号：{{ hy_bill_no }}</div>
+          <div class="erweima_title">The order has timed out</div>
+          <div>The order no：{{ hy_bill_no }}</div>
         </div>
-        <div class="retunrnindex" @click="retunrnindex">取消</div>
+        <div class="retunrnindex" @click="retunrnindex">cancellation</div>
       </div>
     </div>
     <div class="windows1" v-show="wind2" @click="btshow(2)">
       <div class="wintext">
-        <span>使用条款</span>
+        <span>Terms of use</span>
         <p v-html="xinxilist.description2"></p>
       </div>
     </div>
@@ -425,7 +424,7 @@ export default {
       month: "", // 月份
       day: "", // 天数
       current: "", // 当前时间
-      weekList: ["一", "二", "三", "四", "五", "六", "日"],
+      weekList: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       monthDay: [31, "", 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       activeDay: 40, // 选中的日期
       spaceDay: "", // 每个月第一天是星期几
@@ -441,7 +440,7 @@ export default {
       month2: "", // 月份
       day2: "", // 天数
       current2: "", // 当前时间
-      weekList2: ["一", "二", "三", "四", "五", "六", "日"],
+      weekList2: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       monthDay2: [31, "", 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       activeDay2: 40, // 选中的日期
       spaceDay2: "", // 每个月第一天是星期几
@@ -654,8 +653,8 @@ export default {
     console.log(this.numwan)
     this.wwks1 = this.starttime?.replace(/-/, "/").replace(/-/, "/");
     this.wwks2 = this.endtime?.replace(/-/, "/").replace(/-/, "/");
-    this.nowweek1 = "星期" + this.getweekday(this.wwks1)
-    this.nowweek2 = "星期" + this.getweekday(this.wwks2)
+    this.nowweek1 = this.getweekday(this.wwks1)
+    this.nowweek2 = this.getweekday(this.wwks2)
     this.current = new Date();
     // console.log(this.current)
     var nowDate = this.current;
@@ -714,7 +713,7 @@ export default {
   inject: ["reload"],
   methods: {
     getweekday(date) {
-      var weekArray = new Array("日", "一", "二", "三", "四", "五", "六");
+      var weekArray = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
       var week = weekArray[new Date(date).getDay()];//注意此处必须是先new一个Date
       return week;
     },
@@ -847,7 +846,7 @@ export default {
           that.fangfei = that.sumElementAtIndex(that.pricetimelist, "salePrice")
           that.ratecodeCode = res.data.data.ratecode;
           if (that.pricetimelist.length == 0) {
-            that.tishi("当前所选日期暂无此房型,请更换日期或房型");
+            that.tishi("The currently selected date does not have this room type. Please change the date or room type");
           }
           that.jiage =
             parseInt(that.roomIndex) *
@@ -914,7 +913,7 @@ export default {
           that.tishi(res.data.msg);
           if ((res.data.status == '000000')) {
             if (res.data.pay_type == '1') {
-              that.tishi("酒店前台预定成功");
+              that.tishi("Hotel front desk reservation successful");
               setTimeout(() => {
                 that.$router.push({ name: "orderlist" });//取消去列表页
               }, 2000)
@@ -986,7 +985,7 @@ export default {
           if (res.data.status == "000000") {
             that.success = res.data.type;
           } else {
-            that.tishi("订单查询失败请重新下单");
+            that.tishi("Order query failed. Please place a new order");
           }
         })
         .catch((err) => console.log(err));
@@ -1152,7 +1151,7 @@ export default {
           this.month +
           "/" +
           this.day;
-        this.nowweek1 = "星期" + this.getweekday(this.wwks1),
+        this.nowweek1 = this.getweekday(this.wwks1),
           this.starttime = this.year + "-" + this.month + "-" + this.day;
         this.activeDay = idx;
         localStorage.setItem("wwks1", this.wwks1);
@@ -1164,7 +1163,7 @@ export default {
           var bb = aa.setDate(aa.getDate() + 1)
           var cc = this.timestampToTime(bb)
           this.wwks2 = cc.replace(/-/g, '/')
-          this.nowweek2 = "星期" + this.getweekday(this.wwks2)
+          this.nowweek2 = this.getweekday(this.wwks2)
           this.endtime = cc;
           localStorage.setItem("wwks2", this.wwks2);
           localStorage.setItem("endtime", this.endtime);
@@ -1211,7 +1210,7 @@ export default {
           this.month2 +
           "/" +
           this.day2;
-        this.nowweek2 = "星期" + this.getweekday(this.wwks2)
+        this.nowweek2 = this.getweekday(this.wwks2)
         this.activeDay2 = idx;
         this.endtime = this.year2 + "-" + this.month2 + "-" + this.day2;
         localStorage.setItem("wwks2", this.wwks2);

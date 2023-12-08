@@ -5,7 +5,7 @@
         <div class="hotel_riqi">
           <!-- 目的地 -->
           <div class="blocks">
-            <p class="blotext">目的地：</p>
+            <p class="blotext">Destination：</p>
             <div class="contbox mudi" @click="getomudi()">
               <p>{{ mudiIndex }}</p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
@@ -41,7 +41,7 @@
           </div>
           <!-- 时间 -->
           <div class="blocks">
-            <p class="blotext">入住：</p>
+            <p class="blotext">C/I Date：</p>
             <div class="contbox checkin" @click="getrilis()">
               <p>{{ wwks1 }}</p>
               <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
@@ -59,8 +59,8 @@
                     <div @click="next" class="next">
                       <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                     </div>
-                    <span class="tishispan">选择入住时间 </span>
-                    <span style=""> {{ year }}年{{ month }}月 </span>
+                    <span class="tishispan">Select check-in time </span>
+                    <span style=""> {{ year }}年{{ month }}month </span>
                   </div>
                   <div class="weekDay week">
                     <p v-for="item in weekList" :key="item.id">{{ item }}</p>
@@ -82,8 +82,8 @@
               <div class="daterangepicker">
                 <div class="drp_calendar left">
                   <div class="drp_calendar_top">
-                    <span class="tishispan">选择退房时间 </span>
-                    <span style=""> {{ year2 }}年{{ month2 }}月 </span>
+                    <span class="tishispan">Select check-out time </span>
+                    <span style=""> {{ year2 }}year{{ month2 }}month </span>
                     <div @click="prev" class="prev">
                       <img loading="lazy" src="../../assets/img/jt.png" alt="" />
                     </div>
@@ -112,11 +112,11 @@
           <div class="blocks">
             <p class="blotext"></p>
             <div class="contbox jiwan">
-              <p>{{ numwan }}晚</p>
+              <p>{{ numwan }}<span v-if="numwan > 1">Nights</span><span v-else>Night</span></p>
             </div>
           </div>
           <div class="blocks">
-            <p class="blotext">退房：</p>
+            <p class="blotext">C/O Date：</p>
             <div class="contbox checkin" @click="getrilis2()">
               <p>{{ wwks2 }}</p>
               <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
@@ -124,9 +124,9 @@
           </div>
           <!-- 房间数 -->
           <div class="blocks">
-            <p class="blotext">房间数量：</p>
+            <p class="blotext">Rooms：</p>
             <div class="contbox romsnum" @click="getroom()">
-              <p>{{ roomIndex }}间</p>
+              <p>{{ roomIndex }} <span v-if="roomIndex > 1">Rooms</span><span v-else>Room</span></p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt=""
                 :style="roomshow ? 'transform: rotate(180deg)' : ''" />
             </div>
@@ -141,9 +141,10 @@
           </div>
           <!-- 人数 -->
           <div class="blocks" @click="people()">
-            <p class="blotext">人数：</p>
+            <p class="blotext">Number of people：</p>
             <div class="contbox peoplenum">
-              <p>{{ daren }}成人,{{ xiaohai }}儿童</p>
+              <p>{{ daren }}<span v-if="daren > 1">Adults</span><span v-else>Adult</span>,{{ xiaohai }}<span
+                  v-if="xiaohai > 1">Childrens</span><span v-else>Children</span></p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
             <div class="persons" v-if="peopleshow">
@@ -153,7 +154,7 @@
               </div> -->
               <div class="peolcont">
                 <div class="peolcontlist">
-                  <div class="peolist_left">每间房最多住3人</div>
+                  <div class="peolist_left">Maximum 3 pax in one room</div>
                   <!-- <div class="peolist_right">
                     <div class="addsubtra jian active" @click.stop="jian(0)">-</div>
                     <div class="peolist_num">{{daren}}</div>
@@ -161,7 +162,7 @@
                   </div> -->
                 </div>
                 <div class="peolcontlist">
-                  <div class="peolist_left">成人</div>
+                  <div class="peolist_left">Adult</div>
                   <div class="peolist_right">
                     <div class="addsubtra jian active" @click.stop="jian(0)">
                       -
@@ -171,7 +172,7 @@
                   </div>
                 </div>
                 <div class="peolcontlist">
-                  <div class="peolist_left">儿童</div>
+                  <div class="peolist_left">Children</div>
                   <div class="peolist_right">
                     <div class="addsubtra jian" @click.stop="jian(1)">-</div>
                     <div class="peolist_num">{{ xiaohai }}</div>
@@ -183,7 +184,7 @@
           </div>
           <!-- 房屋偏好 -->
           <div class="blocks">
-            <p class="blotext">房屋偏好：</p>
+            <p class="blotext">Rates：</p>
             <div class="contbox housegood" @click="getoianhao()">
               <p>{{ compIndex }}</p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
@@ -199,7 +200,7 @@
           </div>
           <!-- 公司ID -->
           <div class="blocks">
-            <p class="blotext">公司ID：</p>
+            <p class="blotext">Corporate ID：</p>
             <div class="contbox companyid">
               <input type="text" v-model="compid" />
               <!-- <p>1间</p> -->
@@ -216,7 +217,7 @@
                   <path fill="#ffffff"
                     d="M1007.548064 899.256487L801.043871 692.754294c-3.577986-3.577986-8.032969-5.329979-12.194952-8.032969C908.82345 515.091988 893.926508 279.233909 742.042101 127.349503c-169.701337-169.775337-444.918262-169.775337-614.692598 0-169.775337 169.701337-169.775337 444.845262 0 614.692598 153.5634 153.5644 392.635466 166.708349 562.701801 42.498834 2.701989 3.869985 4.380983 8.104968 7.73997 11.536955L904.296468 1002.582084c28.624888 28.551888 74.773708 28.551888 103.252596 0 28.477889-28.623888 28.477889-74.846708 0-103.324597zM655.074441 654.927442c-121.653525 121.654525-318.884754 121.654525-440.611279 0-121.653525-121.652525-121.653525-318.956754 0-440.610279s318.884754-121.653525 440.611279 0c121.726525 121.726525 121.726525 318.957754 0 440.611279z" />
                 </svg>
-                <p>搜索</p>
+                <p>Search</p>
               </div>
             </div>
           </div>
@@ -1187,7 +1188,8 @@ li {
 
 /* 房间数量 */
 .hotel_riqi .contbox.romsnum {
-  width: 110px;
+  /* width: 110px; */
+  width: 130px;
 }
 
 .roomnums {
@@ -1203,6 +1205,17 @@ li {
   z-index: 9;
   /* border-radius: 15px;
   overflow: hidden; */
+}
+
+.roomnums.pianhao {
+  width: 474px;
+}
+
+.hotel_riqi .contbox.housegood>p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .roomnums ul {
@@ -1235,12 +1248,14 @@ li {
 
 /* 人数 */
 .hotel_riqi .contbox.peoplenum {
-  width: 175px;
+  /* width: 175px; */
+  width: 220px;
 }
 
 .hotel_riqi .persons {
   /* 文字  */
-  width: 250px;
+  /* width: 250px; */
+  width: 300px;
   position: absolute;
   /* height: 300px; */
   background: #fff;
