@@ -30,6 +30,7 @@
                                             <div class="version_eara">
                                                 <span>{{ itemMsg.title }}</span>
                                                 <p v-html="itemMsg.pc_content">
+
                                                 </p>
                                                 <div class="room_detail">查看详细</div>
                                             </div>
@@ -72,7 +73,6 @@ export default {
             startDate: '',
             endDate: '',
             numDay: '1',//默认一天
-
             topimg: '',
             topname: '',
             mudiIndex: "",
@@ -109,27 +109,33 @@ export default {
 
         //     that.mudiIndexnum1 = localStorage.getItem("mudiIndexnum1");
         //   that.mudiIndexnum2 = localStorage.getItem("mudiIndexnum2");
-        if (this.$route.query.startDate) {
-            this.startDate = this.$route.query.startDate
-        } else {
-            this.startDate = this.GetDateStr(0)
-            console.log(this.startDate)
-        }
-        if (this.$route.query.endDate) {
-            this.endDate = this.$route.query.endDate
-        } else {
-            this.endDate = this.GetDateStr(1)
-            console.log(this.startDate)
-        }
-        if (this.$route.query.numDay) {
-            this.numDay = this.$route.query.numDay
-        } else {
-            this.numDay = "1"
-            console.log(this.numDay)
-        }
-        if (this.$route.query.prono) {
-            this.prono = this.$route.query.prono
-        }
+        this.startDate = localStorage.getItem('startDate') || this.GetDateStr(0)
+        this.endDate = localStorage.getItem('endDate') || this.GetDateStr(1)
+        this.numDay = localStorage.getItem('numDay') || "1"
+        this.prono = localStorage.getItem('prono') || ''
+        console.log(this.startDate, this.endDate, this.numDay, this.prono);
+
+        // if (this.$route.query.startDate) {
+        //     this.startDate = this.$route.query.startDate
+        // } else {
+        //     this.startDate = this.GetDateStr(0)
+        //     console.log(this.startDate)
+        // }
+        // if (this.$route.query.endDate) {
+        //     this.endDate = this.$route.query.endDate
+        // } else {
+        //     this.endDate = this.GetDateStr(1)
+        //     console.log(this.startDate)
+        // }
+        // if (this.$route.query.numDay) {
+        //     this.numDay = this.$route.query.numDay
+        // } else {
+        //     this.numDay = "1"
+        //     console.log(this.numDay)
+        // }
+        // if (this.$route.query.prono) {
+        //     this.prono = this.$route.query.prono
+        // }
 
 
         this.getroomlist()
@@ -238,17 +244,20 @@ export default {
         // },
         roomdeatil(id, looks) {
             console.log(id)
+            localStorage.setItem('roomId', id)
+            localStorage.setItem('looks', looks)
+            localStorage.setItem('listid', id)
             this.$router.push({
                 name: "RoomsDetail",
-                query: {
-                    roomId: id,
-                    looks: looks,
-                    startDate: this.startDate,
-                    endDate: this.endDate,
-                    numDay: this.numDay,//默认一天
-                    prono: this.prono,
-                    listid: id,
-                },
+                // query: {
+                //     roomId: id,
+                //     looks: looks,
+                //     // startDate: this.startDate,
+                //     // endDate: this.endDate,
+                //     // numDay: this.numDay,//默认一天
+                //     // prono: this.prono,
+                //     listid: id,
+                // },
             });
         },
         lunbo() {
