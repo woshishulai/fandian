@@ -44,7 +44,7 @@ export default {
     setTimeout(() => {
       this.reload()
       this.gettoken();
-    }, 500)
+    }, 1500)
     this.goOrther()
   },
   methods: {

@@ -6,7 +6,7 @@
         <img loading="lazy" src="../../assets/img/shijilogo.png" alt="" />
       </div>
       <p class="jiaru" @click="pages(0)">
-        {{ footlist.str }}
+        {{ footlist?.str }}
       </p>
     </div>
     <div class="footer_bottom">
@@ -21,16 +21,16 @@
             <p @click="pages(4)">法律声明</p> -->
         </div>
         <div class="bot_cen">
-          <p v-if="footlist.company_address != ''">地址 : {{ footlist.company_address }}</p>
-          <p v-if="footlist.company_email != ''">邮政编码 : {{ footlist.company_email }}</p>
-          <p v-if="footlist.company_tphone != ''">总机 : {{ footlist.company_tphone }}</p>
-          <p v-if="footlist.web_domain != ''">传真 : {{ footlist.web_domain }}</p>
+          <p v-if="footlist?.company_address != ''">地址 : {{ footlist?.company_address }}</p>
+          <p v-if="footlist?.company_email != ''">邮政编码 : {{ footlist?.company_email }}</p>
+          <p v-if="footlist?.company_tphone != ''">总机 : {{ footlist?.company_tphone }}</p>
+          <p v-if="footlist?.web_domain != ''">传真 : {{ footlist?.web_domain }}</p>
         </div>
         <div class="bot_fot">
-          <p>{{ footlist.web_copyright }} 保留所有权利</p>
-          <p v-html="footlist.web_beian"></p>
+          <p>{{ footlist?.web_copyright }} 保留所有权利</p>
+          <p v-html="footlist?.web_beian"></p>
           <img loading="lazy" class="bei" src="../../assets/img/bei.png" alt="">
-          <p v-html="footlist.company_name"></p>
+          <p v-html="footlist?.company_name"></p>
         </div>
       </div>
       <div class="bottom_right">
@@ -38,8 +38,8 @@
           <p>关注我们：</p>
           <div class="guan guan1">
             <!-- <div class="xian xian1"></div> -->
-            <!-- footlist.web_name -->
-            <a :href="footlist.web_name">
+            <!-- footlist?.web_name -->
+            <a :href="footlist?.web_name">
               <img loading="lazy" src="../../assets/img/weibo.png" alt="" />
             </a>
           </div>
@@ -48,7 +48,7 @@
             <div class="xian">
               <!-- <img loading="lazy"src="../../assets/img/erweima.jpg" alt=""> -->
               <!-- weixin_path -->
-              <img loading="lazy" :src="Baseurl + footlist.weixin_path" alt="" />
+              <img loading="lazy" :src="Baseurl + footlist?.weixin_path" alt="" />
             </div>
           </div>
         </div>
