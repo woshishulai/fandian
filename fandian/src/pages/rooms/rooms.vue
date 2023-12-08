@@ -182,13 +182,16 @@ export default {
             // console.log(day.getTime())
             var nowday = this.GetDateStr(0)
             var nextday = this.GetDateStr(1)
+            localStorage.setItem('startDate', nowday)
+            localStorage.setItem('endDate', nextday)
+            localStorage.setItem('numDay', 1)
             this.$router.push({
                 name: 'RoomsList',
-                query: {
-                    startDate: nowday,
-                    endDate: nextday,
-                    numDay: '1',//默认一天
-                }
+                // query: {
+                //     startDate: nowday,
+                //     endDate: nextday,
+                //     numDay: '1',//默认一天
+                // }
             })
         },
         GetDateStr(AddDayCount) {
@@ -203,15 +206,20 @@ export default {
         roomdeatil(id, looks) {
             console.log(id)
             console.log(looks)
+            localStorage.setItem('roomId', id)
+            localStorage.setItem('looks', looks)
+            localStorage.setItem('startDate', this.GetDateStr(0))
+            localStorage.setItem('endDate', this.GetDateStr(1))
+            localStorage.setItem('numDay', 1)
             this.$router.push({
                 name: 'RoomsDetail',
-                query: {
-                    roomId: id,
-                    looks: looks,
-                    startDate: this.GetDateStr(0),
-                    endDate: this.GetDateStr(1),
-                    numDay: 1,//默认一天
-                }
+                // query: {
+                //     roomId: id,
+                //     looks: looks,
+                //     startDate: this.GetDateStr(0),
+                //     endDate: this.GetDateStr(1),
+                //     numDay: 1,//默认一天
+                // }
             })
         },
         texiao() {

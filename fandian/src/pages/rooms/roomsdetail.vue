@@ -178,25 +178,27 @@ export default {
     },
 
     created() {
-        if (this.$route.query.listid) {
-            this.listid = this.$route.query.listid
-            console.log(this.listid)
-        }
-        if (this.$route.query.prono) {
-            this.prono = this.$route.query.prono
-        }
+        this.listid = localStorage.getItem('listid')
+        this.prono = localStorage.getItem('prono')
+        this.startDate = localStorage.getItem('startDate') || this.GetDateStr(0)
+        this.endDate = localStorage.getItem('endDate') || this.GetDateStr(1)
+        this.numDay = localStorage.getItem('numDay') || "1"
+        this.prono = localStorage.getItem('prono') || ''
+        this.roomId = localStorage.getItem('roomId') || ''
+        this.looks = localStorage.getItem('looks') || ''
+        // if (this.$route.query.listid) {
+        //     this.listid = this.$route.query.listid
+        //     console.log(this.listid)
+        // }
+        // if (this.$route.query.prono) {
+        //     this.prono = this.$route.query.prono
+        // }
         // 储存第几个头部状态
         localStorage.setItem("istrue", 2);
         this.token = sessionStorage.getItem("token");
         this.hotel_id = sessionStorage.getItem("hotel_id");
         this.hotelcode = sessionStorage.getItem("hotelcode");
-
         this.codesh = sessionStorage.getItem("codesh")
-        this.looks = this.$route.query.looks
-        this.startDate = this.$route.query.startDate
-        this.endDate = this.$route.query.endDate
-        this.numDay = this.$route.query.numDay
-        this.roomId = this.$route.query.roomId
         if (this.accountNumber == null) {
             this.accountNumber == ''
         }

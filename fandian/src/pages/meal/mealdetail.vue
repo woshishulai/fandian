@@ -147,7 +147,7 @@ export default {
     // console.log(this.token);
     this.hotel_id = sessionStorage.getItem("hotel_id");
 
-    this.mealId = this.$route.query.mealId;
+    this.mealId = this.$route.query.mealId || localStorage.getItem('mealId')
     // if (sessionStorage.getItem("fieldData")) {
     //   var fieldData = JSON.parse(sessionStorage.getItem("fieldData"));
     //   this.modularid = fieldData[2].id;

@@ -178,21 +178,24 @@ export default {
 
         topath(id) {
             console.log('id:' + id)
+            localStorage.setItem('mealId', id)
             this.$router.push({
                 name: 'MealDetail',
-                query: {
-                    mealId: id
-                }
+                // query: {
+                //     // mealId: id
+                // }
             })
         },
         todetail(id) {
             console.log('id:' + id)
+            localStorage.setItem('detailsId', id)
+            localStorage.setItem('img', this.topimg)
             this.$router.push({
                 name: 'Details',
-                query: {
-                    detailsId: id,
-                    img: this.topimg
-                }
+                // query: {
+                //     detailsId: id,
+                //     img: this.topimg
+                // }
             })
         }
         // handleClickSlide(vm){

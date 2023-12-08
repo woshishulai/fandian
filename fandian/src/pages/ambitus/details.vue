@@ -69,16 +69,14 @@ export default {
       var fieldData = JSON.parse(sessionStorage.getItem("fieldData"));
       this.modularid = fieldData[1].id;
     }
-
-    if (this.$route.query.detailsId && this.$route.query.detailsId != '') {
-      this.detailsId = this.$route.query.detailsId;
-      this.img = this.$route.query.img
+    localStorage.getItem('detailsId')
+    if (localStorage.getItem('detailsId') && localStorage.getItem('detailsId') != '') {
+      this.detailsId = localStorage.getItem('detailsId');
+      this.img = localStorage.getItem('img')
       this.getdatalist();
-
     }
     else {
       this.wenben()
-
     }
 
   },

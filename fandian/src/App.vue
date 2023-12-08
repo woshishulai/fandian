@@ -1,15 +1,3 @@
-<!-- <script setup>
-</script>
-
-<template>
-  <div class="app">
-    <RouterView></RouterView>
-  </div>
-</template>
-
-<style scoped lang="less"></style> -->
-
-
 <template>
   <div id="app">
     <router-view v-if="isReactive"></router-view>
@@ -53,10 +41,10 @@ export default {
   created() {
     // if (sessionStorage.getItem("hotelcode") && sessionStorage.getItem("hotelcode") != '') {
     this.gettoken();
-    setTimeout(() => {
-      this.reload()
-      this.gettoken();
-    }, 1500)
+    // setTimeout(() => {
+    //   this.reload()
+    //   this.gettoken();
+    // }, 1500)
     this.goOrther()
   },
   methods: {
@@ -339,6 +327,7 @@ html {
   padding: 0;
   /* font-family: 'siyuan'; */
   font-weight: 300;
+
 }
 
 /* 清除浮动 */

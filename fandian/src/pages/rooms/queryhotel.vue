@@ -755,15 +755,20 @@ export default {
       // console.log(this.endtime);
       // console.log(this.roomIndex);
       // console.log(this.daren);
+      localStorage.setItem('startDate', this.starttime)
+      localStorage.setItem('endDate', this.endtime)
+      localStorage.setItem('numDay', this.roomIndex)
+      localStorage.setItem('prono', this.compid)
       this.$router.push({
         path: `/roomslist`,
-        query: {
-          startDate: this.starttime,
-          endDate: this.endtime,
-          numDay: this.roomIndex,//默认一天
-          prono: this.compid,
-        },
+        // query: {
+        //   startDate: this.starttime,
+        //   endDate: this.endtime,
+        //   numDay: this.roomIndex,//默认一天
+        //   prono: this.compid,
+        // },
       });
+
       this.reload()
     },
 
