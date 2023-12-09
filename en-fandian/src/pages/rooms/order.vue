@@ -375,7 +375,7 @@
     <div class="zhifuye" v-if="zhifushow">
       <div class="erweima">
         <div v-if="success == 0">
-          <dir class="erweima_title">Please scan the QR code below to pay</dir>
+          <div class="erweima_title">Please scan the QR code below to pay</div>
           <div id="qrcode" ref="qrcode"></div>
         </div>
         <div class="erweima_text" v-if="success == 1">
@@ -616,7 +616,7 @@ export default {
     this.looks = localStorage.getItem('looks')
     console.log(this.looks);
     // this.priceIndex = this.$route.query.priceIndex;
-    this.looks = localStorage.getItem('priceIndex')
+    this.priceIndex = localStorage.getItem('priceIndex')
     console.log(this.priceIndex);
     // this.roomId = this.$route.query.roomId;
     this.roomId = localStorage.getItem('roomId')

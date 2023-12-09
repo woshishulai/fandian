@@ -1,174 +1,177 @@
 <template>
-        <div class="container">
-            <!-- 公共头部 -->
-            <Header />
+    <div class="container">
+        <!-- 公共头部 -->
+        <Header />
 
-            <div class="conts">
-                <div class="meal_top">
-                    <!-- <img src="../../assets/img/cande1.jpg" alt=""> -->
-                    <img :src="Baseurl + topimg" alt="">
-                </div>
-                <div class="crumbs">
-                    <p>Your location: Home  > {{ topname }}</p>
-                </div>
-                <Queryhotel  class="Queryhotel"/>
-                <div class="canyin">
-                    <div class="main">
-                        <div class="yuxiang" v-if="infolist[0]">
-                            <div class="canyinlun">
-                                <div class="swiper-container luncanyin">
-                                    <!-- 如果需要导航按钮 -->
-                                    <div class="swiper-button-prev prevcan"></div>
-                                    <div class="swiper-button-next nextcan"></div>
-                                    <div class="swiper-wrapper" >
-                                        <div class="swiper-slide" v-for="(item, index) in swiperImg" :key="index">
-                                            <div class="can_list_img">
-                                                <img :src="Baseurl + item.image" alt="">
-                                                <!-- <img src="../../assets/img/yanhui1.jpg" alt=""> -->
-                                            </div>
+        <div class="conts">
+            <div class="meal_top">
+                <!-- <img src="../../assets/img/cande1.jpg" alt=""> -->
+                <img :src="Baseurl + topimg" alt="">
+            </div>
+            <div class="crumbs">
+                <p>Your location: Home > {{ topname }}</p>
+            </div>
+            <Queryhotel class="Queryhotel" />
+            <div class="canyin">
+                <div class="main">
+                    <div class="yuxiang" v-if="infolist[0]">
+                        <div class="canyinlun">
+                            <div class="swiper-container luncanyin">
+                                <!-- 如果需要导航按钮 -->
+                                <div class="swiper-button-prev prevcan"></div>
+                                <div class="swiper-button-next nextcan"></div>
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" v-for="(item, index) in swiperImg" :key="index">
+                                        <div class="can_list_img">
+                                            <img :src="Baseurl + item.image" alt="">
+                                            <!-- <img src="../../assets/img/yanhui1.jpg" alt=""> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="canyin_right">
-                                <div class="canyin_right_text clearfix">
-                                    <span>{{ infolist[0].name }}</span>
-                                    <p>{{ infolist[0].news[0].description }}</p>
-                                    <div class="anniuyu" @click="yuyan()">Start your plan here</div>
-                                </div>
+                        </div>
+                        <div class="canyin_right">
+                            <div class="canyin_right_text clearfix">
+                                <span>{{ infolist[0].name }}</span>
+                                <p>{{ infolist[0].news[0].description }}</p>
+                                <div class="anniuyu" @click="yuyan()">Start your plan here</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="youhui">
-                    <div class="main">
-                        <div class="vips" v-if="infolist[1]" >
-                            <div class="vips_list" @click="todetail(infolist[1].news[0].id)">
-                                <div class="youhui_title">{{ infolist[1].name }}</div>
-                                <div class="vips_list_img">
-                                    <img :src="Baseurl + infolist[1].news[0].pc_image" alt="">
-                                </div>
-                                <div class="vips_list_text clearfix">
-                                    <p v-html="infolist[1].news[0].en_title"></p>
-                                    <div class="detal">Learn More</div>
-                                </div>
-                            </div>
-                            <div class="vips_list" @click="todetail(infolist[2].news[0].id)">
-                                 <div class="youhui_title">{{ infolist[2].name }}</div>
-                                <div class="vips_list_img">
-                                    <img :src="Baseurl + infolist[2].news[0].pc_image" alt="">
-                                </div>
-                                <div class="vips_list_text clearfix">
-                                   <p v-html="infolist[2].news[0].en_title"></p>
-                                    <div class="detal">Learn More</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reserve" v-show="yanhui">
-                    <div class="resfrom">
-                        <div class="resfrom_title">
-                            Fill your details here and we will get back to you <span>(*Mandatory fields)</span>
-                        </div>
-                        <div class="resfrom_inp">
-                            <div class="reslist">
-                                <span>Guest Name*：</span>
-                                <div class="reslist_you">
-                                    <input class="fullname" type="text" name="" id="" v-model="name">
-                                    <select name="" id="" class="sex" @change="sexchange">
-                                        <option value="先生">Mr.</option>
-                                        <option value="女士">Ms.</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>Phone*：</span>
-                                <div class="reslist_you">
-                                    <input class="quhao" type="text"  placeholder="City Code" v-model="quhao">
-                                    <input class="numbers" type="text" placeholder="Please fill in the phone number" v-model="number">
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>Event Date(s)*：</span>
-                                <div class="reslist_you">
-                                    <!-- @change="datechange" -->
-                                    <input type="date"  v-model="datetime">
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>E-mail Address*：</span>
-                                <div class="reslist_you">
-                                    <input type="email" placeholder="Please enter your email address" v-model="email">
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>Event Type*：</span>
-                                <div class="reslist_you">
-                                    <select name="" id="" class="xingzhi" @change="xingzhichange">
-                                        <option value="讲座">Lecture</option>
-                                        <option value="论坛">Forum</option>
-                                        <option value="婚宴">Wedding</option>
-                                        <option value="宝宝宴">Baby Full moon party</option>
-                                        <option value="研讨会">Workshop</option>
-                                        <option value="发布会">Press conference</option>
-                                        <option value="其他">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>Events space*：</span>
-                                <div class="reslist_you">
-                                    <select name="" id="" class="xingzhi" @change="Tablechange">
-                                        <!-- <option value="大宴会厅">大宴会厅</option> -->
-                                        <option v-for="(item, index) in fieldList" :key="index" :value="item.name">{{ item.name }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>Setup required*：</span>
-                                <div class="reslist_you">
-                                    <select name="" id="" class="xingzhi" @change="Typechange">
-                                        <!-- <option value="剧院式">剧院式</option> -->
-                                        <option v-for="(item, index) in typelist" :key="index" :value="item.title">{{ item.title }} ({{ item.en_title }})</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>No. of Attendees*：</span>
-                                <div class="reslist_you">
-                                    <input type="text" v-model="renshu">
-                                </div>
-                            </div>
-                            <div class="reslist">
-                                <span>Remark：</span>
-                                <div class="reslist_you">
-                                    <input type="text" v-model="beizhu">
-                                </div>
-                            </div>
-                             <div class="reslist">
-                                <span></span>
-                                <div class="reslist_you">
-                                    <!-- <input type="text"> -->
-                                    <div class="butn butn1"  @click="quxiao()">Cancel</div>
-                                    <div class="butn butn2"  @click="tijiao()">Submit</div>
-                                </div>
-                            </div>
-                        </div>
-                    
                     </div>
                 </div>
             </div>
-            <div class="Tips_elastic" v-if="tipshow" >
-                <div class="Tips">
-                    <p>{{ tipstext }}</p>
+            <div class="youhui">
+                <div class="main">
+                    <div class="vips" v-if="infolist[1]">
+                        <div class="vips_list" @click="todetail(infolist[1].news[0].id)">
+                            <div class="youhui_title">{{ infolist[1].name }}</div>
+                            <div class="vips_list_img">
+                                <img :src="Baseurl + infolist[1].news[0].pc_image" alt="">
+                            </div>
+                            <div class="vips_list_text clearfix">
+                                <p v-html="infolist[1].news[0].en_title"></p>
+                                <div class="detal">Learn More</div>
+                            </div>
+                        </div>
+                        <div class="vips_list" @click="todetail(infolist[2].news[0].id)">
+                            <div class="youhui_title">{{ infolist[2].name }}</div>
+                            <div class="vips_list_img">
+                                <img :src="Baseurl + infolist[2].news[0].pc_image" alt="">
+                            </div>
+                            <div class="vips_list_text clearfix">
+                                <p v-html="infolist[2].news[0].en_title"></p>
+                                <div class="detal">Learn More</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- bushi       haorenxuan -->
+            <div class="reserve" v-show="yanhui">
+                <div class="resfrom">
+                    <div class="resfrom_title">
+                        Fill your details here and we will get back to you <span>(*Mandatory fields)</span>
+                    </div>
+                    <div class="resfrom_inp">
+                        <div class="reslist">
+                            <span>Guest Name*：</span>
+                            <div class="reslist_you">
+                                <input class="fullname" type="text" name="" id="" v-model="name">
+                                <select name="" id="" class="sex" @change="sexchange">
+                                    <option value="先生">Mr.</option>
+                                    <option value="女士">Ms.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>Phone*：</span>
+                            <div class="reslist_you">
+                                <input class="quhao" type="text" placeholder="City Code" v-model="quhao">
+                                <input class="numbers" type="text" placeholder="Please fill in the phone number"
+                                    v-model="number">
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>Event Date(s)*：</span>
+                            <div class="reslist_you">
+                                <!-- @change="datechange" -->
+                                <input type="date" v-model="datetime">
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>E-mail Address*：</span>
+                            <div class="reslist_you">
+                                <input type="email" placeholder="Please enter your email address" v-model="email">
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>Event Type*：</span>
+                            <div class="reslist_you">
+                                <select name="" id="" class="xingzhi" @change="xingzhichange">
+                                    <option value="讲座">Lecture</option>
+                                    <option value="论坛">Forum</option>
+                                    <option value="婚宴">Wedding</option>
+                                    <option value="宝宝宴">Baby Full moon party</option>
+                                    <option value="研讨会">Workshop</option>
+                                    <option value="发布会">Press conference</option>
+                                    <option value="其他">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>Events space*：</span>
+                            <div class="reslist_you">
+                                <select name="" id="" class="xingzhi" @change="Tablechange">
+                                    <!-- <option value="大宴会厅">大宴会厅</option> -->
+                                    <option v-for="(item, index) in fieldList" :key="index" :value="item.name">{{ item.name
+                                    }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>Setup required*：</span>
+                            <div class="reslist_you">
+                                <select name="" id="" class="xingzhi" @change="Typechange">
+                                    <!-- <option value="剧院式">剧院式</option> -->
+                                    <option v-for="(item, index) in typelist" :key="index" :value="item.title">{{ item.title
+                                    }} ({{ item.en_title }})</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>No. of Attendees*：</span>
+                            <div class="reslist_you">
+                                <input type="text" v-model="renshu">
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span>Remark：</span>
+                            <div class="reslist_you">
+                                <input type="text" v-model="beizhu">
+                            </div>
+                        </div>
+                        <div class="reslist">
+                            <span></span>
+                            <div class="reslist_you">
+                                <!-- <input type="text"> -->
+                                <div class="butn butn1" @click="quxiao()">Cancel</div>
+                                <div class="butn butn2" @click="tijiao()">Submit</div>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- 公共底部 -->
-            <Footer />
+                </div>
+            </div>
         </div>
+        <div class="Tips_elastic" v-if="tipshow">
+            <div class="Tips">
+                <p>{{ tipstext }}</p>
+            </div>
+        </div>
+        <!-- bushi       haorenxuan -->
+
+        <!-- 公共底部 -->
+        <Footer />
+    </div>
 </template>
 
 <script>
@@ -378,7 +381,7 @@ export default {
             // console.log(this.xingzhi)
             // return false;
             if (this.name == '') {
-                this.tishi("请输入姓名")
+                this.tishi("Please enter your name")
                 return;
             }
             // if(this.quhao==""){
@@ -388,22 +391,22 @@ export default {
             var re1 = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
             if (!re1.test(this.number)) {
                 ///^((1[358][0-9])|(14[57])|(17[0678])|(19[7]))\d{8}$/
-                this.tishi("请输入正确电话号码")
+                this.tishi("Please enter the correct telephone number")
                 return;
             }
             if (this.datetime == '') {
-                this.tishi("请选择日期")
+                this.tishi("Please select date")
                 return;
             }
             var re2 = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
             if (!re2.test(this.email)) {
-                this.tishi("请输入正确邮箱")
+                this.tishi("Please enter the correct email address")
                 return;
             }
             var re3 = /^[0-9]*[1-9][0-9]*$/
             if (!re3.test(this.renshu)) {
                 ///^((1[358][0-9])|(14[57])|(17[0678])|(19[7]))\d{8}$/
-                this.tishi("请输入正确人数")
+                this.tishi("Please enter the correct number of people")
                 return;
             }
 

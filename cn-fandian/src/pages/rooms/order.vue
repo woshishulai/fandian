@@ -617,7 +617,7 @@ export default {
     this.looks = localStorage.getItem('looks')
     console.log(this.looks);
     // this.priceIndex = this.$route.query.priceIndex;
-    this.looks = localStorage.getItem('priceIndex')
+    this.priceIndex = localStorage.getItem('priceIndex')
     console.log(this.priceIndex);
     // this.roomId = this.$route.query.roomId;
     this.roomId = localStorage.getItem('roomId')
@@ -823,7 +823,7 @@ export default {
     //新改的
     getdatalist() {
       var that = this;
-      // console.log(that.looks)
+      console.log(that.looks)
       that.$axios
         .post(
           `${this.Baseurl}home_room_data?web_token=${that.token}&hotel_id=${that.hotel_id}&hotel_code=${that.hotelcode}&channelCode=${that.codesh}
@@ -844,9 +844,11 @@ export default {
           }
           console.log(that.roomslist);
           that.pricetimelist = that.roomslist.pricec
+          console.log(that.pricetimelist);
           that.fangfei = that.sumElementAtIndex(that.pricetimelist, "salePrice")
           that.ratecodeCode = res.data.data.ratecode;
           if (that.pricetimelist.length == 0) {
+            console.log(that.pricetimelist);
             that.tishi("当前所选日期暂无此房型,请更换日期或房型");
           }
           that.jiage =

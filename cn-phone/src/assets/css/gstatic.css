@@ -1,0 +1,214 @@
+@charset "UTF-8";
+/* @font-face {
+    font-family: 'siyuan';
+    src:
+      
+      url('../font/SourceHanSansCN-Medium.ttf') format('truetype'),;
+
+    font-weight: normal;
+    font-style: normal;
+  } */
+/* @font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-Thin-Windows.otf") format('opentype');
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-Light.otf") format('opentype');
+    font-style: normal;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-DemiLight.otf") format('opentype');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-Regular.otf") format('opentype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-Medium.otf") format('opentype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-Bold.otf") format('opentype');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("http://cdnfonts.grgroup.com.cn/NotoSansHans-Black.otf") format('opentype');
+    font-style: normal;
+    font-weight: 700;
+} */
+/* @font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Thin-Windows.otf") format('opentype');
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Light.otf") format('opentype');
+    font-style: normal;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-DemiLight.otf") format('opentype');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Regular.otf") format('opentype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Medium.otf") format('opentype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Bold.otf") format('opentype');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Black.otf") format('opentype');
+    font-style: normal;
+    font-weight: 700;
+} */
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-ExtraLight.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-Light.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-Normal.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-Regular.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* @font-face {
+    font-family: 'siyuan';
+    src: url("../font/NotoSansHans-Regular.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 400;
+} */
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-Medium.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-Bold.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'siyuan';
+    src: url("../font/SourceHanSansCN-Heavy.ttf") format('truetype');
+    font-style: normal;
+    font-weight: 900;
+}
+
+
+
+/* body{
+        font-family: siyuan !important;
+
+    } */
+.aa1 {
+    font-family: siyuan;
+    font-weight: 100;
+}
+
+.aa2 {
+    font-family: siyuan;
+    font-weight: 200;
+}
+
+.aa3 {
+    font-family: siyuan;
+    font-weight: 300;
+}
+
+.aa4 {
+    font-family: siyuan;
+    font-weight: 400;
+}
+
+.aa5 {
+    font-family: siyuan;
+    font-weight: 500;
+}
+
+.aa6 {
+    font-family: siyuan;
+    font-weight: 600;
+}
+
+.aa7 {
+    font-family: siyuan;
+    font-weight: 700;
+}
+
+
+.font {
+    font-family: siyuan;
+    font-weight: normal;
+}
+
+/* * {
+    font-size: 16px;
+}
+
+.yahei {
+    font-family: Microsoft YaHei !important;
+} */

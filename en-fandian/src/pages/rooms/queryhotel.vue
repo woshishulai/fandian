@@ -244,7 +244,7 @@ export default {
       month: "", // 月份
       day: "", // 天数
       current: "", // 当前时间
-      weekList: ["一", "二", "三", "四", "五", "六", "日"],
+      weekList: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       monthDay: [31, "", 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       activeDay: 40, // 选中的日期
       spaceDay: "", // 每个月第一天是星期几
@@ -260,7 +260,7 @@ export default {
       month2: "", // 月份
       day2: "", // 天数
       current2: "", // 当前时间
-      weekList2: ["一", "二", "三", "四", "五", "六", "日"],
+      weekList2: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       monthDay2: [31, "", 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       activeDay2: 40, // 选中的日期
       spaceDay2: "", // 每个月第一天是星期几
@@ -277,22 +277,22 @@ export default {
       compid: "", //公司id
       cpmlist: [
         "All",
-        "最优门市价含单早",
-        "最优门市价无早",
-        "会员价格",
-        "最优门市价含双早",
-        "协议价格",
+        "Lowest best available rate inclusive of breakfast for one",
+        "Lowest best available rate, room only",
+        "Member’s rate",
+        "Lowest best available rate inclusive of breakfast for two",
+        "Corporate rate",
       ],
-      compIndex: "全部",
+      compIndex: "All",
       mudishow: false,
       mudiid: '',
       mudilist: [
-        "北京",
+        "Beijing",
         "上海",
         "深圳",
         "杭州",
       ],
-      mudiIndex: '北京',
+      mudiIndex: 'Beijing',
       peopleshow: false, //人数列表
       daren: 1,
       xiaohai: 0,
@@ -946,7 +946,7 @@ export default {
         this.rilishow2 = false;
         this.numwan = this.getDaysBetween(jieshuunTime, kaishiunTime)
       } else {
-        alert("结束日期需大于起始日期");
+        alert("The end date must be greater than the start date");
       }
       // console.log(this.wwks2);
     },

@@ -387,6 +387,7 @@ export default {
         .catch((err) => console.log(err));
     },
     yuyanchange(e) {
+      localStorage.clear();
       console.log(e.target.value)
       var yuyan = e.target.value
       console.log(window.location.href)

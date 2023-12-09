@@ -39,6 +39,19 @@ export default {
     };
   },
   created() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    if (isMobile && !window.location.href.includes('/phone')) {
+      console.log('跳转');
+      window.location.href = 'https://en.grand.empark.com.cn/' + 'phone/#/';
+      // window.open('https://en.grand.empark.com.cn/phone/');
+      // const newPageUrl = 'https://grand.empark.com.cn/phone/#/';
+      // const newPage = window.open(newPageUrl);
+      // newPage.onload = function () {
+      //   window.close();
+      // };
+      return
+    }
+    localStorage.clear();
     // if (sessionStorage.getItem("hotelcode") && sessionStorage.getItem("hotelcode") != '') {
     this.gettoken();
     setTimeout(() => {
@@ -189,21 +202,21 @@ export default {
             sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);
             sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
           } else {
-            that.city_centry = that.city["北京"];
-            that.mudiIndex = that.city["北京"][0].hotel_name;
-            that.mudiIndexnum1 = "北京";
+            that.city_centry = that.city["Beijing"];
+            that.mudiIndex = that.city["Beijing"][0].hotel_name;
+            that.mudiIndexnum1 = "Beijing";
             that.mudiIndexnum2 = 0;
             // that.jiudianid = that.city["北京"][0].id;
             localStorage.setItem("mudiIndex", that.mudiIndex);
             // localStorage.setItem("jiudianid", that.jiudianid);
-            localStorage.setItem("mudiIndexnum1", "北京");
+            localStorage.setItem("mudiIndexnum1", "Beijing");
             localStorage.setItem("mudiIndexnum2", 0);
 
-            sessionStorage.setItem("hotel_id", that.city["北京"][0].id);
-            sessionStorage.setItem("hotelcode", that.city["北京"][0].hotel_code);
-            sessionStorage.setItem("codesh", that.city["北京"][0].code);
-            sessionStorage.setItem("hotelname", that.city["北京"][0].hotel_name);
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city["北京"][0]))
+            sessionStorage.setItem("hotel_id", that.city["Beijing"][0].id);
+            sessionStorage.setItem("hotelcode", that.city["Beijing"][0].hotel_code);
+            sessionStorage.setItem("codesh", that.city["Beijing"][0].code);
+            sessionStorage.setItem("hotelname", that.city["Beijing"][0].hotel_name);
+            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city["Beijing"][0]))
           }
         })
         .catch((err) => console.log(err));

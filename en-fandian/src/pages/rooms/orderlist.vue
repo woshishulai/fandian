@@ -203,7 +203,7 @@ export default {
                     if (res.data.status == "000000") {
                         that.success = res.data.type;
                     } else {
-                        that.tishi("订单查询失败请重新下单");
+                        that.tishi("Order query failed. Please place a new order");
                         clearTimeout(that.xunhuan);
                     }
                 })
@@ -530,4 +530,5 @@ export default {
     font-size: 20px;
     line-height: 30px;
     margin-top: 20px;
-}</style>
+}
+</style>

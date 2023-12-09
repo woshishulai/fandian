@@ -132,6 +132,11 @@
                 </div>
             </div>
         </div>
+        <div class="Tips_elastic" v-if="tipshow">
+            <div class="Tips">
+                <p>{{ tipstext }}</p>
+            </div>
+        </div>
         <!-- 公共底部 -->
         <Footer />
     </div>
@@ -157,6 +162,7 @@ export default {
             close1: true,
             close2: true,
             close3: true,
+            tipshow: false,
             infolist: [],//酒店列表
             roomslist: [],
             roomId: '',//点击的第几个房间
@@ -206,6 +212,14 @@ export default {
 
     },
     methods: {
+        tishi(text) {
+            this.tipshow = true;
+            this.tipstext = text;
+            setTimeout(() => {
+                this.tipshow = false;
+                this.tipstext = "";
+            }, 3000);
+        },
         getidprice() {
             console.log(this.listid)
             var that = this
@@ -292,6 +306,12 @@ export default {
             }
         },
         yuding(item, index) {
+            let that = this;
+            //判断有没有剩余房间
+            //         that.$axios
+            // .post(`${this.Baseurl}home_room_data?canSaleNum=${}`){
+
+            // }
             //需要判断一下是否登录
             // this.$router.push({
             //     name:'Order',
@@ -300,8 +320,15 @@ export default {
             //     //     module_id:this.modularid
             //     // }
             // })
-            console.log('价格ratecodeCode:' + item.ratecodeCode)
-            console.log('第几个价格' + index)
+            // console.log(item);
+            if (item.canSaleNum < 1) {
+                that.tishi("该房源不足,请更换房型或日期");
+                console.log(item);
+                return
+            }
+            // // return
+            // console.log('价格ratecodeCode:' + item.ratecodeCode)
+            // console.log('第几个价格' + index)
             // return false
             if (sessionStorage.getItem("accountNumber") && sessionStorage.getItem("accountNumber") != "") {
                 localStorage.setItem('roomId', this.roomId)

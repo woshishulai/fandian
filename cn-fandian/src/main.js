@@ -13,4 +13,5 @@ app.use(router)
 app.use(BaiDuMap, {
     ak: 'B8395f4e710558fabefc56c940a40ce5'
 })
+// 判断设备类型
 app.mount('#app')

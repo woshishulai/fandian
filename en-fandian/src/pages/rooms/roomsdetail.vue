@@ -301,6 +301,11 @@ export default {
             //     //     module_id:this.modularid
             //     // }
             // })
+            if (item.canSaleNum < 1) {
+                that.tishi("This property is insufficient, please change the room type or date");
+                console.log(item);
+                return
+            }
             console.log('价格ratecodeCode:' + item.ratecodeCode)
             console.log('第几个价格' + index)
             // return false

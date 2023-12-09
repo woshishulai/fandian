@@ -39,6 +39,20 @@ export default {
     };
   },
   created() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    if (isMobile && !window.location.href.includes('/phone')) {
+      console.log('跳转');
+      // window.location.href = window.location.href + 'phone/#/';
+      window.location.href = 'https://grand.empark.com.cn/' + 'phone/#/';
+      // window.open('https://grand.empark.com.cn/phone/');
+      // const newPageUrl = 'https://grand.empark.com.cn/phone/#/';
+      // const newPage = window.open(newPageUrl);
+      // newPage.onload = function () {
+      //   window.close();
+      // };
+      return
+    }
+    localStorage.clear();
     // if (sessionStorage.getItem("hotelcode") && sessionStorage.getItem("hotelcode") != '') {
     this.gettoken();
     setTimeout(() => {
