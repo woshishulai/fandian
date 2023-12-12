@@ -32,33 +32,36 @@ export default {
       hotelist: "",
       hotelcode: "",
       city: [],
-      mudiIndex: '',
-      mudiIndexnum1: '',
-      mudiIndexnum2: '',
-      city_centry: '',
+      mudiIndex: "",
+      mudiIndexnum1: "",
+      mudiIndexnum2: "",
+      city_centry: "",
     };
   },
   created() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    if (isMobile && !window.location.href.includes('/phone')) {
-      console.log('跳转');
-      window.location.href = 'https://en.grand.empark.com.cn/' + 'phone/#/';
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+    if (isMobile && !window.location.href.includes("/phone")) {
+      console.log("跳转");
+      window.location.href = "https://en.grand.empark.com.cn/" + "phone/#/";
       // window.open('https://en.grand.empark.com.cn/phone/');
       // const newPageUrl = 'https://grand.empark.com.cn/phone/#/';
       // const newPage = window.open(newPageUrl);
       // newPage.onload = function () {
       //   window.close();
       // };
-      return
+      return;
     }
-    localStorage.clear();
+    // localStorage.clear();
     // if (sessionStorage.getItem("hotelcode") && sessionStorage.getItem("hotelcode") != '') {
     this.gettoken();
     setTimeout(() => {
-      this.reload()
+      this.reload();
       this.gettoken();
-    }, 500)
-    this.goOrther()
+    }, 500);
+    this.goOrther();
   },
   methods: {
     goOrther() {
@@ -72,17 +75,17 @@ export default {
         // 如果是移动端就跳转到移动端地址
         //http://zs.sc798.com/fandian/#/rooms
         // let params = new URL(window.location.href).hash;   // new URL 可以得到相关的地址详情
-        // let baseurl = "https://grand.empark.com.cn/web/" + params;   // 测试接口 
+        // let baseurl = "https://grand.empark.com.cn/web/" + params;   // 测试接口
         // window.location.href = baseurl;
         let params = new URL(window.location.href).hash;
         let test = window.location.href;
-        let arr = test.split('fandian/');
-        let baseurl = arr.join('web/');   // 测试接口 
+        let arr = test.split("fandian/");
+        let baseurl = arr.join("web/"); // 测试接口
         window.location.href = baseurl;
       } else {
         // let a = "https://grand.empark.com.cn/fandian/#/"
         // let b = a.split('fandian/');
-        // let c = b.join('web/'); 
+        // let c = b.join('web/');
         // console.log(c)
       }
     },
@@ -100,7 +103,7 @@ export default {
           sessionStorage.setItem("token", res.data.token);
           that.token = res.data.token;
           // that.getlist();
-          that.getdiqulist()
+          that.getdiqulist();
         })
         .catch((err) => console.log(err));
     },
@@ -156,10 +159,10 @@ export default {
           sessionStorage.setItem("codesh", that.hotelist[0].code);
           // console.log(sessionStorage.getItem("codesh"))
           sessionStorage.setItem("hotelname", that.hotelist[0].hotel_name);
-          sessionStorage.setItem("dituxinxi", JSON.stringify(that.hotelist[0]))
+          sessionStorage.setItem("dituxinxi", JSON.stringify(that.hotelist[0]));
           that.hotel_id = that.hotelist[0].id;
           that.hotelcode = that.hotelist[0].hotel_code;
-          that.getinfolist()
+          that.getinfolist();
         })
         .catch((err) => console.log(err));
     },
@@ -189,18 +192,34 @@ export default {
           that.city = res.data.data;
           if (
             localStorage.getItem("mudiIndex") &&
-            localStorage.getItem("mudiIndex") != "" && localStorage.getItem("mudiIndexnum1")
+            localStorage.getItem("mudiIndex") != "" &&
+            localStorage.getItem("mudiIndexnum1")
           ) {
             that.mudiIndex = localStorage.getItem("mudiIndex");
             that.mudiIndexnum1 = localStorage.getItem("mudiIndexnum1");
             that.mudiIndexnum2 = localStorage.getItem("mudiIndexnum2");
             that.city_centry = that.city[that.mudiIndexnum1];
 
-            sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);
-            sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);
-            sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);
-            sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
+            sessionStorage.setItem(
+              "hotel_id",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].id
+            );
+            sessionStorage.setItem(
+              "hotelcode",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code
+            );
+            sessionStorage.setItem(
+              "codesh",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].code
+            );
+            sessionStorage.setItem(
+              "hotelname",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name
+            );
+            sessionStorage.setItem(
+              "dituxinxi",
+              JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2])
+            );
           } else {
             that.city_centry = that.city["Beijing"];
             that.mudiIndex = that.city["Beijing"][0].hotel_name;
@@ -213,10 +232,19 @@ export default {
             localStorage.setItem("mudiIndexnum2", 0);
 
             sessionStorage.setItem("hotel_id", that.city["Beijing"][0].id);
-            sessionStorage.setItem("hotelcode", that.city["Beijing"][0].hotel_code);
+            sessionStorage.setItem(
+              "hotelcode",
+              that.city["Beijing"][0].hotel_code
+            );
             sessionStorage.setItem("codesh", that.city["Beijing"][0].code);
-            sessionStorage.setItem("hotelname", that.city["Beijing"][0].hotel_name);
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city["Beijing"][0]))
+            sessionStorage.setItem(
+              "hotelname",
+              that.city["Beijing"][0].hotel_name
+            );
+            sessionStorage.setItem(
+              "dituxinxi",
+              JSON.stringify(that.city["Beijing"][0])
+            );
           }
         })
         .catch((err) => console.log(err));
@@ -229,7 +257,6 @@ export default {
     // 	this.routerState = true;
     // 	})
     // }
-
   },
 
   mounted() {
@@ -260,7 +287,6 @@ export default {
           // //   app.style.width="100%"
           // // }
           // //判断当前浏览器是否是火狐浏览器
-
           // document.querySelector(".logins").style.position = "absolute !important"
           // document.querySelector(".login").style.top = "400px !important"
           // document.querySelector(".login").style.maginTop = "0px !important"
@@ -285,8 +311,6 @@ export default {
           }
         }
       }
-
-
     }
 
     window.addEventListener("resize", function () {
@@ -340,7 +364,6 @@ html {
   padding: 0;
   /* font-family: 'siyuan'; */
   font-weight: 300;
-
 }
 
 /* 清除浮动 */

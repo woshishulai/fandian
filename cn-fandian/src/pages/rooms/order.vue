@@ -14,8 +14,7 @@
               <div class="blocks">
                 <div class="blocklist xuzhi">
                   <span class="spantit">订房必读</span>
-                  <p v-html="xinxilist.description">
-                  </p>
+                  <p v-html="xinxilist.description"></p>
                   <!-- <p v-html="xinxilist.description"> -->
                   <!-- {{xinxilist.description}} -->
                   <!-- </p> -->
@@ -33,20 +32,37 @@
                           <p class="blotext">入住日期</p>
                           <div class="contbox checkin" @click="getrilis()">
                             <p>{{ wwks1 }}</p>
-                            <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
+                            <img
+                              loading="lazy"
+                              class="rilimg"
+                              src="../../assets/img/rili.png"
+                              alt=""
+                            />
                           </div>
                           <div id="calender" v-show="rilishow">
                             <div class="calender_close" @click="guan()">
-                              <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
+                              <img
+                                loading="lazy"
+                                src="../../assets/img/gunbi.png"
+                                alt=""
+                              />
                             </div>
                             <div class="daterangepicker">
                               <div class="drp_calendar left">
                                 <div class="drp_calendar_top">
                                   <div @click="prev" class="prev">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img
+                                      loading="lazy"
+                                      src="../../assets/img/jt.png"
+                                      alt=""
+                                    />
                                   </div>
                                   <div @click="next" class="next">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img
+                                      loading="lazy"
+                                      src="../../assets/img/jt.png"
+                                      alt=""
+                                    />
                                   </div>
                                   <span class="tishispan">选择入住时间 </span>
                                   <span style="">
@@ -63,11 +79,20 @@
                                 </div>
                                 <div class="weekDay">
                                   <!-- 这个是前面的空格 -->
-                                  <p class="kongge" v-for="item in spaceDay" :key="item.id"></p>
-                                  <p class="days" v-for="(item, idx) in monthDay[
-                                    this.month - 1
-                                  ] || 30" @click="setDay(idx)" :class="idx == activeDay ? 'active' : ''"
-                                    :key="item.id">
+                                  <p
+                                    class="kongge"
+                                    v-for="item in spaceDay"
+                                    :key="item.id"
+                                  ></p>
+                                  <p
+                                    class="days"
+                                    v-for="(item, idx) in monthDay[
+                                      this.month - 1
+                                    ] || 30"
+                                    @click="setDay(idx)"
+                                    :class="idx == activeDay ? 'active' : ''"
+                                    :key="item.id"
+                                  >
                                     {{ item }}
                                   </p>
                                 </div>
@@ -77,7 +102,11 @@
                           </div>
                           <div id="calender" v-show="rilishow2">
                             <div class="calender_close" @click="guan2()">
-                              <img loading="lazy" src="../../assets/img/gunbi.png" alt="" />
+                              <img
+                                loading="lazy"
+                                src="../../assets/img/gunbi.png"
+                                alt=""
+                              />
                             </div>
                             <div class="daterangepicker">
                               <div class="drp_calendar left">
@@ -91,27 +120,46 @@
                                     {{ year2 }}年{{ month2 }}月
                                   </span>
                                   <div @click="prev" class="prev">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img
+                                      loading="lazy"
+                                      src="../../assets/img/jt.png"
+                                      alt=""
+                                    />
                                   </div>
                                   <div @click="next" class="next">
-                                    <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                                    <img
+                                      loading="lazy"
+                                      src="../../assets/img/jt.png"
+                                      alt=""
+                                    />
                                   </div>
                                   <!-- <div @click="next" class="next">
                       <img loading="lazy"src="../../assets/img/jt.png" alt="" />
                     </div> -->
                                 </div>
                                 <div class="weekDay">
-                                  <p class="disabled" v-for="item in weekList" :key="item.id">
+                                  <p
+                                    class="disabled"
+                                    v-for="item in weekList"
+                                    :key="item.id"
+                                  >
                                     {{ item }}
                                   </p>
                                 </div>
                                 <div class="weekDay">
                                   <!-- 这个是前面的空格 -->
-                                  <p v-for="item in spaceDay2" :key="item.id"></p>
-                                  <p v-for="(item, idx) in monthDay2[
-                                    this.month2 - 1
-                                  ] || 30" @click="setDay2(idx)" :class="idx == activeDay2 ? 'active' : ''"
-                                    :key="item.id">
+                                  <p
+                                    v-for="item in spaceDay2"
+                                    :key="item.id"
+                                  ></p>
+                                  <p
+                                    v-for="(item, idx) in monthDay2[
+                                      this.month2 - 1
+                                    ] || 30"
+                                    @click="setDay2(idx)"
+                                    :class="idx == activeDay2 ? 'active' : ''"
+                                    :key="item.id"
+                                  >
                                     {{ item }}
                                   </p>
                                 </div>
@@ -130,7 +178,12 @@
                           <p class="blotext">退房日期</p>
                           <div class="contbox checkin" @click="getrilis2()">
                             <p>{{ wwks2 }}</p>
-                            <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
+                            <img
+                              loading="lazy"
+                              class="rilimg"
+                              src="../../assets/img/rili.png"
+                              alt=""
+                            />
                           </div>
                         </div>
                       </div>
@@ -140,10 +193,18 @@
                       <p>房间数量</p>
                       <div class="house_text" @click="getroom()">
                         <div class="getroom">{{ roomIndex }}</div>
-                        <div class="roomnums" v-show="roomshow" :class="roomshow ? 'active' : ''">
+                        <div
+                          class="roomnums"
+                          v-show="roomshow"
+                          :class="roomshow ? 'active' : ''"
+                        >
                           <ul>
-                            <li v-for="(list, index) in roomlist" :key="index" @click.stop="getnums(list)"
-                              :class="roomIndex == list ? 'cur' : ''">
+                            <li
+                              v-for="(list, index) in roomlist"
+                              :key="index"
+                              @click.stop="getnums(list)"
+                              :class="roomIndex == list ? 'cur' : ''"
+                            >
                               {{ list }}
                             </li>
                           </ul>
@@ -159,19 +220,35 @@
                   <div class="rooms">
                     <div class="roomslist" v-if="roomIndex >= 1">
                       <p>房间1(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names1" />
+                      <input
+                        type="text"
+                        placeholder="每间房填一人姓名即可"
+                        v-model="names1"
+                      />
                     </div>
                     <div class="roomslist" v-if="roomIndex >= 2">
                       <p>房间2(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names2" />
+                      <input
+                        type="text"
+                        placeholder="每间房填一人姓名即可"
+                        v-model="names2"
+                      />
                     </div>
                     <div class="roomslist" v-if="roomIndex >= 3">
                       <p>房间3(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names3" />
+                      <input
+                        type="text"
+                        placeholder="每间房填一人姓名即可"
+                        v-model="names3"
+                      />
                     </div>
                     <div class="roomslist" v-if="roomIndex == 4">
                       <p>房间4(姓名)</p>
-                      <input type="text" placeholder="每间房填一人姓名即可" v-model="names4" />
+                      <input
+                        type="text"
+                        placeholder="每间房填一人姓名即可"
+                        v-model="names4"
+                      />
                     </div>
                     <!-- <div class="roomslist">
                       <p>房间2(姓名)</p>
@@ -194,16 +271,31 @@
                           </li>
                         </ul>
                       </div>   -->
-                      <input type="text" placeholder="请填写预定人电话号码" class="phones" v-model="dianhua" />
+                      <input
+                        type="text"
+                        placeholder="请填写预定人电话号码"
+                        class="phones"
+                        v-model="dianhua"
+                      />
                     </div>
                   </div>
                   <div class="youxiang">
                     <p>证件号</p>
-                    <input type="text" placeholder="请输入证件号" class="phones" v-model="shenfenID" />
+                    <input
+                      type="text"
+                      placeholder="请输入证件号"
+                      class="phones"
+                      v-model="shenfenID"
+                    />
                   </div>
                   <div class="youxiang">
                     <p>邮箱地址</p>
-                    <input type="text" placeholder="输入后请核查一下，避免输入错误" class="phones" v-model="emalis" />
+                    <input
+                      type="text"
+                      placeholder="输入后请核查一下，避免输入错误"
+                      class="phones"
+                      v-model="emalis"
+                    />
                   </div>
                 </div>
               </div>
@@ -215,7 +307,11 @@
                     <p>24小时前台-随时提供帮助！</p>
                     <p>预计到店时间（可选）</p>
                   </div>
-                  <div class="time" @click.stop="gettime()" :class="timeshow ? 'active' : ''">
+                  <div
+                    class="time"
+                    @click.stop="gettime()"
+                    :class="timeshow ? 'active' : ''"
+                  >
                     <div class="gettimePart">
                       <!-- <span class="getHour">00</span>
                       <span>:</span>
@@ -223,8 +319,8 @@
                       <span>请选择</span> -->
                       {{
                         timehour != "" && timeminute != ""
-                        ? timehour + ":" + timeminute
-                        : "请选择"
+                          ? timehour + ":" + timeminute
+                          : "请选择"
                       }}
                     </div>
                     <div class="timePart" v-if="timeshow">
@@ -233,8 +329,12 @@
                           <!-- <p>时</p> -->
                           <ol>
                             <!-- <li class="" @click="gethour(index,hour)">{{hour}}</li> -->
-                            <li v-for="(hour, index) in hours" :key="index" @click.stop="gethour(index, hour)"
-                              :class="hoursIndex == index ? 'cur' : ''">
+                            <li
+                              v-for="(hour, index) in hours"
+                              :key="index"
+                              @click.stop="gethour(index, hour)"
+                              :class="hoursIndex == index ? 'cur' : ''"
+                            >
                               {{ hour }}
                             </li>
                             <!-- <li class="cur" >00</li> -->
@@ -244,8 +344,12 @@
                           <!-- <p>分</p> -->
                           <ol>
                             <!-- <li class="cur">00</li> -->
-                            <li v-for="(minute, index) in minutes" :key="index" @click.stop="getminute(index, minute)"
-                              :class="minutesIndex == index ? 'cur' : ''">
+                            <li
+                              v-for="(minute, index) in minutes"
+                              :key="index"
+                              @click.stop="getminute(index, minute)"
+                              :class="minutesIndex == index ? 'cur' : ''"
+                            >
                               {{ minute }}
                             </li>
                           </ol>
@@ -262,19 +366,81 @@
                   <!-- <div class=""></div> -->
                   <span class="spantit">支付方式</span>
                   <div class="zhifu">
-                    <div class="zhifulist" v-if="roomslist.zffs != '1'">
-                      <div class="zhifuicon" @click="payment(2)">
-                        <img loading="lazy" v-if="zhifu == 2" src="../../assets/img/xz.png" alt="" />
-                        <img loading="lazy" v-if="zhifu == 1" src="../../assets/img/wxz.png" alt="" />
+                    <div class="zhifulist" v-if="type == 3">
+                      <div class="zhifulist">
+                        <div class="zhifuicon">
+                          <img
+                            loading="lazy"
+                            v-if="shulai == 2"
+                            src="../../assets/img/xz.png"
+                            alt=""
+                          />
+                          <img
+                            v-else
+                            @click="changeShulai(2)"
+                            loading="lazy"
+                            src="../../assets/img/wxz.png"
+                            alt=""
+                          />
+                        </div>
+                        <p>微信支付</p>
+                      </div>
+                      <div class="zhifulist">
+                        <div class="zhifuicon">
+                          <!-- <img loading="lazy":class="zhifu==1?'img2':'img1'" src="../../assets/img/xz.png" alt="" />
+                        <img loading="lazy":class="zhifu==1?'img1':'img2'" src="../../assets/img/wxz.png" alt="" /> -->
+                          <img
+                            loading="lazy"
+                            v-if="shulai == 1"
+                            src="../../assets/img/xz.png"
+                            alt=""
+                          />
+                          <img
+                            v-else
+                            @click="changeShulai(1)"
+                            loading="lazy"
+                            src="../../assets/img/wxz.png"
+                            alt=""
+                          />
+                        </div>
+                        <p>酒店前台支付</p>
+                      </div>
+                    </div>
+                    <div class="zhifulist" v-if="type == 2">
+                      <div class="zhifuicon">
+                        <img
+                          loading="lazy"
+                          v-if="type == 2"
+                          src="../../assets/img/xz.png"
+                          alt=""
+                        />
+                        <img
+                          v-else
+                          @click="payment(2)"
+                          loading="lazy"
+                          src="../../assets/img/wxz.png"
+                          alt=""
+                        />
                       </div>
                       <p>微信支付</p>
                     </div>
-                    <div class="zhifulist" v-if="roomslist.zffs != '2'">
-                      <div class="zhifuicon" @click="payment(1)">
+                    <div class="zhifulist" v-if="type == 1">
+                      <div class="zhifuicon">
                         <!-- <img loading="lazy":class="zhifu==1?'img2':'img1'" src="../../assets/img/xz.png" alt="" />
                         <img loading="lazy":class="zhifu==1?'img1':'img2'" src="../../assets/img/wxz.png" alt="" /> -->
-                        <img loading="lazy" v-if="zhifu == 1" src="../../assets/img/xz.png" alt="" />
-                        <img loading="lazy" v-if="zhifu == 2" src="../../assets/img/wxz.png" alt="" />
+                        <img
+                          loading="lazy"
+                          v-if="type == 1"
+                          src="../../assets/img/xz.png"
+                          alt=""
+                        />
+                        <img
+                          v-else
+                          @click="payment(1)"
+                          loading="lazy"
+                          src="../../assets/img/wxz.png"
+                          alt=""
+                        />
                       </div>
                       <p>酒店前台支付</p>
                     </div>
@@ -302,7 +468,11 @@
               <span class="spantie">订单详情</span>
               <div class="tupian">
                 <!-- <img loading="lazy"src="../../assets/img/room1.jpg" alt="" /> -->
-                <img loading="lazy" :src="Baseurl + roomslist.pc_image" alt="" />
+                <img
+                  loading="lazy"
+                  :src="Baseurl + roomslist.pc_image"
+                  alt=""
+                />
               </div>
               <div class="jieshao">
                 <div class="blo1">
@@ -338,7 +508,11 @@
                 </div>
                 <div class="blo4">
                   <span class="spnas">价格汇总</span>
-                  <div class="jiage" v-for="(item, index) in pricetimelist" :key="index">
+                  <div
+                    class="jiage"
+                    v-for="(item, index) in pricetimelist"
+                    :key="index"
+                  >
                     <p>{{ item.day }}</p>
                     <p>{{ item.salePrice }}元</p>
                   </div>
@@ -357,8 +531,7 @@
               </div>
               <div class="quxiao">
                 <p>取消规则</p>
-                <p v-html="xinxilist.description1">
-                </p>
+                <p v-html="xinxilist.description1"></p>
               </div>
             </div>
           </div>
@@ -454,6 +627,9 @@ export default {
       jiage: "", //价格
 
       token: "", //token
+      type: "", //支付方式
+      // zhifu:'',
+      shulai: "",
       hotel_id: "", //酒店id
       modularid: "", //模块id
       hotelcode: "", //酒店编码
@@ -583,22 +759,23 @@ export default {
       wind2: false,
 
       //星期
-      nowweek1: '',
-      nowweek2: '',
+      nowweek1: "",
+      nowweek2: "",
 
-      xinxilist: '',
-      prono: "",//公司Id
-      ratecode: "",//房间编码
-      pricetimelist: [],//房间每晚钱数
-      xunhuan: ""
+      xinxilist: "",
+      prono: "", //公司Id
+      ratecode: "", //房间编码
+      pricetimelist: [], //房间每晚钱数
+      xunhuan: "",
     };
   },
   created() {
     // if (this.$route.query.prono) {
     //   this.prono = this.$route.query.prono
     // }
-    this.prono = localStorage.getItem('prono') || ''
-    this.ratecode = localStorage.getItem('ratecode') || ""
+    this.type = localStorage.getItem("type") || "3";
+    this.prono = localStorage.getItem("prono") || "";
+    this.ratecode = localStorage.getItem("ratecode") || "";
     // if (this.$route.query.ratecode) {
     //   this.ratecode = this.$route.query.ratecode
     // }
@@ -614,21 +791,21 @@ export default {
     }
     // console.log(this.Baseurl)
     // this.looks = this.$route.query.looks;
-    this.looks = localStorage.getItem('looks')
+    this.looks = localStorage.getItem("looks");
     console.log(this.looks);
     // this.priceIndex = this.$route.query.priceIndex;
-    this.priceIndex = localStorage.getItem('priceIndex')
+    this.priceIndex = localStorage.getItem("priceIndex");
     console.log(this.priceIndex);
     // this.roomId = this.$route.query.roomId;
-    this.roomId = localStorage.getItem('roomId')
+    this.roomId = localStorage.getItem("roomId");
     this.codesh = sessionStorage.getItem("codesh");
 
     // this.startDate = this.$route.query.startDate;
-    this.startDate = localStorage.getItem('startDate')
+    this.startDate = localStorage.getItem("startDate");
     // this.endDate = this.$route.query.endDate;
-    this.endDate = localStorage.getItem('endDate')
+    this.endDate = localStorage.getItem("endDate");
     // this.numDay = this.$route.query.numDay;
-    this.numDay = localStorage.getItem('numDay')
+    this.numDay = localStorage.getItem("numDay");
     this.roomIndex = this.numDay;
     console.log(this.startDate);
     console.log(this.endDate);
@@ -640,22 +817,20 @@ export default {
     this.nextday = this.GetDateStr(1);
     if (new Date(this.startDate).getTime() < new Date(this.nowday).getTime()) {
       this.starttime = this.nowday;
-      this.endtime = this.nextday
+      this.endtime = this.nextday;
     } else {
-      this.starttime = localStorage.getItem('startDate')
-      this.endtime = localStorage.getItem('endDate')
+      this.starttime = localStorage.getItem("startDate");
+      this.endtime = localStorage.getItem("endDate");
     }
 
-
-
-    console.log(this.starttime)
-    console.log(this.endtime)
+    console.log(this.starttime);
+    console.log(this.endtime);
     this.numwan = this.getDaysBetween(this.starttime, this.endtime);
-    console.log(this.numwan)
+    console.log(this.numwan);
     this.wwks1 = this.starttime?.replace(/-/, "/").replace(/-/, "/");
     this.wwks2 = this.endtime?.replace(/-/, "/").replace(/-/, "/");
-    this.nowweek1 = "星期" + this.getweekday(this.wwks1)
-    this.nowweek2 = "星期" + this.getweekday(this.wwks2)
+    this.nowweek1 = "星期" + this.getweekday(this.wwks1);
+    this.nowweek2 = "星期" + this.getweekday(this.wwks2);
     this.current = new Date();
     // console.log(this.current)
     var nowDate = this.current;
@@ -683,9 +858,8 @@ export default {
     // 调取当前年的2月天数 年份变则调用这两个
     this.February = this.isLeapYear(this.year) ? 29 : 28;
     this.monthDay.splice(1, 1, this.February);
-    this.wenben()
+    this.wenben();
     this.getdatalist();
-
   },
   watch: {
     month() {
@@ -715,7 +889,7 @@ export default {
   methods: {
     getweekday(date) {
       var weekArray = new Array("日", "一", "二", "三", "四", "五", "六");
-      var week = weekArray[new Date(date).getDay()];//注意此处必须是先new一个Date
+      var week = weekArray[new Date(date).getDay()]; //注意此处必须是先new一个Date
       return week;
     },
     //打开弹窗
@@ -723,12 +897,12 @@ export default {
       // if(index==2){
       //   this.wind2=true
       // }
-      this.$router.push({ name: 'Details' })
+      this.$router.push({ name: "Details" });
     },
     //关闭弹窗
     btshow(index) {
       if (index == 2) {
-        this.wind2 = false
+        this.wind2 = false;
       }
     },
     wenben() {
@@ -746,8 +920,8 @@ export default {
         .catch((err) => console.log(err));
     },
     retunrnindex() {
-      this.$router.push({ name: "orderlist" });//取消去列表页
-      this.reload()
+      this.$router.push({ name: "orderlist" }); //取消去列表页
+      this.reload();
       if (this.xunhuan) {
         clearTimeout(this.xunhuan);
       }
@@ -800,6 +974,10 @@ export default {
     timeclose() {
       this.timeshow = false;
     },
+    changeShulai(item) {
+      this.shulai = item;
+      console.log(this.shulai);
+    },
     payment(num) {
       this.zhifu = num;
     },
@@ -812,7 +990,7 @@ export default {
       this.roomshow = false;
       var that = this;
       // that.fangfei = that.roomslist.pricec[that.priceIndex].salePrice;
-      that.fangfei = that.sumElementAtIndex(that.pricetimelist, "price")
+      that.fangfei = that.sumElementAtIndex(that.pricetimelist, "price");
       console.log(that.fangfei);
       console.log(that.roomslist);
       that.jiage =
@@ -823,7 +1001,7 @@ export default {
     //新改的
     getdatalist() {
       var that = this;
-      console.log(that.looks)
+      console.log(that.looks);
       that.$axios
         .post(
           `${this.Baseurl}home_room_data?web_token=${that.token}&hotel_id=${that.hotel_id}&hotel_code=${that.hotelcode}&channelCode=${that.codesh}
@@ -836,16 +1014,19 @@ export default {
 
           that.infolist = res.data.data.News_info;
           that.roomslist = res.data.data.News_info;
-          if (that.roomslist.zffs == '1') {
-            that.zhifu = 1
+          if (that.roomslist.zffs == "1") {
+            that.zhifu = 1;
           }
-          if (that.roomslist.zffs == '2') {
-            that.zhifu = 2
+          if (that.roomslist.zffs == "2") {
+            that.zhifu = 2;
           }
           console.log(that.roomslist);
-          that.pricetimelist = that.roomslist.pricec
+          that.pricetimelist = that.roomslist.pricec;
           console.log(that.pricetimelist);
-          that.fangfei = that.sumElementAtIndex(that.pricetimelist, "salePrice")
+          that.fangfei = that.sumElementAtIndex(
+            that.pricetimelist,
+            "salePrice"
+          );
           that.ratecodeCode = res.data.data.ratecode;
           if (that.pricetimelist.length == 0) {
             console.log(that.pricetimelist);
@@ -869,6 +1050,12 @@ export default {
     tijiao() {
       // var num = this.roomIndex
       // this.zhucename =
+      if (this.type == 3) {
+        this.zhifu = this.shulai;
+      } else {
+        this.zhifu = this.type;
+      }
+      console.log(this.zhifu);
       if (this.roomIndex == 1) {
         this.zhucename = this.names1;
       }
@@ -899,8 +1086,8 @@ export default {
       // console.log(that.roomslist.looks)
       console.log(that.ratecodeCode);
       //&r_id=${that.roomslist.looks}
-      if (that.time == '') {
-        that.time = "00:00"
+      if (that.time == "") {
+        that.time = "00:00";
       }
       that.$axios
         .post(
@@ -914,18 +1101,18 @@ export default {
         .then(function (res) {
           console.log(res);
           that.tishi(res.data.msg);
-          if ((res.data.status == '000000')) {
-            if (res.data.pay_type == '1') {
+          if (res.data.status == "000000") {
+            if (res.data.pay_type == "1") {
               that.tishi("酒店前台预定成功");
               setTimeout(() => {
-                that.$router.push({ name: "orderlist" });//取消去列表页
-              }, 2000)
+                that.$router.push({ name: "orderlist" }); //取消去列表页
+              }, 2000);
             } else {
               that.order_num = res.data.order_num;
               that.hy_bill_no = res.data.hy_bill_no;
               that.zhifushow = true;
-              var tuop_url = unescape(res.data.code_url)
-              console.log(tuop_url)
+              var tuop_url = unescape(res.data.code_url);
+              console.log(tuop_url);
               that.$nextTick(() => {
                 that.showQrcode(tuop_url);
               });
@@ -943,7 +1130,6 @@ export default {
                 }
               }, 300000);
             }
-
           }
           // if (res.data.code == 0) {
           //   // tishi
@@ -1147,34 +1333,35 @@ export default {
       var jieshuTime = this.wwks2.replace(/\//g, "-");
       // console.log("起始日期中的结束"+jieshuTime)
 
-      if (new Date(kaishiTime.replace(/-/g, "/")) >= new Date(this.nowday.replace(/-/g, "/"))) {
-        this.wwks1 =
-          this.year +
-          "/" +
-          this.month +
-          "/" +
-          this.day;
-        this.nowweek1 = "星期" + this.getweekday(this.wwks1),
-          this.starttime = this.year + "-" + this.month + "-" + this.day;
+      if (
+        new Date(kaishiTime.replace(/-/g, "/")) >=
+        new Date(this.nowday.replace(/-/g, "/"))
+      ) {
+        this.wwks1 = this.year + "/" + this.month + "/" + this.day;
+        (this.nowweek1 = "星期" + this.getweekday(this.wwks1)),
+          (this.starttime = this.year + "-" + this.month + "-" + this.day);
         this.activeDay = idx;
         localStorage.setItem("wwks1", this.wwks1);
         localStorage.setItem("starttime", this.starttime);
         localStorage.setItem("activeDay", this.idx);
         this.rilishow = false;
-        if (new Date(kaishiTime.replace(/-/g, "/")) >= new Date(jieshuTime.replace(/-/g, "/"))) {
-          var aa = new Date(kaishiTime.replace(/-/g, "/"))
-          var bb = aa.setDate(aa.getDate() + 1)
-          var cc = this.timestampToTime(bb)
-          this.wwks2 = cc.replace(/-/g, '/')
-          this.nowweek2 = "星期" + this.getweekday(this.wwks2)
+        if (
+          new Date(kaishiTime.replace(/-/g, "/")) >=
+          new Date(jieshuTime.replace(/-/g, "/"))
+        ) {
+          var aa = new Date(kaishiTime.replace(/-/g, "/"));
+          var bb = aa.setDate(aa.getDate() + 1);
+          var cc = this.timestampToTime(bb);
+          this.wwks2 = cc.replace(/-/g, "/");
+          this.nowweek2 = "星期" + this.getweekday(this.wwks2);
           this.endtime = cc;
           localStorage.setItem("wwks2", this.wwks2);
           localStorage.setItem("endtime", this.endtime);
-          this.numwan = this.getDaysBetween(kaishiTime, this.endtime)
-          this.getdatalist()
+          this.numwan = this.getDaysBetween(kaishiTime, this.endtime);
+          this.getdatalist();
         } else {
-          this.numwan = this.getDaysBetween(kaishiTime, jieshuTime)
-          this.getdatalist()
+          this.numwan = this.getDaysBetween(kaishiTime, jieshuTime);
+          this.getdatalist();
         }
       } else {
         alert("请选择大于等于今天的日期");
@@ -1183,14 +1370,14 @@ export default {
 
       // this.reload()
       // this.getDaysBetween(this.starttime, this.endtime)
-      this.getdatalist()
+      this.getdatalist();
       // this.getnums()
     },
     timestampToTime(timestamp) {
-      var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-      var Y = date.getFullYear() + '-';
+      var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      var Y = date.getFullYear() + "-";
       // var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-      var M = (date.getMonth() + 1) + '-';
+      var M = date.getMonth() + 1 + "-";
       var D = date.getDate();
       // var h = date.getHours() + ':';
       // var m = date.getMinutes() + ':';
@@ -1206,30 +1393,27 @@ export default {
 
       var jieshuunTime = this.wwks1.replace(/\//g, "-");
 
-      if (new Date(kaishiunTime.replace(/-/g, "/")) > new Date(jieshuunTime.replace(/-/g, "/"))) {
-        this.wwks2 =
-          this.year2 +
-          "/" +
-          this.month2 +
-          "/" +
-          this.day2;
-        this.nowweek2 = "星期" + this.getweekday(this.wwks2)
+      if (
+        new Date(kaishiunTime.replace(/-/g, "/")) >
+        new Date(jieshuunTime.replace(/-/g, "/"))
+      ) {
+        this.wwks2 = this.year2 + "/" + this.month2 + "/" + this.day2;
+        this.nowweek2 = "星期" + this.getweekday(this.wwks2);
         this.activeDay2 = idx;
         this.endtime = this.year2 + "-" + this.month2 + "-" + this.day2;
         localStorage.setItem("wwks2", this.wwks2);
         localStorage.setItem("endtime", this.endtime);
         localStorage.setItem("activeDay2", this.idx);
         this.rilishow2 = false;
-        this.numwan = this.getDaysBetween(jieshuunTime, kaishiunTime)
+        this.numwan = this.getDaysBetween(jieshuunTime, kaishiunTime);
 
-        this.getdatalist()
+        this.getdatalist();
       } else {
         alert("结束日期需大于起始日期");
       }
       // console.log(this.wwks2);
       // this.getnums()
-      this.getdatalist()
-
+      this.getdatalist();
     },
     // 判断月份的第一天是星期几
     getMonthFisrtDay() {
@@ -1320,7 +1504,7 @@ export default {
         return 1;
       }
       const daysa = (eDate - sDate) / (1 * 24 * 60 * 60 * 1000);
-      const days = Math.floor(daysa)
+      const days = Math.floor(daysa);
       return days;
     },
   },
@@ -1391,7 +1575,7 @@ export default {
 }
 
 /* 发票信息 支付方式 */
-.fapiao>p {
+.fapiao > p {
   /* line-height: 30px; */
   margin-top: 10px;
   margin-bottom: 20px;
@@ -1510,19 +1694,19 @@ export default {
   padding: 30px 0;
 }
 
-.orderdetail .order_right>.spantie {
+.orderdetail .order_right > .spantie {
   font-size: 24px;
   color: #000000;
   font-weight: 400;
   padding: 0 20px;
 }
 
-.orderdetail .order_right>.tupian {
+.orderdetail .order_right > .tupian {
   width: 100%;
   margin-top: 30px;
 }
 
-.orderdetail .order_right>.tupian img {
+.orderdetail .order_right > .tupian img {
   width: 100%;
   display: block;
 }
@@ -1677,7 +1861,7 @@ li {
   background: #fff;
 }
 
-.timePart>ul>li {
+.timePart > ul > li {
   float: left;
   width: 60px;
   background: #fff;
@@ -1690,7 +1874,7 @@ li {
   padding-top: 5px;
 }
 
-.timePart>ul>li p {
+.timePart > ul > li p {
   line-height: 30px;
   border-bottom: 1px solid #ccc;
 }
@@ -1756,13 +1940,13 @@ li {
   margin-top: 20px;
 }
 
-.roomslist>p {
+.roomslist > p {
   font-size: 18px;
   color: #000000;
   font-weight: 400;
 }
 
-.roomslist>input {
+.roomslist > input {
   width: 325px;
   border: none;
   border-bottom: 1px solid #868686;
@@ -1780,13 +1964,13 @@ li {
   margin-top: 20px;
 }
 
-.youxiang>p {
+.youxiang > p {
   font-size: 18px;
   color: #000000;
   font-weight: 400;
 }
 
-.youxiang>input {
+.youxiang > input {
   width: 325px;
   border: none;
   border-bottom: 1px solid #868686;
@@ -1804,7 +1988,7 @@ li {
   margin-top: 20px;
 }
 
-.dianhua>p {
+.dianhua > p {
   font-size: 18px;
   color: #000000;
   font-weight: 400;
@@ -1912,7 +2096,7 @@ li {
 }
 
 /* 预定信息 房间数量 */
-.yuding .house>p {
+.yuding .house > p {
   font-size: 18px;
   color: #000000;
   font-weight: 400;
@@ -1968,7 +2152,8 @@ li {
   box-shadow: 2px 2px 15px #ccc;
 }
 
-.roomnums ul {}
+.roomnums ul {
+}
 
 .roomnums ul li {
   line-height: 30px;
@@ -2047,12 +2232,12 @@ li {
   border: none !important;
 }
 
-.hotel_riqi .contbox>p {
+.hotel_riqi .contbox > p {
   font-size: 18px;
   color: #5f5f5f;
 }
 
-.hotel_riqi .contbox>img {
+.hotel_riqi .contbox > img {
   width: 9px;
   height: 5px;
 }
@@ -2289,7 +2474,7 @@ li {
   width: 100%;
   height: 100%;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
 }

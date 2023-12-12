@@ -109,6 +109,8 @@
         <div class="txt_title">
           <div class="" :class="denglv == 1 ? 'active' : ''" @click="btns1()">Member login</div>
           <div class="" :class="denglv == 2 ? 'active' : ''" @click="btns2()">Register</div>
+          <div class="" :class="denglv == 3 ? 'active' : ''" @click="btns3()">Email login </div>
+          <div class="" :class="denglv == 4 ? 'active' : ''" @click="btns4()">Email register </div>
         </div>
         <div class="fomes1" v-if="denglv == 1">
           <div class="fomes1list">
@@ -153,6 +155,36 @@
           <div class="fomes2list">
             <span></span>
             <div class="zhu" @click="zhuce()">Join</div>
+          </div>
+        </div>
+        <div class="fomes2" v-if="denglv == 3">
+          <div class="fomes2list">
+            <span>Email Address：</span>
+            <input class="inp2list" type="text" v-model="emailAddress">
+          </div>
+          <div class="fomes2list">
+            <span>Verification code:</span>
+            <input class="inpyanma" type="text" v-model="emailCode">
+            <div class="yanma" @click="getEmailcode('2')">Get Code</div>
+          </div>
+          <div class="fomes2list">
+            <span></span>
+            <div class="zhu" @click="emailLogin('2')">Sign In</div>
+          </div>
+        </div>
+        <div class="fomes2" v-if="denglv == 4">
+          <div class="fomes2list">
+            <span>Email Address：</span>
+            <input class="inp2list" type="text" v-model="emailAddress">
+          </div>
+          <div class="fomes2list">
+            <span>Verification code:</span>
+            <input class="inpyanma" type="text" v-model="emailCode">
+            <div class="yanma" @click="getEmailcode('1')">Get Code</div>
+          </div>
+          <div class="fomes2list">
+            <span></span>
+            <div class="zhu" @click="emailLogin('1')">Join</div>
           </div>
         </div>
       </div>
@@ -242,7 +274,16 @@ export default {
       mudiIndex: "",
       mudiIndexnum1: "",
       mudiIndexnum2: "",
-      mudisaaa: ''
+      mudisaaa: '',
+      //邮箱账号
+      emailAddress: '1811399887@qq.com',
+      //邮箱密码
+      emailCode: '',
+      //后端返回的验证吗
+      //登陆返回的
+      emailLoginCode: '',
+      //注册返回的
+      emailRegisterCode: ''
     };
   },
 
@@ -492,6 +533,16 @@ export default {
       localStorage.setItem("loginfou", 2);
       this.diaoyong()
     },
+    btns3() {
+      this.denglv = 3
+      localStorage.setItem("loginfou", 3);
+      this.diaoyong()
+    },
+    btns4() {
+      this.denglv = 4
+      localStorage.setItem("loginfou", 4);
+      this.diaoyong()
+    },
     // 注册获取验证码
     getcode(index) {
       // console.log(this.registerNumber)
@@ -539,6 +590,55 @@ export default {
               that.tishi("The verification code has been set. Please check vour mobile")
             }
           }).catch(err => console.log(err));
+      }
+    },
+    validateEmail(email) {
+      // 简单的邮箱格式验证
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    },
+
+    getEmailcode(num) {
+      console.log(num);
+      let that = this
+      if (that.validateEmail(that.emailAddress)) {
+        that.$axios
+          .post(`${this.Baseurl}insert_email?email=${that.emailAddress}&type=${num}&hotel_id=${sessionStorage.getItem("hotel_id") || 1}`)
+          .then(function (res) {
+            // console.log(res)
+            // console.log("type类型:"+index)
+            // console.log(res.data.code)
+            if (res.data.code == "0") {
+              that.tishi(res.data.msg)
+            } else {
+              num == 1 ? that.emailRegisterCode = res.data.data : that.emailLoginCode = res.data.data
+              console.log(that.emailRegisterCode, that.emailLoginCode);
+              that.tishi("The verification code has been set. Please check vour mobile")
+            }
+          }).catch(err => console.log(err));
+      } else {
+        this.tishi('please enter a valid email address')
+      }
+      console.log(this.emailAddress, this.emailCode);
+    },
+    emailLogin(num) {
+      let that = this
+      if (that.validateEmail(that.emailAddress)) {
+        if (that.emailCode == "") {
+          that.tishi("Please fill in the verification code")
+          return;
+        } else {
+          let rulesCode = ''
+          num == '1' ? rulesCode = that.emailRegisterCode : rulesCode = that.emailLoginCode
+          console.log(that.emailCode, that.rulesCode);
+          if (that.emailCode == rulesCode) {
+            that.tishi('pass')
+          } else {
+            that.tishi('ncorrect verification code')
+          }
+        }
+      } else {
+        that.tishi('please enter a valid email address')
       }
     },
     //提示
@@ -951,7 +1051,8 @@ export default {
 }
 
 .login {
-  width: 800px;
+  width: 1200px;
+  height: 625px;
   margin: auto;
   /* margin-top: 230px; */
   background-color: #fff;
@@ -1094,7 +1195,7 @@ export default {
 }
 
 .fomes2 {
-  width: 560px;
+  width: 600px;
   margin: auto;
 }
 

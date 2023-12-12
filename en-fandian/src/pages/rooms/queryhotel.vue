@@ -189,7 +189,7 @@
               <p>{{ compIndex }}</p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
-            <div class="roomnums" v-show="houseshow" :class="houseshow ? 'active' : ''">
+            <div class="roomnums pianhao" v-show="houseshow" :class="houseshow ? 'active' : ''">
               <ul>
                 <li v-for="(list, index) in cpmlist" :key="index" @click.stop="getcomp(list)"
                   :class="compIndex == list ? 'cur' : ''">
@@ -1046,6 +1046,7 @@ export default {
   mounted() { },
 };
 </script>
+
 <style scoped>
 .mudi p {
   overflow: hidden;
@@ -1208,7 +1209,7 @@ li {
 }
 
 .roomnums.pianhao {
-  width: 474px;
+  width: 481px;
 }
 
 .hotel_riqi .contbox.housegood>p {
