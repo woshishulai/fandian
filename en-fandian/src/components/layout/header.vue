@@ -245,7 +245,7 @@ export default {
       mudiIndexnum2: "",
       mudisaaa: "",
       //邮箱账号
-      emailAddress: "1811399887@qq.com",
+      emailAddress: "",
       //邮箱密码
       emailCode: "",
       //登陆返回的
@@ -1043,10 +1043,6 @@ export default {
 .header .header_head .head_operation .header_right .head_top .rig_item p {
   cursor: pointer;
   /* margin-left: 20px; */
-}
-
-.zhuce {
-  /* margin-left: 15px; */
 }
 
 .header
