@@ -671,7 +671,7 @@ export default {
   border-top: none;
 }
 .p-acitve {
-  margin-left: 17px !important;
+  margin-left: 134px !important;
 }
 
 .detailtwo .detailtwo_area .area_list > div {
@@ -679,7 +679,7 @@ export default {
   /* width: 343px; */
 }
 .active {
-  width: 370px;
+  width: 600px;
 }
 .detailtwo .detailtwo_area .area_list .pianhao {
   display: flex;

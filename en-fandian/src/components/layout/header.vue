@@ -1,16 +1,8 @@
 <template>
   <div class="header" id="header">
-    <!-- 公共头部 -->
     <div class="header_head">
       <div class="head_operation headbg">
-        <!-- <div class="head_top">
-                    <p @click="pinpai()">返回品牌页</p>
-                </div> -->
         <div class="header_right">
-          <!-- <div class="head_top" @click="pinpai()">
-                        <img style="width:18px;height:17px;margin-right:10px;cursor: pointer;" src="../../assets/img/back_roll_03.png" alt="">
-                        <p>Back to Brand</p>
-                    </div> -->
           <a
             class="head_top"
             href="https://en.empark.com.cn/"
@@ -28,52 +20,16 @@
             />
             <p>Back to Brand</p>
           </a>
-          <!-- <div class="switch" @click.stop="select()">
-                        <div class="switch_wen">
-                          <p>{{mudiIndex}}</p>
-                          <img
-                            src="../../assets/img/botxia.png"
-                            :style="fotshow ? 'transform: rotate(180deg)' : ''"
-                            alt=""
-                          />
-                        </div>
-                        <div class="el-select-dropdown" v-show="fotshow" >
-                          <div class="el-scrollbar" >
-                            <div class="el-select-dropdown__wrap">
-                              <ul class="el-scrollbar__view el-select-dropdown__list">
-                                <ul class="el-select-group__wrap" v-for="(item,index) in city" :key="index">
-                                  <li class="el-select-group__title">{{index}}</li>
-                                  <li>
-                                    <ul class="el-select-group">
-                                      <li class="el-select-dropdown__item" :class="mudiIndexnum1==index&&mudiIndexnum2==indexMsg?'hover':''" v-for="(listMsg,indexMsg) in item" :key="indexMsg"
-                                      @click="changejiu(listMsg,indexMsg,index)">
-                                        <span>{{listMsg.hotel_name}}</span>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                </ul>
-                                
-                              </ul>
-                            </div> 
-                          </div>
-                        </div>
-                      </div> -->
           <div class="head_top head_top2">
             <p class="jituanguan" @click="jituan()">GR Official Website</p>
             <div class="rig_item hengyan">
               <img src="../../assets/img/diqiu.png" alt="" />
-              <!-- <div class="rig_item_left"> 
-                                <p>EN</p>
-                                <span>/</span>
-                                <p>中文</p>
-                            </div> -->
               <select name="" id="yunyan" @change="yuyanchange">
                 <option value="EN">EN</option>
                 <option value="CN">CN</option>
               </select>
             </div>
             <div class="rig_item">
-              <!-- <img src="../../assets/img/huiyuan.png" alt=""> -->
               <div
                 class="rig_item_left"
                 v-if="accountNumber == '' || accountNumber == null"
@@ -83,13 +39,14 @@
                 <img class="rig_img" src="../../assets/img/join.png" alt="" />
                 <p class="zhuce" @click="restigc()">Join</p>
               </div>
-              <div
-                class="rig_item_right"
-                v-if="accountNumber != '' && accountNumber != null"
-              >
-                <img class="rig_img" src="../../assets/img/login.png" alt="" />
-                {{ accountNumber }}
-                <!-- <div class="rig_tuichu" @click="exitaccount">Exit</div> -->
+              <div class="rig_item_right">
+                <img
+                  class="rig_img"
+                  v-if="accountNumber"
+                  src="../../assets/img/login.png"
+                  alt=""
+                />
+                {{ emailds ? emailds : accountNumber }}
                 <div class="rig_tuichu">
                   <div class="ri_one" @click="goorderlist">My order</div>
                   <div class="ri_two" @click="exitaccount">Exit</div>
@@ -97,7 +54,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="head_bot" @click="yuding()">立即预定</div> -->
         </div>
       </div>
       <div class="head_operation">
@@ -149,9 +105,6 @@
             />
           </div>
           <div class="fomes1list">
-            <!-- <span>Password:</span>
-                        <input type="password" placeholder="Enter Password" v-model="signPassword">
-                        <div class="forget"  @click="forg()">Forgot your password?</div> -->
             <span>Verification code:</span>
             <input class="inpyanma" type="text" v-model="signPassword" />
             <div class="yanma" @click="getcode(2)">Get Code</div>
@@ -178,14 +131,6 @@
             <input class="inpyanma" type="text" v-model="registerCode" />
             <div class="yanma" @click="getcode(1)">Get Code</div>
           </div>
-          <!-- <div class="fomes2list">
-                        <span>Password：</span>
-                        <input class="inp2list" type="password" v-model="registerPassword1">
-                    </div>
-                    <div class="fomes2list">
-                        <span>Confirm password：</span>
-                        <input class="inp2list" type="password" v-model="registerPassword2">
-                    </div> -->
           <div class="fomes2list">
             <span></span>
             <div class="zhu" @click="zhuce()">Join</div>
@@ -248,41 +193,6 @@
         </p>
       </div>
     </div>
-
-    <!-- <div class="logins" v-if="forgrtshow">
-            <div class="login">
-                <img class="login_close" src="../../assets/img/close.png" alt="" @click="guanbi()">
-                <div class="login_logo">
-                    <img src="../../assets/img/head_logo.png" alt="">
-                </div>
-                <div class="txt_title">
-                <div class="forgitmima">Retrieve password</div>
-                </div>
-                <div class="fomes2" >
-                    <div class="fomes2list">
-                        <span>Mobile Number：</span>
-                        <input class="inp2list" type="text" v-model="forgetnumber">
-                    </div>
-                    <div class="fomes2list">
-                        <span>Type Captcha：</span>
-                        <input class="inpyanma" type="text" v-model="forgetcode">
-                        <div class="yanma" @click="getcode(3)">Get Code</div>
-                    </div>
-                    <div class="fomes2list">
-                        <span>New Password：</span>
-                        <input class="inp2list" type="password" v-model="forgetmima">
-                    </div>
-                    <div class="fomes2list">
-                        <span>Confirm New Password：</span>
-                        <input class="inp2list" type="password" v-model="forgetmima2">
-                    </div>
-                    <div class="fomes2list">
-                        <span></span>
-                        <div class="zhu" @click="forget()">Submit</div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     <div class="Tips_elastic" v-if="tipshow">
       <div class="Tips">
         <p>{{ tipstext }}</p>
@@ -325,7 +235,7 @@ export default {
       forgetmima2: "",
       //登录成功状态
       accountNumber: sessionStorage.getItem("accountNumber"),
-
+      emailds: sessionStorage.getItem("emailds"),
       fotshow: false,
       fotslist: [],
       city: [],
@@ -335,10 +245,9 @@ export default {
       mudiIndexnum2: "",
       mudisaaa: "",
       //邮箱账号
-      emailAddress: "",
+      emailAddress: "1811399887@qq.com",
       //邮箱密码
       emailCode: "",
-      //后端返回的验证吗
       //登陆返回的
       emailLoginCode: "",
       //注册返回的
@@ -352,9 +261,6 @@ export default {
     this.hotel_id = sessionStorage.getItem("hotel_id");
     this.hotelcode = sessionStorage.getItem("hotelcode");
     console.log(this.token);
-    // this.hotel_id = sessionStorage.getItem("hotel_id");
-    // this.hotelcode = sessionStorage.getItem("hotelcode");
-    // console.log(this.hotelcode)
     if (
       !localStorage.getItem("loginfou") ||
       localStorage.getItem("loginfou") == ""
@@ -394,8 +300,6 @@ export default {
         window.open(listMsg.path);
       } else {
         this.fotshow = false;
-        // this.mudishow = false;
-        // this.cityshow = false;
         this.mudiIndex = listMsg.hotel_name;
         this.mudiIndexnum1 = index;
         this.mudiIndexnum2 = indexMsg;
@@ -403,8 +307,6 @@ export default {
         localStorage.setItem("mudiIndex", this.mudiIndex);
         localStorage.setItem("mudiIndexnum1", index);
         localStorage.setItem("mudiIndexnum2", indexMsg);
-        // console.log( this.mudiIndexnum1)
-        // console.log( this.mudiIndexnum2)
 
         var that = this;
         sessionStorage.setItem(
@@ -512,23 +414,14 @@ export default {
       var yuyan = e.target.value;
       console.log(window.location.href);
       var nowhref = window.location.href;
-      // http://localhost:8083/#/hotel
-      // http://zs.sc798.com/fandian/#/hotel
-      //en_
-      // var nowhref = "http://zs.sc798.com/fandian/#/hotel"
       if (yuyan == "CN") {
         var newhref = nowhref.replace("https://en.", "https://");
-        // var newhref = nowhref.replace('en_zs.sc798.com','ls_dfdcn.sc798.com')
         console.log(newhref);
         window.location.href = newhref;
       }
-      // this.sex= e.target.value
     },
     //获取头部信息
     getinfolist() {
-      // if(this.web_token==null || this.hotel_id==null){
-      //     this.reload();
-      // }
       var that = this;
       that.$axios
         .post(
@@ -560,11 +453,7 @@ export default {
     diaoyong() {
       this.denglv = localStorage.getItem("loginfou");
     },
-    // skip() {
-    // 	// this.isTrue = 1
-    // 	// this.$router.push('/aisle?date' + Date.now());
-    // 	localStorage.setItem("istrue", this.isTrue);
-    // },
+
     //头部菜单切换
     menu(index, id) {
       this.isTrue = index;
@@ -693,13 +582,11 @@ export default {
       }
     },
     validateEmail(email) {
-      // 简单的邮箱格式验证
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     },
 
     getEmailcode(num) {
-      console.log(num);
       let that = this;
       if (that.validateEmail(that.emailAddress)) {
         that.tishi("Verification code is being sent, please wait.");
@@ -710,90 +597,58 @@ export default {
             }&type=${num}&hotel_id=${sessionStorage.getItem("hotel_id") || 1}`
           )
           .then(function (res) {
-            // console.log(res)
-            // console.log("type类型:"+index)
-            // console.log(res.data.code)
-            if (res.data.code == "0") {
-              that.tishi(res.data.msg);
-            } else {
-              num == 1
-                ? (that.emailRegisterCode = res.data.data)
-                : (that.emailLoginCode = res.data.data);
-              console.log(that.emailRegisterCode, that.emailLoginCode);
-              that.tishi(
-                "The verification code has been set. Please check vour mobile"
+            console.log(res.data);
+            if (res.data.code === 1) {
+              num == 2
+                ? (that.emailLoginCode = res.data.data)
+                : (that.emailRegisterCode = res.data.data);
+              console.log(
+                "我是登录",
+                that.emailLoginCode,
+                "我是注册",
+                that.emailRegisterCode
               );
+              that.tishi(res.data.msg);
             }
           })
           .catch((err) => console.log(err));
       } else {
         this.tishi("please enter a valid email address");
       }
-      console.log(this.emailAddress, this.emailCode);
     },
     emailLogin(num) {
       let that = this;
-      if (that.validateEmail(that.emailAddress)) {
-        if (that.emailCode == "") {
-          that.tishi("Please fill in the verification code");
-          return;
+      if (that.validateEmail(that.emailAddress) && that.emailCode) {
+        if (num == 2 && that.emailCode == that.emailLoginCode) {
+          that.$axios
+            .post(
+              `${this.Baseurl}login_user?web_token=${that.token}&email=${that.emailAddress}&code=${that.emailCode}&hotel_code=${that.hotelcode}`
+            )
+            .then(function (res) {
+              that.tishi(res.data.msg);
+              sessionStorage.setItem("loginfou", 1);
+              sessionStorage.setItem("accountNumber", res.data.data.phone);
+              sessionStorage.setItem("emailds", res.data.data.email);
+              setTimeout(() => {
+                localStorage.setItem("loginfou", 0);
+                that.diaoyong();
+                that.reload();
+              }, 1000);
+            })
+            .catch((err) => console.log(err));
+        } else if (num == 1 && that.emailCode == that.emailRegisterCode) {
+          that.$axios
+            .post(
+              `${this.Baseurl}register_user?web_token=${that.token}&email=${that.emailAddress}&code=${that.emailCode}&pc_mobile=1&hotel_code=${that.hotelcode}`
+            )
+            .then(function (res) {
+              that.tishi(res.data.msg);
+            });
         } else {
-          let rulesCode = "";
-          num == "1"
-            ? (rulesCode = that.emailRegisterCode)
-            : (rulesCode = that.emailLoginCode);
-          console.log(that.emailCode, that.rulesCode);
-          if (num == 1) {
-            if (that.emailCode == rulesCode) {
-              //请求和注册
-              that.$axios
-                .post(
-                  `${this.Baseurl}register_user?web_token=${that.token}&email=${that.emailAddress}&code=${rulesCode}
-                &hotel_code=${that.hotelcode}&pc_mobile=1`
-                )
-                .then(function (res) {
-                  console.log(res);
-                  // console.log(res.data.code)
-                  if (res.data.status == 0) {
-                    that.tishi("Registered successfully");
-                    // that.tishi(res.data.msg)
-                    that.denglv = "";
-                    // this.forgrtshow = true
-                    that.diaoyong();
-                  } else {
-                    that.tishi(res.data.msg);
-                  }
-                  // Registrationcode
-                });
-            } else {
-              that.tishi("ncorrect verification code");
-            }
-          } else {
-            that.$axios
-              .post(
-                `${this.Baseurl}login_user?web_token=${that.token}&email=${that.emailAddress}&code=${that.signPassword}&hotel_code=${rulesCode}`
-              )
-              .then(function (res) {
-                console.log(res);
-                // sessionStorage.clear("accountNumber");
-                if (res.data.status == "0") {
-                  that.tishi(res.data.msg);
-                  sessionStorage.setItem("accountNumber", emailAddress);
-                  sessionStorage.setItem("loginfou", 1);
-                  setTimeout(() => {
-                    localStorage.setItem("loginfou", 0);
-                    that.diaoyong();
-                    that.reload();
-                  }, 1000);
-                } else {
-                  that.tishi(res.data.msg);
-                  sessionStorage.setItem("loginfou", 2);
-                }
-              });
-          }
+          that.tishi("ncorrect verification code");
         }
       } else {
-        that.tishi("please enter a valid email address");
+        that.tishi("Please fill in the verification code");
       }
     },
     //提示
@@ -883,6 +738,7 @@ export default {
     //退出账号
     exitaccount() {
       sessionStorage.setItem("accountNumber", "");
+      sessionStorage.setItem("emailds", "");
       sessionStorage.setItem("loginfou", 2);
       this.reload();
     },

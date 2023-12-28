@@ -94,7 +94,7 @@
                     </div>
                     <span class="tishispan">Select check-in time </span>
                     <span style="">
-                      {{ year2 }}&nbsp; year &nbsp;{{ yuefen }}
+                      {{ year }}&nbsp;year&nbsp;{{ getEnglishMonth(month) }}
                     </span>
                   </div>
                   <div class="weekDay week">
@@ -128,7 +128,7 @@
                   <div class="drp_calendar_top">
                     <span class="tishispan">Select check-out time </span>
                     <span style="">
-                      {{ year2 }}&nbsp; year &nbsp;{{ yuefen }}
+                      {{ year2 }}&nbsp;year&nbsp;{{ getEnglishMonth(month2) }}
                     </span>
                     <div @click="prev" class="prev">
                       <img
@@ -621,6 +621,28 @@ export default {
     //       }
     //   }).catch(err => console.log(err));
     // },
+    getEnglishMonth(month) {
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      if (month >= 1 && month <= 12) {
+        return months[month - 1];
+      } else {
+        return "Invalid month";
+      }
+    },
     getdiqulist() {
       var that = this;
       that.$axios
