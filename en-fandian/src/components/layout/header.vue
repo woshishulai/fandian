@@ -11,13 +11,21 @@
                         <img style="width:18px;height:17px;margin-right:10px;cursor: pointer;" src="../../assets/img/back_roll_03.png" alt="">
                         <p>Back to Brand</p>
                     </div> -->
-          <a class="head_top" href="https://en.empark.com.cn/" style="text-decoration: none;">
-            <img style="
-                                                            width: 18px;
-                                                            height: 17px;
-                                                            margin-right: 10px;
-                                                            cursor: pointer;
-                                                          " src="../../assets/img/back_roll_03.png" alt="" />
+          <a
+            class="head_top"
+            href="https://en.empark.com.cn/"
+            style="text-decoration: none"
+          >
+            <img
+              style="
+                width: 18px;
+                height: 17px;
+                margin-right: 10px;
+                cursor: pointer;
+              "
+              src="../../assets/img/back_roll_03.png"
+              alt=""
+            />
             <p>Back to Brand</p>
           </a>
           <!-- <div class="switch" @click.stop="select()">
@@ -53,7 +61,7 @@
           <div class="head_top head_top2">
             <p class="jituanguan" @click="jituan()">GR Official Website</p>
             <div class="rig_item hengyan">
-              <img src="../../assets/img/diqiu.png" alt="">
+              <img src="../../assets/img/diqiu.png" alt="" />
               <!-- <div class="rig_item_left"> 
                                 <p>EN</p>
                                 <span>/</span>
@@ -66,14 +74,20 @@
             </div>
             <div class="rig_item">
               <!-- <img src="../../assets/img/huiyuan.png" alt=""> -->
-              <div class="rig_item_left" v-if="accountNumber == '' || accountNumber == null">
-                <img class="rig_img" src="../../assets/img/login.png" alt="">
+              <div
+                class="rig_item_left"
+                v-if="accountNumber == '' || accountNumber == null"
+              >
+                <img class="rig_img" src="../../assets/img/login.png" alt="" />
                 <p @click="login()">Sign In</p>
-                <img class="rig_img" src="../../assets/img/join.png" alt="">
+                <img class="rig_img" src="../../assets/img/join.png" alt="" />
                 <p class="zhuce" @click="restigc()">Join</p>
               </div>
-              <div class="rig_item_right" v-if="accountNumber != '' && accountNumber != null">
-                <img class="rig_img" src="../../assets/img/login.png" alt="">
+              <div
+                class="rig_item_right"
+                v-if="accountNumber != '' && accountNumber != null"
+              >
+                <img class="rig_img" src="../../assets/img/login.png" alt="" />
                 {{ accountNumber }}
                 <!-- <div class="rig_tuichu" @click="exitaccount">Exit</div> -->
                 <div class="rig_tuichu">
@@ -82,17 +96,23 @@
                 </div>
               </div>
             </div>
-
           </div>
           <!-- <div class="head_bot" @click="yuding()">立即预定</div> -->
         </div>
       </div>
       <div class="head_operation">
         <div class="header_left">
-          <div class="header_logo" @click="menu(0, menulist[0].id)"><img :src="Baseurl + logos" alt=""></div>
+          <div class="header_logo" @click="menu(0, menulist[0].id)">
+            <img :src="Baseurl + logos" alt="" />
+          </div>
           <div class="head_bot">
-            <div class="head_list" v-for="(item, index) in menulist" :key="index" :class="{ active: isTrue == index + 1 }"
-              @click="menu(index, item.id)">
+            <div
+              class="head_list"
+              v-for="(item, index) in menulist"
+              :key="index"
+              :class="{ active: isTrue == index + 1 }"
+              @click="menu(index, item.id)"
+            >
               {{ item.name }}
             </div>
           </div>
@@ -100,29 +120,40 @@
       </div>
     </div>
 
-    <div class="logins" v-show="denglv != 0">
+    <div class="logins" v-show="denglv == 1 || denglv == 2">
       <div class="login">
-        <img class="login_close" src="../../assets/img/close.png" alt="" @click="guanbi()">
+        <img
+          class="login_close"
+          src="../../assets/img/close.png"
+          alt=""
+          @click="guanbi()"
+        />
         <div class="login_logo">
-          <img src="../../assets/img/head_logo.png" alt="">
+          <img src="../../assets/img/head_logo.png" alt="" />
         </div>
         <div class="txt_title">
-          <div class="" :class="denglv == 1 ? 'active' : ''" @click="btns1()">Member login</div>
-          <div class="" :class="denglv == 2 ? 'active' : ''" @click="btns2()">Register</div>
-          <div class="" :class="denglv == 3 ? 'active' : ''" @click="btns3()">Email login </div>
-          <div class="" :class="denglv == 4 ? 'active' : ''" @click="btns4()">Email register </div>
+          <div class="" :class="denglv == 1 ? 'active' : ''" @click="btns1()">
+            Member login
+          </div>
+          <div class="" :class="denglv == 2 ? 'active' : ''" @click="btns2()">
+            Register
+          </div>
         </div>
         <div class="fomes1" v-if="denglv == 1">
           <div class="fomes1list">
             <span>Account:</span>
-            <input type="text" placeholder="Mobile Number" v-model="signNumber">
+            <input
+              type="text"
+              placeholder="Mobile Number"
+              v-model="signNumber"
+            />
           </div>
           <div class="fomes1list">
             <!-- <span>Password:</span>
                         <input type="password" placeholder="Enter Password" v-model="signPassword">
                         <div class="forget"  @click="forg()">Forgot your password?</div> -->
             <span>Verification code:</span>
-            <input class="inpyanma" type="text" v-model="signPassword">
+            <input class="inpyanma" type="text" v-model="signPassword" />
             <div class="yanma" @click="getcode(2)">Get Code</div>
           </div>
           <div class="fomes1list">
@@ -131,17 +162,20 @@
           </div>
           <div class="fomes1list">
             <span></span>
-            <p>Login can enjoy: reservation discount, bonus points, members enjoy special treatment</p>
+            <p>
+              Login can enjoy: reservation discount, bonus points, members enjoy
+              special treatment
+            </p>
           </div>
         </div>
         <div class="fomes2" v-if="denglv == 2">
           <div class="fomes2list">
             <span>Mobile Number：</span>
-            <input class="inp2list" type="text" v-model="registerNumber">
+            <input class="inp2list" type="text" v-model="registerNumber" />
           </div>
           <div class="fomes2list">
             <span>Verification code:</span>
-            <input class="inpyanma" type="text" v-model="registerCode">
+            <input class="inpyanma" type="text" v-model="registerCode" />
             <div class="yanma" @click="getcode(1)">Get Code</div>
           </div>
           <!-- <div class="fomes2list">
@@ -157,14 +191,36 @@
             <div class="zhu" @click="zhuce()">Join</div>
           </div>
         </div>
+        <p class="label" @click="showEmail(3)">Log in using email</p>
+      </div>
+    </div>
+    <div class="logins" v-show="denglv == 3 || denglv == 4">
+      <div class="login">
+        <img
+          class="login_close"
+          src="../../assets/img/close.png"
+          alt=""
+          @click="guanbi()"
+        />
+        <div class="login_logo">
+          <img src="../../assets/img/head_logo.png" alt="" />
+        </div>
+        <div class="txt_title">
+          <div class="" :class="denglv == 3 ? 'active' : ''" @click="btns3()">
+            Email login
+          </div>
+          <div class="" :class="denglv == 4 ? 'active' : ''" @click="btns4()">
+            Email register
+          </div>
+        </div>
         <div class="fomes2" v-if="denglv == 3">
           <div class="fomes2list">
             <span>Email Address：</span>
-            <input class="inp2list" type="text" v-model="emailAddress">
+            <input class="inp2list" type="text" v-model="emailAddress" />
           </div>
           <div class="fomes2list">
             <span>Verification code:</span>
-            <input class="inpyanma" type="text" v-model="emailCode">
+            <input class="inpyanma" type="text" v-model="emailCode" />
             <div class="yanma" @click="getEmailcode('2')">Get Code</div>
           </div>
           <div class="fomes2list">
@@ -175,11 +231,11 @@
         <div class="fomes2" v-if="denglv == 4">
           <div class="fomes2list">
             <span>Email Address：</span>
-            <input class="inp2list" type="text" v-model="emailAddress">
+            <input class="inp2list" type="text" v-model="emailAddress" />
           </div>
           <div class="fomes2list">
             <span>Verification code:</span>
-            <input class="inpyanma" type="text" v-model="emailCode">
+            <input class="inpyanma" type="text" v-model="emailCode" />
             <div class="yanma" @click="getEmailcode('1')">Get Code</div>
           </div>
           <div class="fomes2list">
@@ -187,8 +243,12 @@
             <div class="zhu" @click="emailLogin('1')">Join</div>
           </div>
         </div>
+        <p class="label" @click="showEmail(1)">
+          Log in using your mobile phone
+        </p>
       </div>
     </div>
+
     <!-- <div class="logins" v-if="forgrtshow">
             <div class="login">
                 <img class="login_close" src="../../assets/img/close.png" alt="" @click="guanbi()">
@@ -228,7 +288,6 @@
         <p>{{ tipstext }}</p>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -236,34 +295,34 @@
 export default {
   data() {
     return {
-      token: '',
-      hotel_id: '',
+      token: "",
+      hotel_id: "",
       hotelist: [],
-      hotelcode: '',
-      logos: '',
-      menulist: '',
+      hotelcode: "",
+      logos: "",
+      menulist: "",
       // meau:['酒店与度假酒店','住宿','餐饮','宴会','体验','世纪会'],
       // isTrue:1,
       isTrue: localStorage.getItem("istrue"),
       denglv: 0,
       tipshow: false,
       //注册
-      registerNumber: '',
-      tipstext: '',
-      code: '',
+      registerNumber: "",
+      tipstext: "",
+      code: "",
       registerCode: "",
       registerPassword1: "",
       registerPassword2: "",
       // 登录
-      signNumber: '',
-      signPassword: '',
+      signNumber: "",
+      signPassword: "",
 
       //忘记密码
       forgrtshow: false,
-      forgetnumber: '',
-      forgetcode: '',
-      forgetmima: '',
-      forgetmima2: '',
+      forgetnumber: "",
+      forgetcode: "",
+      forgetmima: "",
+      forgetmima2: "",
       //登录成功状态
       accountNumber: sessionStorage.getItem("accountNumber"),
 
@@ -274,28 +333,28 @@ export default {
       mudiIndex: "",
       mudiIndexnum1: "",
       mudiIndexnum2: "",
-      mudisaaa: '',
+      mudisaaa: "",
       //邮箱账号
-      emailAddress: '1811399887@qq.com',
+      emailAddress: "",
       //邮箱密码
-      emailCode: '',
+      emailCode: "",
       //后端返回的验证吗
       //登陆返回的
-      emailLoginCode: '',
+      emailLoginCode: "",
       //注册返回的
-      emailRegisterCode: ''
+      emailRegisterCode: "",
     };
   },
 
   created() {
-    this.gettoken()
+    this.gettoken();
     this.token = sessionStorage.getItem("token");
     this.hotel_id = sessionStorage.getItem("hotel_id");
     this.hotelcode = sessionStorage.getItem("hotelcode");
-    console.log(this.token)
+    console.log(this.token);
     // this.hotel_id = sessionStorage.getItem("hotel_id");
     // this.hotelcode = sessionStorage.getItem("hotelcode");
-    // console.log(this.hotelcode)  
+    // console.log(this.hotelcode)
     if (
       !localStorage.getItem("loginfou") ||
       localStorage.getItem("loginfou") == ""
@@ -303,10 +362,10 @@ export default {
       localStorage.setItem("loginfou", 0);
     }
     this.diaoyong();
-    this.getinfolist()
-    this.getdiqulist()
+    this.getinfolist();
+    this.getdiqulist();
   },
-  inject: ['reload'],
+  inject: ["reload"],
   methods: {
     gettoken() {
       var that = this;
@@ -316,7 +375,7 @@ export default {
           console.log(res.data.token);
           sessionStorage.setItem("token", res.data.token);
           that.token = res.data.token;
-          that.getdiqulist()
+          that.getdiqulist();
         })
         .catch((err) => console.log(err));
     },
@@ -328,41 +387,55 @@ export default {
       this.fotshow = !this.fotshow;
     },
     changejiu(listMsg, indexMsg, index) {
-      console.log(listMsg)
-      console.log(indexMsg)
-      console.log(index)
+      console.log(listMsg);
+      console.log(indexMsg);
+      console.log(index);
       if (listMsg.path && listMsg.path != "") {
-        window.open(listMsg.path)
+        window.open(listMsg.path);
       } else {
-        this.fotshow = false
+        this.fotshow = false;
         // this.mudishow = false;
         // this.cityshow = false;
         this.mudiIndex = listMsg.hotel_name;
-        this.mudiIndexnum1 = index
-        this.mudiIndexnum2 = indexMsg
-        console.log(index)
+        this.mudiIndexnum1 = index;
+        this.mudiIndexnum2 = indexMsg;
+        console.log(index);
         localStorage.setItem("mudiIndex", this.mudiIndex);
         localStorage.setItem("mudiIndexnum1", index);
         localStorage.setItem("mudiIndexnum2", indexMsg);
         // console.log( this.mudiIndexnum1)
         // console.log( this.mudiIndexnum2)
 
-        var that = this
-        sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);
-        console.log("酒店hotel_id:", sessionStorage.getItem("hotel_id"))
+        var that = this;
+        sessionStorage.setItem(
+          "hotel_id",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].id
+        );
+        console.log("酒店hotel_id:", sessionStorage.getItem("hotel_id"));
 
-        sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);
-        console.log("酒店hotelcode:", sessionStorage.getItem("hotelcode"))
+        sessionStorage.setItem(
+          "hotelcode",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code
+        );
+        console.log("酒店hotelcode:", sessionStorage.getItem("hotelcode"));
 
-        sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);
-        console.log("酒店codesh:", sessionStorage.getItem("codesh"))
+        sessionStorage.setItem(
+          "codesh",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].code
+        );
+        console.log("酒店codesh:", sessionStorage.getItem("codesh"));
 
-        sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);
-        console.log("酒店hotelname:", sessionStorage.getItem("hotelname"))
-        sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
-        this.reload()
+        sessionStorage.setItem(
+          "hotelname",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name
+        );
+        console.log("酒店hotelname:", sessionStorage.getItem("hotelname"));
+        sessionStorage.setItem(
+          "dituxinxi",
+          JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2])
+        );
+        this.reload();
       }
-
     },
     getdiqulist() {
       var that = this;
@@ -401,7 +474,10 @@ export default {
               "hotelname",
               that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name
             );
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
+            sessionStorage.setItem(
+              "dituxinxi",
+              JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2])
+            );
           } else {
             that.city_centry = that.city["Beijing"];
             that.mudiIndex = that.city["Beijing"][0].hotel_name;
@@ -421,7 +497,10 @@ export default {
               "hotelname",
               that.city["Beijing"][0].hotel_name
             );
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city["Beijing"][0]))
+            sessionStorage.setItem(
+              "dituxinxi",
+              JSON.stringify(that.city["Beijing"][0])
+            );
           }
           console.log(that.city_centry);
         })
@@ -429,19 +508,19 @@ export default {
     },
     yuyanchange(e) {
       localStorage.clear();
-      console.log(e.target.value)
-      var yuyan = e.target.value
-      console.log(window.location.href)
-      var nowhref = window.location.href
+      console.log(e.target.value);
+      var yuyan = e.target.value;
+      console.log(window.location.href);
+      var nowhref = window.location.href;
       // http://localhost:8083/#/hotel
       // http://zs.sc798.com/fandian/#/hotel
       //en_
       // var nowhref = "http://zs.sc798.com/fandian/#/hotel"
-      if (yuyan == 'CN') {
-        var newhref = nowhref.replace('https://en.', 'https://')
+      if (yuyan == "CN") {
+        var newhref = nowhref.replace("https://en.", "https://");
         // var newhref = nowhref.replace('en_zs.sc798.com','ls_dfdcn.sc798.com')
-        console.log(newhref)
-        window.location.href = newhref
+        console.log(newhref);
+        window.location.href = newhref;
       }
       // this.sex= e.target.value
     },
@@ -450,30 +529,36 @@ export default {
       // if(this.web_token==null || this.hotel_id==null){
       //     this.reload();
       // }
-      var that = this
+      var that = this;
       that.$axios
-        .post(`${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`)
+        .post(
+          `${this.Baseurl}public_header?web_token=${that.token}&hotel_id=${that.hotel_id}`
+        )
         .then(function (res) {
           // console.log(res)
-          that.menulist = res.data.data.top_module_list
+          that.menulist = res.data.data.top_module_list;
           that.logos = res.data.data.this_hotel_logo.hotel_logo;
           // console.log(that.menulist)
-          const fieldData = that.menulist
-          sessionStorage.setItem("fieldData", JSON.stringify(fieldData))
-        }).catch(err => console.log(err));
+          const fieldData = that.menulist;
+          sessionStorage.setItem("fieldData", JSON.stringify(fieldData));
+        })
+        .catch((err) => console.log(err));
     },
     //点击弹出登录弹窗
     login() {
       localStorage.setItem("loginfou", 1);
-      this.diaoyong()
+      this.diaoyong();
+    },
+    showEmail(item) {
+      this.denglv = item;
     },
     //点击弹出注册弹窗
     restigc() {
       localStorage.setItem("loginfou", 2);
-      this.diaoyong()
+      this.diaoyong();
     },
     diaoyong() {
-      this.denglv = localStorage.getItem("loginfou")
+      this.denglv = localStorage.getItem("loginfou");
     },
     // skip() {
     // 	// this.isTrue = 1
@@ -482,114 +567,129 @@ export default {
     // },
     //头部菜单切换
     menu(index, id) {
-      this.isTrue = index
+      this.isTrue = index;
       if (index == 0) {
-        this.$router.push({ name: 'Hotel', })
+        this.$router.push({ name: "Hotel" });
       }
       if (index == 1) {
-        this.$router.push({ name: 'Rooms' })
+        this.$router.push({ name: "Rooms" });
       }
       if (index == 2) {
-        this.$router.push({ name: 'Meal' })
+        this.$router.push({ name: "Meal" });
       }
       if (index == 3) {
-        this.$router.push({ name: 'Banquet' })
+        this.$router.push({ name: "Banquet" });
       }
       if (index == 4) {
-        this.$router.push({ name: 'Century' })
+        this.$router.push({ name: "Century" });
       }
       if (index == 5) {
-        this.$router.push({ name: 'Ambitus' })
+        this.$router.push({ name: "Ambitus" });
       }
       this.reload();
       localStorage.setItem("istrue", this.isTrue);
     },
     //返回品牌页
     pinpai() {
-      this.$router.push({ name: 'Pinpai' })
+      this.$router.push({ name: "Pinpai" });
     },
     //去集团官网
     jituan() {
-      window.open("https://en.empark.com.cn/")
+      window.open("https://en.empark.com.cn/");
     },
     //点击立即预定去房型列表页
     yuding() {
-      this.$router.push({ name: 'RoomsList' })
+      this.$router.push({ name: "RoomsList" });
     },
     //点击关闭登录注册弹窗
     guanbi() {
       localStorage.setItem("loginfou", 0);
       // console.log(this.denglv)
-      this.diaoyong()
-      this.forgrtshow = false
+      this.diaoyong();
+      this.forgrtshow = false;
     },
     btns1() {
-      this.denglv = 1
+      this.denglv = 1;
       localStorage.setItem("loginfou", 1);
-      this.diaoyong()
+      this.diaoyong();
     },
     btns2() {
-      this.denglv = 2
+      this.denglv = 2;
       localStorage.setItem("loginfou", 2);
-      this.diaoyong()
+      this.diaoyong();
     },
     btns3() {
-      this.denglv = 3
+      this.denglv = 3;
       localStorage.setItem("loginfou", 3);
-      this.diaoyong()
+      this.diaoyong();
     },
     btns4() {
-      this.denglv = 4
+      this.denglv = 4;
       localStorage.setItem("loginfou", 4);
-      this.diaoyong()
+      this.diaoyong();
     },
     // 注册获取验证码
     getcode(index) {
       // console.log(this.registerNumber)
       if (index == 1) {
-        var that = this
+        var that = this;
         that.$axios
-          .post(`${this.Baseurl}sendCode?web_token=${that.token}&type=${index}&tel=${that.registerNumber}`)
+          .post(
+            `${this.Baseurl}sendCode?web_token=${that.token}&type=${index}&tel=${that.registerNumber}`
+          )
           .then(function (res) {
             // console.log(res)
             // console.log("type类型:"+index)
             // console.log(res.data.code)
             if (res.data.code == "0") {
-              that.tishi(res.data.msg)
+              that.tishi(res.data.msg);
             } else {
-              that.tishi("The verification code has been set. Please check vour mobile")
+              that.tishi(
+                "The verification code has been set. Please check vour mobile"
+              );
             }
-          }).catch(err => console.log(err));
+          })
+          .catch((err) => console.log(err));
       }
       if (index == 2) {
-        var that = this
+        var that = this;
         that.$axios
-          .post(`${this.Baseurl}sendCode?web_token=${that.token}&type=${index}&tel=${that.signNumber}`)
+          .post(
+            `${this.Baseurl}sendCode?web_token=${that.token}&type=${index}&tel=${that.signNumber}`
+          )
           .then(function (res) {
-            console.log(res)
+            console.log(res);
             // console.log("type类型:"+index)
             // console.log(res.data.code)
             if (res.data.code == "0") {
-              that.tishi(res.data.msg)
+              that.tishi(res.data.msg);
             } else {
-              that.tishi("The verification code has been set. Please check vour mobile")
+              that.tishi(
+                "The verification code has been set. Please check vour mobile"
+              );
             }
-          }).catch(err => console.log(err));
+          })
+          .catch((err) => console.log(err));
       }
       if (index == 3) {
-        var that = this
+        var that = this;
         that.$axios
-          .post(`${this.Baseurl}sendCode?web_token=${that.token}&type=${index}&tel=${that.forgetnumber}`)
+          .post(
+            `${this.Baseurl}sendCode?web_token=${that.token}&type=${index}&tel=${that.forgetnumber}`
+          )
           .then(function (res) {
             // console.log(res)
             // console.log("type类型:"+index)
             // console.log(res.data.code)
             if (res.data.code == "0") {
-              that.tishi(res.data.msg)
+              that.tishi(res.data.msg);
             } else {
-              that.tishi("The verification code has been set. Please check vour mobile")
+              that.tishi(
+                "The verification code has been set. Please check vour mobile"
+              );
             }
-          }).catch(err => console.log(err));
+          })
+          .catch((err) => console.log(err));
       }
     },
     validateEmail(email) {
@@ -600,66 +700,122 @@ export default {
 
     getEmailcode(num) {
       console.log(num);
-      let that = this
+      let that = this;
       if (that.validateEmail(that.emailAddress)) {
+        that.tishi("Verification code is being sent, please wait.");
         that.$axios
-          .post(`${this.Baseurl}insert_email?email=${that.emailAddress}&type=${num}&hotel_id=${sessionStorage.getItem("hotel_id") || 1}`)
+          .post(
+            `${this.Baseurl}insert_email?email=${
+              that.emailAddress
+            }&type=${num}&hotel_id=${sessionStorage.getItem("hotel_id") || 1}`
+          )
           .then(function (res) {
             // console.log(res)
             // console.log("type类型:"+index)
             // console.log(res.data.code)
             if (res.data.code == "0") {
-              that.tishi(res.data.msg)
+              that.tishi(res.data.msg);
             } else {
-              num == 1 ? that.emailRegisterCode = res.data.data : that.emailLoginCode = res.data.data
+              num == 1
+                ? (that.emailRegisterCode = res.data.data)
+                : (that.emailLoginCode = res.data.data);
               console.log(that.emailRegisterCode, that.emailLoginCode);
-              that.tishi("The verification code has been set. Please check vour mobile")
+              that.tishi(
+                "The verification code has been set. Please check vour mobile"
+              );
             }
-          }).catch(err => console.log(err));
+          })
+          .catch((err) => console.log(err));
       } else {
-        this.tishi('please enter a valid email address')
+        this.tishi("please enter a valid email address");
       }
       console.log(this.emailAddress, this.emailCode);
     },
     emailLogin(num) {
-      let that = this
+      let that = this;
       if (that.validateEmail(that.emailAddress)) {
         if (that.emailCode == "") {
-          that.tishi("Please fill in the verification code")
+          that.tishi("Please fill in the verification code");
           return;
         } else {
-          let rulesCode = ''
-          num == '1' ? rulesCode = that.emailRegisterCode : rulesCode = that.emailLoginCode
+          let rulesCode = "";
+          num == "1"
+            ? (rulesCode = that.emailRegisterCode)
+            : (rulesCode = that.emailLoginCode);
           console.log(that.emailCode, that.rulesCode);
-          if (that.emailCode == rulesCode) {
-            that.tishi('pass')
+          if (num == 1) {
+            if (that.emailCode == rulesCode) {
+              //请求和注册
+              that.$axios
+                .post(
+                  `${this.Baseurl}register_user?web_token=${that.token}&email=${that.emailAddress}&code=${rulesCode}
+                &hotel_code=${that.hotelcode}&pc_mobile=1`
+                )
+                .then(function (res) {
+                  console.log(res);
+                  // console.log(res.data.code)
+                  if (res.data.status == 0) {
+                    that.tishi("Registered successfully");
+                    // that.tishi(res.data.msg)
+                    that.denglv = "";
+                    // this.forgrtshow = true
+                    that.diaoyong();
+                  } else {
+                    that.tishi(res.data.msg);
+                  }
+                  // Registrationcode
+                });
+            } else {
+              that.tishi("ncorrect verification code");
+            }
           } else {
-            that.tishi('ncorrect verification code')
+            that.$axios
+              .post(
+                `${this.Baseurl}login_user?web_token=${that.token}&email=${that.emailAddress}&code=${that.signPassword}&hotel_code=${rulesCode}`
+              )
+              .then(function (res) {
+                console.log(res);
+                // sessionStorage.clear("accountNumber");
+                if (res.data.status == "0") {
+                  that.tishi(res.data.msg);
+                  sessionStorage.setItem("accountNumber", emailAddress);
+                  sessionStorage.setItem("loginfou", 1);
+                  setTimeout(() => {
+                    localStorage.setItem("loginfou", 0);
+                    that.diaoyong();
+                    that.reload();
+                  }, 1000);
+                } else {
+                  that.tishi(res.data.msg);
+                  sessionStorage.setItem("loginfou", 2);
+                }
+              });
           }
         }
       } else {
-        that.tishi('please enter a valid email address')
+        that.tishi("please enter a valid email address");
       }
     },
     //提示
     tishi(text) {
-      this.tipshow = true
-      this.tipstext = text
+      this.tipshow = true;
+      this.tipstext = text;
       setTimeout(() => {
-        this.tipshow = false
-        this.tipstext = ""
-      }, 3000)
+        this.tipshow = false;
+        this.tipstext = "";
+      }, 3000);
     },
     //注册账号
     zhuce() {
-      var re1 = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+      var re1 =
+        /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
       if (!re1.test(this.registerNumber)) {
         ///^((1[358][0-9])|(14[57])|(17[0678])|(19[7]))\d{8}$/
-        this.tishi("Please enter the correct telephone number")
+        this.tishi("Please enter the correct telephone number");
         return;
       }
       if (this.registerCode == "") {
-        this.tishi("Please fill in the verification code")
+        this.tishi("Please fill in the verification code");
         return;
       }
       // if(this.registerPassword1!=this.registerPassword2){
@@ -667,61 +823,66 @@ export default {
       //     return;
       // }
       // console.log(this.registerCode)
-      var that = this
+      var that = this;
       that.$axios
-        .post(`${this.Baseurl}register_user?web_token=${that.token}&tel=${that.registerNumber}&code=${that.registerCode}&pc_mobile=1&hotel_code=${that.hotelcode}`)
+        .post(
+          `${this.Baseurl}register_user?web_token=${that.token}&tel=${that.registerNumber}&code=${that.registerCode}&pc_mobile=1&hotel_code=${that.hotelcode}`
+        )
         .then(function (res) {
-          console.log(res)
+          console.log(res);
           // console.log(res.data.code)
           if (res.data.status == "0") {
-            this.tishi("Registered successfully")
+            this.tishi("Registered successfully");
             // that.tishi(res.data.msg)
-            this.denglv = 0
+            this.denglv = 0;
             // this.forgrtshow = true
-            this.diaoyong()
+            this.diaoyong();
           } else {
-            that.tishi(res.data.msg)
+            that.tishi(res.data.msg);
           }
-          // Registrationcode  
-        }).catch(err => console.log(err));
-
+          // Registrationcode
+        })
+        .catch((err) => console.log(err));
     },
     //登录账号
     denglu() {
       // console.log(this.signNumber)
       // console.log(this.signPassword)
       if (this.signNumber == "") {
-        this.tishi("The phone number cannot be empty")
-        return
+        this.tishi("The phone number cannot be empty");
+        return;
       }
       if (this.signPassword == "") {
-        this.tishi("The captcha cannot be empty")
-        return
+        this.tishi("The captcha cannot be empty");
+        return;
       }
-      var that = this
+      var that = this;
       that.$axios
-        .post(`${this.Baseurl}login_user?web_token=${that.token}&tel=${that.signNumber}&code=${that.signPassword}&hotel_code=${that.hotelcode}`)
+        .post(
+          `${this.Baseurl}login_user?web_token=${that.token}&tel=${that.signNumber}&code=${that.signPassword}&hotel_code=${that.hotelcode}`
+        )
         .then(function (res) {
-          console.log(res)
+          console.log(res);
           // sessionStorage.clear("accountNumber");
           if (res.data.status == "0") {
-            that.tishi(res.data.msg)
+            that.tishi(res.data.msg);
             sessionStorage.setItem("accountNumber", that.signNumber);
             sessionStorage.setItem("loginfou", 1);
           } else {
-            that.tishi(res.data.msg)
+            that.tishi(res.data.msg);
             sessionStorage.setItem("loginfou", 2);
           }
           setTimeout(() => {
             localStorage.setItem("loginfou", 0);
-            that.diaoyong()
+            that.diaoyong();
             that.reload();
-          }, 1000)
-        }).catch(err => console.log(err));
+          }, 1000);
+        })
+        .catch((err) => console.log(err));
     },
     //退出账号
     exitaccount() {
-      sessionStorage.setItem("accountNumber", '');
+      sessionStorage.setItem("accountNumber", "");
       sessionStorage.setItem("loginfou", 2);
       this.reload();
     },
@@ -730,43 +891,47 @@ export default {
       // console.log("点击忘记密码")
       // this.denglv=0
       localStorage.setItem("loginfou", 0);
-      this.diaoyong()
-      this.forgrtshow = true
+      this.diaoyong();
+      this.forgrtshow = true;
     },
     forget() {
       // console.log(this.forgetnumber)
       // console.log(this.forgetcode)
       // console.log(this.forgetmima)
       // console.log(this.forgetmima2)
-      var re1 = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+      var re1 =
+        /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
       if (!re1.test(this.forgetnumber)) {
-        this.tishi("Please enter the correct telephone number")
+        this.tishi("Please enter the correct telephone number");
         return;
       }
       if (this.forgetcode == "") {
-        this.tishi("Please fill in the verification code")
+        this.tishi("Please fill in the verification code");
         return;
       }
       if (this.forgetmima != this.forgetmima2) {
-        this.tishi("The two passwords are different")
+        this.tishi("The two passwords are different");
         return;
       }
-      var that = this
+      var that = this;
       that.$axios
-        .post(`${this.Baseurl}reset_pwd?web_token=${that.token}&tel=${that.forgetnumber}&code=${that.forgetcode}&pwd=${that.forgetmima}&pwd1=${that.forgetmima2}`)
+        .post(
+          `${this.Baseurl}reset_pwd?web_token=${that.token}&tel=${that.forgetnumber}&code=${that.forgetcode}&pwd=${that.forgetmima}&pwd1=${that.forgetmima2}`
+        )
         .then(function (res) {
           // console.log(res)
-          this.tishi(res.data.msg)
-          that.forgrtshow = false
-        }).catch(err => console.log(err));
+          this.tishi(res.data.msg);
+          that.forgrtshow = false;
+        })
+        .catch((err) => console.log(err));
     },
   },
   mounted() {
-    var that = this
+    var that = this;
     document.querySelector("#app").onclick = function () {
-      that.fotshow = false
-    }
-  }
+      that.fotshow = false;
+    };
+  },
 };
 </script>
 <style scoped>
@@ -803,8 +968,6 @@ export default {
   /* padding: 0 ; */
   /* justify-content: space-between; */
   /* flex: 1; */
-
-
 }
 
 .headbg {
@@ -903,11 +1066,21 @@ export default {
         border-bottom: 3px solid #206079;
     } */
 /* 头部样式切换 */
-#header .header_head .head_operation .header_left .head_bot .head_list.active::after {
+#header
+  .header_head
+  .head_operation
+  .header_left
+  .head_bot
+  .head_list.active::after {
   display: block;
 }
 
-.header .header_head .head_operation .header_left .head_bot .head_list:hover::after {
+.header
+  .header_head
+  .head_operation
+  .header_left
+  .head_bot
+  .head_list:hover::after {
   display: block;
 }
 
@@ -1020,12 +1193,22 @@ export default {
   /* margin-left: 15px; */
 }
 
-.header .header_head .head_operation .header_right .head_top .rig_item:first-child {
+.header
+  .header_head
+  .head_operation
+  .header_right
+  .head_top
+  .rig_item:first-child {
   /* border-right: 1px solid #999999; */
   padding-right: 23px;
 }
 
-.header .header_head .head_operation .header_right .head_top .rig_item:last-child {
+.header
+  .header_head
+  .head_operation
+  .header_right
+  .head_top
+  .rig_item:last-child {
   padding-left: 23px;
 }
 
@@ -1046,12 +1229,12 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 99;
 }
 
 .login {
-  width: 1200px;
+  width: 800px;
   height: 625px;
   margin: auto;
   /* margin-top: 230px; */
@@ -1074,7 +1257,12 @@ export default {
   height: 14px;
   cursor: pointer;
 }
-
+.label {
+  text-align: center;
+  font-size: 16px;
+  margin: 30px 0 0;
+  cursor: pointer;
+}
 .login_logo {
   /* width: 110px;
         margin: auto;
@@ -1090,7 +1278,6 @@ export default {
 .login_logo img {
   width: 100%;
   display: block;
-
 }
 
 .txt_title {
@@ -1255,7 +1442,6 @@ export default {
   cursor: pointer;
 }
 
-
 .switch {
   min-width: 188px;
   height: 42px;
@@ -1293,7 +1479,6 @@ export default {
   margin-left: 10px;
 }
 
-
 .el-select-dropdown {
   position: absolute;
   z-index: 10;
@@ -1318,7 +1503,7 @@ export default {
   overflow: scroll;
   height: 100%;
   /* margin-bottom: -17px; */
-  margin-right: -17px
+  margin-right: -17px;
 }
 
 .el-select-dropdown__list {

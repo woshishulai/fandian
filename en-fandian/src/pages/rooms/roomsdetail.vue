@@ -137,7 +137,7 @@
             <div class="detailtwo_biao">
               <p>Rate type</p>
               <p></p>
-              <p>Rate</p>
+              <p class="p-acitve">Rate</p>
             </div>
             <!-- rateCodeInfos -->
             <div class="detailtwo_area" v-if="paricelist != ''">
@@ -146,12 +146,9 @@
                 v-for="(item, index) in paricelist"
                 :key="index"
               >
-                <div class="pianhao">
+                <div class="active pianhao">
                   <img src="../../assets/img/bofang.png" alt="" />
                   <p>{{ item.ratecodeName }}</p>
-                </div>
-                <div class="zhifu">
-                  <!-- <p>The online payment</p> -->
                 </div>
                 <div class="jiage">
                   <p>From{{ item.salePrice }} CNY</p>
@@ -664,19 +661,26 @@ export default {
 .detailtwo .detailtwo_area .area_list {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-top: 1px solid #e3e3e3;
   height: 100px;
+  padding: 0 28px;
 }
 
 .detailtwo .detailtwo_area .area_list:first-child {
   border-top: none;
 }
-
-.detailtwo .detailtwo_area .area_list > div {
-  margin-left: 30px;
-  width: 320px;
+.p-acitve {
+  margin-left: 17px !important;
 }
 
+.detailtwo .detailtwo_area .area_list > div {
+  /* margin-left: 30px; */
+  /* width: 343px; */
+}
+.active {
+  width: 370px;
+}
 .detailtwo .detailtwo_area .area_list .pianhao {
   display: flex;
   align-items: center;

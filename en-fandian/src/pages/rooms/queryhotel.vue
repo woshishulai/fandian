@@ -11,7 +11,11 @@
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
             <!-- v-show="mudishow" :class="mudishow ? 'active' : ''" -->
-            <div class="roomnums " v-show="mudishow" :class="mudishow ? 'active' : ''">
+            <div
+              class="roomnums"
+              v-show="mudishow"
+              :class="mudishow ? 'active' : ''"
+            >
               <ul>
                 <!-- <li
                   v-for="(list, index) in mudilist"
@@ -25,18 +29,34 @@
                 <!-- @click.stop="getmudi(list)"
                   :class="mudiIndex == list ? 'cur' : ''" -->
                 <!-- 这个方法 第一个展示城市列表，第二个展示切换城市 第三个对应城市酒店列表 -->
-                <li v-for="(list, index) in city" :key="index" @mouseover="getcitylist(index)"
-                  :class="index == mudiIndexnum1 ? 'cur' : ''">
+                <li
+                  v-for="(list, index) in city"
+                  :key="index"
+                  @mouseover="getcitylist(index)"
+                  :class="index == mudiIndexnum1 ? 'cur' : ''"
+                >
                   {{ index }}
                   <!-- v-show="cityshow" -->
                 </li>
-                <div class="mudidiv" v-show="cityshow" @mouseleave="getcitylist2()">
-                  <p v-for="(listMsg, indexMsg) in city_centry" :key="indexMsg"
-                    :class="mudiIndexnum1 == listMsg.city && indexMsg == mudiIndexnum2 ? 'active' : ''"
-                    @click="changejiu(listMsg, indexMsg)">{{ listMsg.hotel_name }}</p>
+                <div
+                  class="mudidiv"
+                  v-show="cityshow"
+                  @mouseleave="getcitylist2()"
+                >
+                  <p
+                    v-for="(listMsg, indexMsg) in city_centry"
+                    :key="indexMsg"
+                    :class="
+                      mudiIndexnum1 == listMsg.city && indexMsg == mudiIndexnum2
+                        ? 'active'
+                        : ''
+                    "
+                    @click="changejiu(listMsg, indexMsg)"
+                  >
+                    {{ listMsg.hotel_name }}
+                  </p>
                 </div>
               </ul>
-
             </div>
           </div>
           <!-- 时间 -->
@@ -44,7 +64,12 @@
             <p class="blotext">C/I Date：</p>
             <div class="contbox checkin" @click="getrilis()">
               <p>{{ wwks1 }}</p>
-              <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
+              <img
+                loading="lazy"
+                class="rilimg"
+                src="../../assets/img/rili.png"
+                alt=""
+              />
             </div>
             <div id="calender" v-show="rilishow">
               <div class="calender_close" @click="guan()">
@@ -54,21 +79,40 @@
                 <div class="drp_calendar left">
                   <div class="drp_calendar_top">
                     <div @click="prev" class="prev">
-                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                      <img
+                        loading="lazy"
+                        src="../../assets/img/jt.png"
+                        alt=""
+                      />
                     </div>
                     <div @click="next" class="next">
-                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                      <img
+                        loading="lazy"
+                        src="../../assets/img/jt.png"
+                        alt=""
+                      />
                     </div>
                     <span class="tishispan">Select check-in time </span>
-                    <span style=""> {{ year }}年{{ month }}month </span>
+                    <span style="">
+                      {{ year2 }}&nbsp; year &nbsp;{{ yuefen }}
+                    </span>
                   </div>
                   <div class="weekDay week">
                     <p v-for="item in weekList" :key="item.id">{{ item }}</p>
                   </div>
                   <div class="weekDay">
-                    <p class="kongge" v-for="item in spaceDay" :key="item.id"></p>
-                    <p class="days" v-for="(item, idx) in monthDay[this.month - 1] || 30" @click="setDay(idx)"
-                      :class="idx == activeDay ? 'active' : ''" :key="item.id">
+                    <p
+                      class="kongge"
+                      v-for="item in spaceDay"
+                      :key="item.id"
+                    ></p>
+                    <p
+                      class="days"
+                      v-for="(item, idx) in monthDay[this.month - 1] || 30"
+                      @click="setDay(idx)"
+                      :class="idx == activeDay ? 'active' : ''"
+                      :key="item.id"
+                    >
                       {{ item }}
                     </p>
                   </div>
@@ -83,12 +127,22 @@
                 <div class="drp_calendar left">
                   <div class="drp_calendar_top">
                     <span class="tishispan">Select check-out time </span>
-                    <span style=""> {{ year2 }}year{{ month2 }}month </span>
+                    <span style="">
+                      {{ year2 }}&nbsp; year &nbsp;{{ yuefen }}
+                    </span>
                     <div @click="prev" class="prev">
-                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                      <img
+                        loading="lazy"
+                        src="../../assets/img/jt.png"
+                        alt=""
+                      />
                     </div>
                     <div @click="next" class="next">
-                      <img loading="lazy" src="../../assets/img/jt.png" alt="" />
+                      <img
+                        loading="lazy"
+                        src="../../assets/img/jt.png"
+                        alt=""
+                      />
                     </div>
                   </div>
                   <div class="weekDay">
@@ -99,8 +153,12 @@
                   <div class="weekDay">
                     <!-- 这个是前面的空格 -->
                     <p v-for="item in spaceDay2" :key="item.id"></p>
-                    <p v-for="(item, idx) in monthDay2[this.month2 - 1] || 30" @click="setDay2(idx)"
-                      :class="idx == activeDay2 ? 'active' : ''" :key="item.id">
+                    <p
+                      v-for="(item, idx) in monthDay2[this.month2 - 1] || 30"
+                      @click="setDay2(idx)"
+                      :class="idx == activeDay2 ? 'active' : ''"
+                      :key="item.id"
+                    >
                       {{ item }}
                     </p>
                   </div>
@@ -112,28 +170,51 @@
           <div class="blocks">
             <p class="blotext"></p>
             <div class="contbox jiwan">
-              <p>{{ numwan }}<span v-if="numwan > 1">Nights</span><span v-else>Night</span></p>
+              <p>
+                {{ numwan }}<span v-if="numwan > 1">Nights</span
+                ><span v-else>Night</span>
+              </p>
             </div>
           </div>
           <div class="blocks">
             <p class="blotext">C/O Date：</p>
             <div class="contbox checkin" @click="getrilis2()">
               <p>{{ wwks2 }}</p>
-              <img loading="lazy" class="rilimg" src="../../assets/img/rili.png" alt="" />
+              <img
+                loading="lazy"
+                class="rilimg"
+                src="../../assets/img/rili.png"
+                alt=""
+              />
             </div>
           </div>
           <!-- 房间数 -->
           <div class="blocks">
             <p class="blotext">Rooms：</p>
             <div class="contbox romsnum" @click="getroom()">
-              <p>{{ roomIndex }} <span v-if="roomIndex > 1">Rooms</span><span v-else>Room</span></p>
-              <img loading="lazy" src="../../assets/img/botxia.png" alt=""
-                :style="roomshow ? 'transform: rotate(180deg)' : ''" />
+              <p>
+                {{ roomIndex }} <span v-if="roomIndex > 1">Rooms</span
+                ><span v-else>Room</span>
+              </p>
+              <img
+                loading="lazy"
+                src="../../assets/img/botxia.png"
+                alt=""
+                :style="roomshow ? 'transform: rotate(180deg)' : ''"
+              />
             </div>
-            <div class="roomnums" v-show="roomshow" :class="roomshow ? 'active' : ''">
+            <div
+              class="roomnums"
+              v-show="roomshow"
+              :class="roomshow ? 'active' : ''"
+            >
               <ul>
-                <li v-for="(list, index) in roomlist" :key="index" @click.stop="getnums(list)"
-                  :class="roomIndex == list ? 'cur' : ''">
+                <li
+                  v-for="(list, index) in roomlist"
+                  :key="index"
+                  @click.stop="getnums(list)"
+                  :class="roomIndex == list ? 'cur' : ''"
+                >
                   {{ list }}
                 </li>
               </ul>
@@ -143,8 +224,12 @@
           <div class="blocks" @click="people()">
             <p class="blotext">Number of people：</p>
             <div class="contbox peoplenum">
-              <p>{{ daren }}<span v-if="daren > 1">Adults</span><span v-else>Adult</span>,{{ xiaohai }}<span
-                  v-if="xiaohai > 1">Childrens</span><span v-else>Children</span></p>
+              <p>
+                {{ daren }}<span v-if="daren > 1">Adults</span
+                ><span v-else>Adult</span>,{{ xiaohai
+                }}<span v-if="xiaohai > 1">Childrens</span
+                ><span v-else>Children</span>
+              </p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
             <div class="persons" v-if="peopleshow">
@@ -189,10 +274,18 @@
               <p>{{ compIndex }}</p>
               <img loading="lazy" src="../../assets/img/botxia.png" alt="" />
             </div>
-            <div class="roomnums pianhao" v-show="houseshow" :class="houseshow ? 'active' : ''">
+            <div
+              class="roomnums pianhao"
+              v-show="houseshow"
+              :class="houseshow ? 'active' : ''"
+            >
               <ul>
-                <li v-for="(list, index) in cpmlist" :key="index" @click.stop="getcomp(list)"
-                  :class="compIndex == list ? 'cur' : ''">
+                <li
+                  v-for="(list, index) in cpmlist"
+                  :key="index"
+                  @click.stop="getcomp(list)"
+                  :class="compIndex == list ? 'cur' : ''"
+                >
                   {{ list }}
                 </li>
               </ul>
@@ -212,10 +305,18 @@
             <p class="blotext"></p>
             <div class="contbox lookup">
               <div class="lookuplist" @click="tolist()">
-                <svg class="icon" width="18px" height="18px" viewBox="0 0 1028 1024" version="1.1"
-                  href="https://www.w3.org/2000/svg">
-                  <path fill="#ffffff"
-                    d="M1007.548064 899.256487L801.043871 692.754294c-3.577986-3.577986-8.032969-5.329979-12.194952-8.032969C908.82345 515.091988 893.926508 279.233909 742.042101 127.349503c-169.701337-169.775337-444.918262-169.775337-614.692598 0-169.775337 169.701337-169.775337 444.845262 0 614.692598 153.5634 153.5644 392.635466 166.708349 562.701801 42.498834 2.701989 3.869985 4.380983 8.104968 7.73997 11.536955L904.296468 1002.582084c28.624888 28.551888 74.773708 28.551888 103.252596 0 28.477889-28.623888 28.477889-74.846708 0-103.324597zM655.074441 654.927442c-121.653525 121.654525-318.884754 121.654525-440.611279 0-121.653525-121.652525-121.653525-318.956754 0-440.610279s318.884754-121.653525 440.611279 0c121.726525 121.726525 121.726525 318.957754 0 440.611279z" />
+                <svg
+                  class="icon"
+                  width="18px"
+                  height="18px"
+                  viewBox="0 0 1028 1024"
+                  version="1.1"
+                  href="https://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="#ffffff"
+                    d="M1007.548064 899.256487L801.043871 692.754294c-3.577986-3.577986-8.032969-5.329979-12.194952-8.032969C908.82345 515.091988 893.926508 279.233909 742.042101 127.349503c-169.701337-169.775337-444.918262-169.775337-614.692598 0-169.775337 169.701337-169.775337 444.845262 0 614.692598 153.5634 153.5644 392.635466 166.708349 562.701801 42.498834 2.701989 3.869985 4.380983 8.104968 7.73997 11.536955L904.296468 1002.582084c28.624888 28.551888 74.773708 28.551888 103.252596 0 28.477889-28.623888 28.477889-74.846708 0-103.324597zM655.074441 654.927442c-121.653525 121.654525-318.884754 121.654525-440.611279 0-121.653525-121.652525-121.653525-318.956754 0-440.610279s318.884754-121.653525 440.611279 0c121.726525 121.726525 121.726525 318.957754 0 440.611279z"
+                  />
                 </svg>
                 <p>Search</p>
               </div>
@@ -237,9 +338,10 @@ export default {
   // },
   data() {
     return {
+      yuefen: this.getMonthName(new Date().getMonth()),
       rilishow: false,
       rilishow2: false,
-      token: '',
+      token: "",
       year: "", // 年份
       month: "", // 月份
       day: "", // 天数
@@ -267,7 +369,7 @@ export default {
       February2: "", // 判断2月份的天数year2: "",
       starttime: "",
       endtime: "",
-      numwan: '',
+      numwan: "",
 
       roomlist: ["1", "2", "3", "4"], //房间数量列表
       roomIndex: 1, //默认一间
@@ -285,14 +387,9 @@ export default {
       ],
       compIndex: "All",
       mudishow: false,
-      mudiid: '',
-      mudilist: [
-        "Beijing",
-        "上海",
-        "深圳",
-        "杭州",
-      ],
-      mudiIndex: 'Beijing',
+      mudiid: "",
+      mudilist: ["Beijing", "上海", "深圳", "杭州"],
+      mudiIndex: "Beijing",
       peopleshow: false, //人数列表
       daren: 1,
       xiaohai: 0,
@@ -301,22 +398,22 @@ export default {
       // daxiao:"",//大人小孩
       nowday: "", //今天的时间
       nextday: "", //明天的时间
-      city: [],//城市
-      city_centry: [],//所选城市里面的所有酒店
+      city: [], //城市
+      city_centry: [], //所选城市里面的所有酒店
       cityshow: false,
-      mudiIndexnum1: '0',//城市
-      mudiIndexnum2: '0',//城市里面的第几个
-      mudisaaa: '0',
+      mudiIndexnum1: "0", //城市
+      mudiIndexnum2: "0", //城市里面的第几个
+      mudisaaa: "0",
       hotelist: [],
-      showName: 'bjeg'
+      showName: "bjeg",
     };
   },
 
   created() {
     this.token = sessionStorage.getItem("token");
-    console.log('我是token', this.token);
+    console.log("我是token", this.token);
     if (this.$route.query.prono) {
-      this.compid = this.$route.query.prono
+      this.compid = this.$route.query.prono;
     }
 
     //mudiIndex
@@ -338,8 +435,11 @@ export default {
     // console.log(new Date(afterMonth))
     // this.current2 = new Date(afterMonth);
     this.current2 = new Date();
-    if (localStorage.getItem("compIndex") && localStorage.getItem("compIndex") != "") {
-      this.compIndex = localStorage.getItem("compIndex")
+    if (
+      localStorage.getItem("compIndex") &&
+      localStorage.getItem("compIndex") != ""
+    ) {
+      this.compIndex = localStorage.getItem("compIndex");
     }
     if (
       localStorage.getItem("activeDay") &&
@@ -359,52 +459,67 @@ export default {
     //今天明天日期
     this.nowday = this.GetDateStr(0);
     this.nextday = this.GetDateStr(1);
-    if (localStorage.getItem("wwks1") != null && localStorage.getItem("wwks1") != '' && localStorage.getItem("wwks2") != null && localStorage.getItem("wwks2") != '') {
-      var shijianQi = localStorage.getItem("wwks1").replace(/\//g, "-")
+    if (
+      localStorage.getItem("wwks1") != null &&
+      localStorage.getItem("wwks1") != "" &&
+      localStorage.getItem("wwks2") != null &&
+      localStorage.getItem("wwks2") != ""
+    ) {
+      var shijianQi = localStorage.getItem("wwks1").replace(/\//g, "-");
       // console.log("时间起"+shijianQi)
-      if (new Date(shijianQi.replace(/-/g, "/")) >= new Date(this.nowday.replace(/-/g, "/"))) {
+      if (
+        new Date(shijianQi.replace(/-/g, "/")) >=
+        new Date(this.nowday.replace(/-/g, "/"))
+      ) {
         this.wwks1 = localStorage.getItem("wwks1");
         this.wwks2 = localStorage.getItem("wwks2");
         // console.log("今天星期几！"+new Date().getDay())
-        this.numwan = this.getDaysBetween(this.wwks1.replace(/-/g, "/"), this.wwks2.replace(/-/g, "/"))
+        this.numwan = this.getDaysBetween(
+          this.wwks1.replace(/-/g, "/"),
+          this.wwks2.replace(/-/g, "/")
+        );
       } else {
         var ddsc = new Date().getDay();
         if (ddsc == 7) {
-          this.wwks1 =
-            this.nowday.replace(/-/g, "/");
-          this.wwks2 =
-            this.nextday.replace(/-/g, "/");
+          this.wwks1 = this.nowday.replace(/-/g, "/");
+          this.wwks2 = this.nextday.replace(/-/g, "/");
         } else {
-          this.wwks1 =
-            this.nowday.replace(/-/g, "/");
-          this.wwks2 =
-            this.nextday.replace(/-/g, "/");
+          this.wwks1 = this.nowday.replace(/-/g, "/");
+          this.wwks2 = this.nextday.replace(/-/g, "/");
         }
-        localStorage.setItem("wwks1", this.wwks1)
-        localStorage.setItem("wwks2", this.wwks2)
-        this.numwan = this.getDaysBetween(this.wwks1.replace(/-/g, "/"), this.wwks2.replace(/-/g, "/"))
+        localStorage.setItem("wwks1", this.wwks1);
+        localStorage.setItem("wwks2", this.wwks2);
+        this.numwan = this.getDaysBetween(
+          this.wwks1.replace(/-/g, "/"),
+          this.wwks2.replace(/-/g, "/")
+        );
       }
     } else {
       // console.log('没有起始时间')
       // console.log(localStorage.getItem("wwks1"))
       var ddsc = new Date().getDay();
       if (ddsc == 7) {
-        this.wwks1 =
-          this.nowday.replace(/-/g, "/");
-        this.wwks2 =
-          this.nextday.replace(/-/g, "/");
+        this.wwks1 = this.nowday.replace(/-/g, "/");
+        this.wwks2 = this.nextday.replace(/-/g, "/");
       } else {
-        this.wwks1 =
-          this.nowday.replace(/-/g, "/");
-        this.wwks2 =
-          this.nextday.replace(/-/g, "/");
+        this.wwks1 = this.nowday.replace(/-/g, "/");
+        this.wwks2 = this.nextday.replace(/-/g, "/");
       }
-      localStorage.setItem("wwks1", this.wwks1)
-      localStorage.setItem("wwks2", this.wwks2)
-      this.numwan = this.getDaysBetween(this.wwks1.replace(/-/g, "/"), this.wwks2.replace(/-/g, "/"))
+      localStorage.setItem("wwks1", this.wwks1);
+      localStorage.setItem("wwks2", this.wwks2);
+      this.numwan = this.getDaysBetween(
+        this.wwks1.replace(/-/g, "/"),
+        this.wwks2.replace(/-/g, "/")
+      );
     }
-    this.starttime = localStorage.getItem("wwks1").replace("/", "-").replace("/", "-");
-    this.endtime = localStorage.getItem("wwks2").replace("/", "-").replace("/", "-");
+    this.starttime = localStorage
+      .getItem("wwks1")
+      .replace("/", "-")
+      .replace("/", "-");
+    this.endtime = localStorage
+      .getItem("wwks2")
+      .replace("/", "-")
+      .replace("/", "-");
 
     //roomIndex
     if (
@@ -437,7 +552,7 @@ export default {
     // 调取当前年的2月天数 年份变则调用这两个
     this.February = this.isLeapYear(this.year) ? 29 : 28;
     this.monthDay.splice(1, 1, this.February);
-    this.getdiqulist()
+    this.getdiqulist();
   },
 
   watch: {
@@ -466,12 +581,29 @@ export default {
   },
   inject: ["reload"],
   methods: {
+    getMonthName(monthIndex) {
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      return months[monthIndex];
+    },
     // getdiqulist(){
     //   // hotel_new
     //   var that =this
     //   that.$axios
     //   // &module_id=3
-    //   .get(`${this.Baseurl}hotel_new?web_token=${that.token}`) 
+    //   .get(`${this.Baseurl}hotel_new?web_token=${that.token}`)
     //   .then(function(res) {
     //       that.city = res.data.data
     //       console.log(that.city)
@@ -501,17 +633,32 @@ export default {
             localStorage.getItem("mudiIndex") &&
             localStorage.getItem("mudiIndex") != ""
           ) {
-            //如果有 
-            that.mudiIndex = localStorage.getItem("mudiIndex");//城市
-            that.mudiIndexnum1 = localStorage.getItem("mudiIndexnum1");//对应的城市
-            that.mudiIndexnum2 = localStorage.getItem("mudiIndexnum2");//对应的城市酒店索引的第几个
+            //如果有
+            that.mudiIndex = localStorage.getItem("mudiIndex"); //城市
+            that.mudiIndexnum1 = localStorage.getItem("mudiIndexnum1"); //对应的城市
+            that.mudiIndexnum2 = localStorage.getItem("mudiIndexnum2"); //对应的城市酒店索引的第几个
             that.city_centry = that.city[that.mudiIndexnum1];
             console.log(that.city_centry);
-            sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);//酒店id
-            sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);//酒店code获取token用的
-            sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);//
-            sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);//酒店名字
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
+            sessionStorage.setItem(
+              "hotel_id",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].id
+            ); //酒店id
+            sessionStorage.setItem(
+              "hotelcode",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code
+            ); //酒店code获取token用的
+            sessionStorage.setItem(
+              "codesh",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].code
+            ); //
+            sessionStorage.setItem(
+              "hotelname",
+              that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name
+            ); //酒店名字
+            sessionStorage.setItem(
+              "dituxinxi",
+              JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2])
+            );
           } else {
             that.city_centry = that.city["北京"];
             that.mudiIndex = that.city["北京"][0].hotel_name;
@@ -522,53 +669,77 @@ export default {
             localStorage.setItem("mudiIndexnum2", 0);
 
             sessionStorage.setItem("hotel_id", that.city["北京"][0].id);
-            sessionStorage.setItem("hotelcode", that.city["北京"][0].hotel_code);
+            sessionStorage.setItem(
+              "hotelcode",
+              that.city["北京"][0].hotel_code
+            );
             sessionStorage.setItem("codesh", that.city["北京"][0].code);
-            sessionStorage.setItem("hotelname", that.city["北京"][0].hotel_name);
-            sessionStorage.setItem("dituxinxi", JSON.stringify(that.city["北京"][0]))
+            sessionStorage.setItem(
+              "hotelname",
+              that.city["北京"][0].hotel_name
+            );
+            sessionStorage.setItem(
+              "dituxinxi",
+              JSON.stringify(that.city["北京"][0])
+            );
           }
-          console.log(sessionStorage.getItem('dituxinxi'));
+          console.log(sessionStorage.getItem("dituxinxi"));
           console.log(that.city_centry);
-          console.log(sessionStorage.getItem('hotel_id'));
-          console.log(sessionStorage.getItem('hotelcode'));
+          console.log(sessionStorage.getItem("hotel_id"));
+          console.log(sessionStorage.getItem("hotelcode"));
         })
         .catch((err) => console.log(err));
     },
     changejiu(listMsg, indexMsg) {
-      console.log(listMsg, indexMsg)//listMsg酒店信息,indexMsg酒店里面的第几个
-      this.showName = listMsg.hotel_img
-      console.log(this.showName);//酒店二级域名
-      console.log(indexMsg)
+      console.log(listMsg, indexMsg); //listMsg酒店信息,indexMsg酒店里面的第几个
+      this.showName = listMsg.hotel_img;
+      console.log(this.showName); //酒店二级域名
+      console.log(indexMsg);
       if (listMsg.path && listMsg.path != "") {
-        window.open(listMsg.path)
+        window.open(listMsg.path);
       } else {
         this.mudishow = false;
         this.cityshow = false;
-        this.mudiIndex = listMsg.hotel_name;//改酒店名字
-        this.mudiIndexnum1 = this.mudisaaa//改酒店城市
-        this.mudiIndexnum2 = indexMsg//改酒店里面的第几个
-        console.log('酒店城市', this.mudisaaa)
+        this.mudiIndex = listMsg.hotel_name; //改酒店名字
+        this.mudiIndexnum1 = this.mudisaaa; //改酒店城市
+        this.mudiIndexnum2 = indexMsg; //改酒店里面的第几个
+        console.log("酒店城市", this.mudisaaa);
         localStorage.setItem("mudiIndex", this.mudiIndex);
         localStorage.setItem("mudiIndexnum1", this.mudisaaa);
         localStorage.setItem("mudiIndexnum2", indexMsg);
         // console.log( this.mudiIndexnum1)
         // console.log( this.mudiIndexnum2)
-        var that = this
+        var that = this;
         //存第几个的id
-        sessionStorage.setItem("hotel_id", that.city[that.mudiIndexnum1][that.mudiIndexnum2].id);
-        console.log("酒店hotel_id:", sessionStorage.getItem("hotel_id"))
+        sessionStorage.setItem(
+          "hotel_id",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].id
+        );
+        console.log("酒店hotel_id:", sessionStorage.getItem("hotel_id"));
         //存酒店的code
-        sessionStorage.setItem("hotelcode", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code);
-        console.log("酒店hotelcode:", sessionStorage.getItem("hotelcode"))
+        sessionStorage.setItem(
+          "hotelcode",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_code
+        );
+        console.log("酒店hotelcode:", sessionStorage.getItem("hotelcode"));
         //存酒店房型
-        sessionStorage.setItem("codesh", that.city[that.mudiIndexnum1][that.mudiIndexnum2].code);
-        console.log("酒店codesh:", sessionStorage.getItem("codesh"))
+        sessionStorage.setItem(
+          "codesh",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].code
+        );
+        console.log("酒店codesh:", sessionStorage.getItem("codesh"));
         //酒店名字
-        sessionStorage.setItem("hotelname", that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name);
-        console.log("酒店hotelname:", sessionStorage.getItem("hotelname"))
-        sessionStorage.setItem("dituxinxi", JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2]))
+        sessionStorage.setItem(
+          "hotelname",
+          that.city[that.mudiIndexnum1][that.mudiIndexnum2].hotel_name
+        );
+        console.log("酒店hotelname:", sessionStorage.getItem("hotelname"));
+        sessionStorage.setItem(
+          "dituxinxi",
+          JSON.stringify(that.city[that.mudiIndexnum1][that.mudiIndexnum2])
+        );
       }
-      console.log(sessionStorage.getItem('dituxinxi'));
+      console.log(sessionStorage.getItem("dituxinxi"));
     },
 
     //获取酒店id
@@ -585,15 +756,24 @@ export default {
             sessionStorage.getItem("hotel_index_data") != ""
           ) {
             for (let i = 0; i < that.hotelist.length; i++) {
-              if (that.hotelist[i].id == sessionStorage.getItem("hotel_index_data")) {
+              if (
+                that.hotelist[i].id ==
+                sessionStorage.getItem("hotel_index_data")
+              ) {
                 var index_data = parseInt(i);
               }
             }
             sessionStorage.setItem("hotel_id", that.hotelist[index_data].id);
-            sessionStorage.setItem("hotelcode", that.hotelist[index_data].hotel_code);
+            sessionStorage.setItem(
+              "hotelcode",
+              that.hotelist[index_data].hotel_code
+            );
             sessionStorage.setItem("codesh", that.hotelist[index_data].code);
             console.log(sessionStorage.getItem("codesh"));
-            sessionStorage.setItem("hotelname", that.hotelist[index_data].hotel_name);
+            sessionStorage.setItem(
+              "hotelname",
+              that.hotelist[index_data].hotel_name
+            );
           } else {
             sessionStorage.setItem("hotel_id", that.hotelist[0].id);
             sessionStorage.setItem("hotelcode", that.hotelist[0].hotel_code);
@@ -606,12 +786,12 @@ export default {
     },
 
     getcitylist(index) {
-      this.cityshow = true
-      this.mudisaaa = index
-      this.city_centry = this.city[this.mudisaaa]
+      this.cityshow = true;
+      this.mudisaaa = index;
+      this.city_centry = this.city[this.mudisaaa];
     },
     getcitylist2() {
-      this.cityshow = false
+      this.cityshow = false;
     },
     GetDateStr(AddDayCount) {
       var dd = new Date();
@@ -756,10 +936,10 @@ export default {
       // console.log(this.endtime);
       // console.log(this.roomIndex);
       // console.log(this.daren);
-      localStorage.setItem('startDate', this.starttime)
-      localStorage.setItem('endDate', this.endtime)
-      localStorage.setItem('numDay', this.roomIndex)
-      localStorage.setItem('prono', this.compid)
+      localStorage.setItem("startDate", this.starttime);
+      localStorage.setItem("endDate", this.endtime);
+      localStorage.setItem("numDay", this.roomIndex);
+      localStorage.setItem("prono", this.compid);
       this.$router.push({
         path: `/roomslist`,
         // query: {
@@ -770,7 +950,7 @@ export default {
         // },
       });
 
-      this.reload()
+      this.reload();
     },
 
     // 判断是否是闰年
@@ -880,30 +1060,31 @@ export default {
       // console.log("起始日期中的点击的天数"+kaishiTime)
       // console.log("起始日期中的结束时间"+this.wwks2)
       var jieshuTime = this.wwks2.replace(/\//g, "-");
-      if (new Date(kaishiTime.replace(/-/g, "/")) >= new Date(this.nowday.replace(/-/g, "/"))) {
-        this.wwks1 =
-          this.year +
-          "/" +
-          this.month +
-          "/" +
-          this.day;
+      if (
+        new Date(kaishiTime.replace(/-/g, "/")) >=
+        new Date(this.nowday.replace(/-/g, "/"))
+      ) {
+        this.wwks1 = this.year + "/" + this.month + "/" + this.day;
         this.starttime = this.year + "-" + this.month + "-" + this.day;
         this.activeDay = idx;
         localStorage.setItem("wwks1", this.wwks1);
         localStorage.setItem("starttime", this.starttime);
         localStorage.setItem("activeDay", this.idx);
         this.rilishow = false;
-        if (new Date(kaishiTime.replace(/-/g, "/")) >= new Date(jieshuTime.replace(/-/g, "/"))) {
-          var aa = new Date(kaishiTime.replace(/-/g, "/"))
-          var bb = aa.setDate(aa.getDate() + 1)
-          var cc = this.timestampToTime(bb)
-          this.wwks2 = cc.replace(/-/g, '/')
+        if (
+          new Date(kaishiTime.replace(/-/g, "/")) >=
+          new Date(jieshuTime.replace(/-/g, "/"))
+        ) {
+          var aa = new Date(kaishiTime.replace(/-/g, "/"));
+          var bb = aa.setDate(aa.getDate() + 1);
+          var cc = this.timestampToTime(bb);
+          this.wwks2 = cc.replace(/-/g, "/");
           this.endtime = cc;
           localStorage.setItem("wwks2", this.wwks2);
           localStorage.setItem("endtime", this.endtime);
-          this.numwan = this.getDaysBetween(kaishiTime, this.endtime)
+          this.numwan = this.getDaysBetween(kaishiTime, this.endtime);
         } else {
-          this.numwan = this.getDaysBetween(kaishiTime, jieshuTime)
+          this.numwan = this.getDaysBetween(kaishiTime, jieshuTime);
         }
       } else {
         alert("请选择大于等于今天的日期");
@@ -913,10 +1094,10 @@ export default {
       //this.getDaysBetween(this.starttime, d2)
     },
     timestampToTime(timestamp) {
-      var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-      var Y = date.getFullYear() + '-';
+      var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      var Y = date.getFullYear() + "-";
       // var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-      var M = (date.getMonth() + 1) + '-';
+      var M = date.getMonth() + 1 + "-";
       var D = date.getDate();
       // var h = date.getHours() + ':';
       // var m = date.getMinutes() + ':';
@@ -931,20 +1112,18 @@ export default {
 
       var jieshuunTime = this.wwks1.replace(/\//g, "-");
 
-      if (new Date(kaishiunTime.replace(/-/g, "/")) > new Date(jieshuunTime.replace(/-/g, "/"))) {
-        this.wwks2 =
-          this.year2 +
-          "/" +
-          this.month2 +
-          "/" +
-          this.day2;
+      if (
+        new Date(kaishiunTime.replace(/-/g, "/")) >
+        new Date(jieshuunTime.replace(/-/g, "/"))
+      ) {
+        this.wwks2 = this.year2 + "/" + this.month2 + "/" + this.day2;
         this.activeDay2 = idx;
         this.endtime = this.year2 + "-" + this.month2 + "-" + this.day2;
         localStorage.setItem("wwks2", this.wwks2);
         localStorage.setItem("endtime", this.endtime);
         localStorage.setItem("activeDay2", this.idx);
         this.rilishow2 = false;
-        this.numwan = this.getDaysBetween(jieshuunTime, kaishiunTime)
+        this.numwan = this.getDaysBetween(jieshuunTime, kaishiunTime);
       } else {
         alert("The end date must be greater than the start date");
       }
@@ -1039,11 +1218,11 @@ export default {
         return 1;
       }
       const daysa = (eDate - sDate) / (1 * 24 * 60 * 60 * 1000);
-      const days = Math.floor(daysa)
+      const days = Math.floor(daysa);
       return days;
     },
   },
-  mounted() { },
+  mounted() {},
 };
 </script>
 
@@ -1153,12 +1332,12 @@ li {
   position: relative;
 }
 
-.hotel_riqi .contbox>p {
+.hotel_riqi .contbox > p {
   font-size: 20px;
   color: #5f5f5f;
 }
 
-.hotel_riqi .contbox>img {
+.hotel_riqi .contbox > img {
   width: 9px;
   height: 5px;
 }
@@ -1212,7 +1391,7 @@ li {
   width: 481px;
 }
 
-.hotel_riqi .contbox.housegood>p {
+.hotel_riqi .contbox.housegood > p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1318,7 +1497,6 @@ li {
   color: #c4c4c4;
 }
 
-
 /* 房屋偏好 */
 .hotel_riqi .contbox.housegood {
   /* width: 170px; */
@@ -1354,8 +1532,6 @@ li {
 .hotel_riqi .lookup p {
   color: #fff;
   font-size: 16px;
-
-
 }
 
 .hotel_riqi .lookuplist {
@@ -1372,7 +1548,6 @@ li {
   cursor: pointer;
   top: -23px;
   /* transform: translateY(-24px); */
-
 }
 
 #calender {
